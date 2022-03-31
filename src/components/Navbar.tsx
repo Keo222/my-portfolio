@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 // Styled Components
 const Nav = styled.nav`
@@ -13,6 +13,7 @@ const Nav = styled.nav`
 const Logo = styled.p`
   font-size: 4rem;
   padding: 2rem;
+  color: ${(props) => props.theme.color.highlight2};
 `;
 
 const NavLinksContainer = styled.div`
@@ -21,9 +22,10 @@ const NavLinksContainer = styled.div`
   justify-content: space-around;
 `;
 
-const StyledNavLink = styled(Link)`
+const StyledNavLink = styled(NavLink)<{ active?: boolean }>`
   font-size: 1.6rem;
-  color: inherit;
+  color: ${(props) =>
+    props.active ? props.theme.color.highlight1 : "inherit"};
   font-weight: 500;
   text-decoration: none;
   transition: all 0.2s;
@@ -33,17 +35,30 @@ const StyledNavLink = styled(Link)`
   }
 `;
 
-type Props = {};
-
-const Navbar = (props: Props) => {
+const Navbar = () => {
+  let location = useLocation();
   return (
     <Nav id="navElem">
       <Logo>KO - WEB DEV</Logo>
       <NavLinksContainer>
-        <StyledNavLink to="/">Home</StyledNavLink>
-        <StyledNavLink to="/">About</StyledNavLink>
-        <StyledNavLink to="/">Portfolio</StyledNavLink>
-        <StyledNavLink to="/">Contact</StyledNavLink>
+        <StyledNavLink active={location.pathname === "/"} to="/">
+          Home
+        </StyledNavLink>
+        <StyledNavLink active={location.pathname === "/about"} to="/about">
+          About
+        </StyledNavLink>
+        <StyledNavLink
+          active={location.pathname === "/portfolio"}
+          to="/portfolio"
+        >
+          Portfolio
+        </StyledNavLink>
+        <StyledNavLink
+          active={location.pathname === "/contact"}
+          to="/contact"
+        >
+          Contact
+        </StyledNavLink>
       </NavLinksContainer>
     </Nav>
   );

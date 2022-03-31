@@ -1,23 +1,21 @@
-import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 // Styled Components
 
-const HomeContainer = styled.div<{ h: number }>`
-  height: calc(100vh - ${(props) => props.h}px);
+const HomeContainer = styled.div`
+  height: calc(100vh - 173px);
   width: 100vw;
   overflow: hidden;
 `;
 
-const LargeOutlineDiv = styled.div<{ h: number }>`
+const LargeOutlineDiv = styled.div`
   margin-left: 20vw;
-  margin-top: calc(
-    100vh - (95vh - ${(props) => props.h}px) - ${(props) => props.h}px
-  );
+  margin-top: calc(100vh - (95vh - 173px) - 173px);
   width: calc(80vw - 5rem);
-  height: calc(95vh - ${(props) => props.h}px - 5rem);
-  border: 1px solid ${(props) => props.theme.color.black};
+  height: calc(95vh - 173px - 5rem);
+  background-color: ${(props) => props.theme.color.primary2};
+  border: 1px solid ${(props) => props.theme.color.primary2};
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -40,11 +38,12 @@ const HomeBlurb = styled.p`
   margin: 0 auto;
   line-height: 3;
   text-align: center;
+  color: ${(props) => props.theme.color.primary1};
 `;
 
 const LinkButton = styled(Link)`
   font-size: 1.8rem;
-  color: ${(props) => props.theme.color.white};
+  color: ${(props) => props.theme.color.primary1};
   text-decoration: none;
   padding: 1rem 2rem;
   background-color: ${(props) => props.theme.color.highlight1};
@@ -52,11 +51,9 @@ const LinkButton = styled(Link)`
 `;
 
 const Home = () => {
-  let navElem = document.querySelector("#navElem") as HTMLElement;
-  let navHeight = navElem.offsetHeight;
   return (
-    <HomeContainer h={navHeight}>
-      <LargeOutlineDiv h={navHeight}>
+    <HomeContainer>
+      <LargeOutlineDiv>
         <HomeHeader>Kyle Olsen</HomeHeader>
         <HomeBlurb>
           “My name is Kyle Olsen. I am a curious web developer perpetually
