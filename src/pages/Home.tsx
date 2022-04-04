@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+// Cursor Image
+import harold_cursor from "../images/icons/hardold_purp_crayon_sm.png";
+
 // Styled Components
 
 const HomeContainer = styled.div`
@@ -21,17 +24,22 @@ const LargeOutlineDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  position: relative;
 `;
 
 const HomeHeader = styled.h1`
+  font-family: "Montserrat", sans-serif;
   font-size: 6rem;
-  font-weight: 400;
-  color: ${(props) => props.theme.color.highlight2};
+  font-weight: 600;
+  color: ${(props) => props.theme.color.primary1};
   margin: 0;
+  z-index: 2;
+  pointer-events: none;
 `;
 
 const HomeBlurb = styled.p`
-  font-size: 3rem;
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.3rem;
   font-weight: 200;
   font-style: italic;
   width: 60%;
@@ -39,28 +47,96 @@ const HomeBlurb = styled.p`
   line-height: 3;
   text-align: center;
   color: ${(props) => props.theme.color.primary1};
+  z-index: 2;
+  pointer-events: none;
 `;
 
 const LinkButton = styled(Link)`
-  font-size: 1.8rem;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 400;
   color: ${(props) => props.theme.color.primary1};
   text-decoration: none;
-  padding: 1rem 2rem;
+  padding: 1.2rem 2rem;
   background-color: ${(props) => props.theme.color.highlight1};
   border-radius: 5px;
+  transition: all 0.2s;
+  z-index: 2;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+`;
+
+const MyCanvas = styled.canvas`
+  position: absolute;
+  z-index: 1;
+  cursor: url(${harold_cursor}), crosshair;
 `;
 
 const Home = () => {
+  // CANVAS ANIMATIONS
+  function drawLine(
+    context: CanvasRenderingContext2D,
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number
+  ) {
+    context.beginPath();
+    context.strokeStyle = "purple";
+    context.lineWidth = 3;
+    context.moveTo(x1, y1);
+    context.lineTo(x2, y2);
+    context.stroke();
+    context.closePath();
+  }
+
+  function fitToContainer(canvas: HTMLCanvasElement) {
+    canvas.style.width = "100%";
+    canvas.style.height = "100%";
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  let x = 0;
+  let y = 0;
+
+  window.addEventListener("load", () => {
+    const canvas = document.getElementById("canvas") as HTMLCanvasElement;
+    const container = document.getElementById(
+      "canvas-container"
+    ) as HTMLDivElement;
+    if (canvas) {
+      let ctx: CanvasRenderingContext2D;
+      ctx = canvas.getContext("2d")!;
+      window.addEventListener("resize", () => fitToContainer(canvas));
+      fitToContainer(canvas);
+      if (ctx) {
+        container.addEventListener("mouseover", (e) => {
+          x = e.offsetX;
+          y = e.offsetY;
+        });
+        canvas.addEventListener("mousemove", (e) => {
+          drawLine(ctx, x, y, e.offsetX, e.offsetY);
+          x = e.offsetX;
+          y = e.offsetY;
+        });
+      }
+    }
+  });
+
   return (
     <HomeContainer>
-      <LargeOutlineDiv>
+      <LargeOutlineDiv id="canvas-container">
+        <MyCanvas id="canvas"></MyCanvas>
         <HomeHeader>Kyle Olsen</HomeHeader>
         <HomeBlurb>
           “My name is Kyle Olsen. I am a curious web developer perpetually
           learning more about the state of the web and how to make websites
           beautiful and intuitive”
         </HomeBlurb>
-        <LinkButton to="/">Contact Kyle</LinkButton>
+        <LinkButton to="/portfolio">View Portfolio</LinkButton>
       </LargeOutlineDiv>
     </HomeContainer>
   );

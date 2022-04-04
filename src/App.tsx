@@ -13,10 +13,12 @@ import Contact from "./pages/Contact";
 
 // COMPONENTS
 import Navbar from "./components/Navbar";
+import Check from "./components/checkReactVer";
 
 function App() {
   return (
     <>
+      <Check />
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Router>

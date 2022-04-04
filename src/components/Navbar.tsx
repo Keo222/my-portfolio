@@ -11,7 +11,9 @@ const Nav = styled.nav`
 `;
 
 const Logo = styled.p`
+  font-family: "Montserrat", sans-serif;
   font-size: 4rem;
+  font-weight: 700;
   padding: 2rem;
   color: ${(props) => props.theme.color.highlight2};
 `;
@@ -22,11 +24,11 @@ const NavLinksContainer = styled.div`
   justify-content: space-around;
 `;
 
-const StyledNavLink = styled(NavLink)<{ active?: boolean }>`
+const StyledNavLink = styled(NavLink)<{ active: string }>`
   font-size: 1.6rem;
   color: ${(props) =>
-    props.active ? props.theme.color.highlight1 : "inherit"};
-  font-weight: 500;
+    props.active === "true" ? props.theme.color.highlight1 : "inherit"};
+  font-weight: 700;
   text-decoration: none;
   transition: all 0.2s;
 
@@ -41,20 +43,26 @@ const Navbar = () => {
     <Nav id="navElem">
       <Logo>KO - WEB DEV</Logo>
       <NavLinksContainer>
-        <StyledNavLink active={location.pathname === "/"} to="/">
+        <StyledNavLink
+          active={location.pathname === "/" ? "true" : "false"}
+          to="/"
+        >
           Home
         </StyledNavLink>
-        <StyledNavLink active={location.pathname === "/about"} to="/about">
+        <StyledNavLink
+          active={location.pathname === "/about" ? "true" : "false"}
+          to="/about"
+        >
           About
         </StyledNavLink>
         <StyledNavLink
-          active={location.pathname === "/portfolio"}
+          active={location.pathname === "/portfolio" ? "true" : "false"}
           to="/portfolio"
         >
           Portfolio
         </StyledNavLink>
         <StyledNavLink
-          active={location.pathname === "/contact"}
+          active={location.pathname === "/contact" ? "true" : "false"}
           to="/contact"
         >
           Contact
