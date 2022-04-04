@@ -1,21 +1,32 @@
 import React from "react";
 import styled from "styled-components";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
+
+// Logo
+import myLogo from "../images/logos/myLogo.png";
 
 // Styled Components
 const Nav = styled.nav`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
-const Logo = styled.p`
-  font-family: "Montserrat", sans-serif;
-  font-size: 4rem;
-  font-weight: 700;
-  padding: 2rem;
-  color: ${(props) => props.theme.color.highlight2};
+// const Logo = styled.p`
+//   font-family: "Montserrat", sans-serif;
+//   font-size: 4rem;
+//   font-weight: 700;
+//   padding: 2rem;
+//   color: ${(props) => props.theme.color.highlight2};
+// `;
+
+const LogoContainer = styled.div`
+  height: 15rem;
+`;
+
+const Logo = styled.img`
+  height: 100%;
 `;
 
 const NavLinksContainer = styled.div`
@@ -41,7 +52,11 @@ const Navbar = () => {
   let location = useLocation();
   return (
     <Nav id="navElem">
-      <Logo>KO - WEB DEV</Logo>
+      <Link to="/">
+        <LogoContainer>
+          <Logo src={myLogo} />
+        </LogoContainer>
+      </Link>
       <NavLinksContainer>
         <StyledNavLink
           active={location.pathname === "/" ? "true" : "false"}

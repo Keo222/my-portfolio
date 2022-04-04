@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { ThemeProvider } from "styled-components";
-import { theme, dixieTheme } from "./styled/styled";
+import { theme } from "./styled/styled";
 import GlobalStyles from "./styled/globalStyles";
 
 // PAGES
@@ -13,12 +13,10 @@ import Contact from "./pages/Contact";
 
 // COMPONENTS
 import Navbar from "./components/Navbar";
-import Check from "./components/checkReactVer";
 
 function App() {
   return (
     <>
-      <Check />
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Router>

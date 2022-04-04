@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -16,7 +18,7 @@ const LargeOutlineDiv = styled.div`
   margin-left: 20vw;
   margin-top: calc(100vh - (95vh - 173px) - 173px);
   width: calc(80vw - 5rem);
-  height: calc(95vh - 173px - 5rem);
+  min-height: calc(95vh - 173px - 5rem);
   background-color: ${(props) => props.theme.color.primary2};
   border: 1px solid ${(props) => props.theme.color.primary2};
   border-radius: 15px;
@@ -99,10 +101,9 @@ const Home = () => {
     canvas.height = canvas.offsetHeight;
   }
 
-  let x = 0;
-  let y = 0;
-
-  window.addEventListener("load", () => {
+  useEffect(() => {
+    let x = 0;
+    let y = 0;
     const canvas = document.getElementById("canvas") as HTMLCanvasElement;
     const container = document.getElementById(
       "canvas-container"
@@ -124,7 +125,7 @@ const Home = () => {
         });
       }
     }
-  });
+  }, []);
 
   return (
     <HomeContainer>

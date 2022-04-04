@@ -20,14 +20,6 @@ const TopLineDiv = styled.div`
   align-items: center;
 `;
 
-const PageHeader = styled.h1`
-  color: ${(props) => props.theme.color.highlight1};
-  font-size: 3.2rem;
-  font-weight: 400;
-  margin: 0;
-  letter-spacing: 5px;
-`;
-
 const ToggleDiv = styled.div`
   display: flex;
   justify-content: center;
