@@ -118,8 +118,6 @@ const InfoTextDiv = styled.div`
   align-items: center;
   justify-content: space-around;
 
-  position: relative;
-
   color: ${(props) => props.theme.color.primary1};
   background-color: ${(props) => props.theme.color.primary2};
 
@@ -134,16 +132,16 @@ const SiteHeader = styled.h2`
   font-size: 2rem;
   font-weight: 800;
   letter-spacing: 4px;
+  text-align: center;
 `;
 
 const SiteDescription = styled.p`
   font-size: 1.4rem;
   font-weight: 300;
 
-
-
   @media screen and (${(props) => props.theme.responsive.lg}) {
     margin-block: 5rem;
+  }
 `;
 
 const TechImgsDiv = styled.div`
