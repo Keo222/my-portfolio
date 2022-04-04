@@ -138,6 +138,9 @@ const SiteHeader = styled.h2`
 const SiteDescription = styled.p`
   font-size: 1.4rem;
   font-weight: 300;
+  text-align: center;
+
+  width: 80%;
 
   @media screen and (${(props) => props.theme.responsive.lg}) {
     margin-block: 5rem;

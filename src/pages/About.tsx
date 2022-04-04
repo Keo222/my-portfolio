@@ -10,9 +10,14 @@ import ImageSlider from "../components/ImageSlider";
 const AboutPageDiv = styled.div`
   display: flex;
   justify-content: space-around;
-  margin: 0 auto;
+  margin-inline: auto;
+  margin-top: 3rem;
+  margin-bottom: 5rem;
   width: clamp(180px, 100vw, 1500px);
-  height: calc(90vh - 173px);
+
+  @media screen and (${(props) => props.theme.responsive.lg}) {
+    flex-direction: column;
+  }
 `;
 
 const AboutInfoSection = styled.section`
@@ -21,7 +26,11 @@ const AboutInfoSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  @media screen and (${(props) => props.theme.responsive.lg}) {
+    margin-top: 4rem;
+    order: 2;
+  }
 `;
 
 const AboutHeader = styled.h1`
@@ -30,15 +39,25 @@ const AboutHeader = styled.h1`
   font-weight: 500;
   letter-spacing: 3px;
 
-  margin: 0;
+  margin-top: 3rem;
   color: ${(props) => props.theme.color.highlight1};
   text-transform: uppercase;
+
+  @media screen and (${(props) => props.theme.responsive.sm}) {
+    font-size: 2rem;
+  }
 `;
 
 const AboutInfoDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  margin-block: 5rem;
+
+  @media screen and (${(props) => props.theme.responsive.lg}) {
+    margin-block: 2rem;
+  }
 `;
 
 const AboutInfoP = styled.p`
@@ -46,6 +65,10 @@ const AboutInfoP = styled.p`
   text-indent: 4rem;
   line-height: 1.8;
   width: clamp(180px, 80%, 60ch);
+
+  @media screen and (${(props) => props.theme.responsive.sm}) {
+    font-size: 1.6rem;
+  }
 `;
 
 const ContactButton = styled(Link)`
@@ -64,14 +87,24 @@ const ContactButton = styled(Link)`
     color: ${(props) => props.theme.color.highlight2};
     background-color: ${(props) => props.theme.color.primary1};
   }
+
+  @media screen and (${(props) => props.theme.responsive.lg}) {
+    margin-top: 2rem;
+  }
+
+  @media screen and (${(props) => props.theme.responsive.sm}) {
+    font-size: 1.4rem;
+  }
 `;
 
 const AboutPicsSection = styled.section`
-  flex-basis: 50%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  @media screen and (${(props) => props.theme.responsive.lg}) {
+    order: 1;
+  }
 `;
 
 const About = () => {

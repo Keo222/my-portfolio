@@ -12,7 +12,7 @@ export const theme = {
   responsive: {
     xs: "max-width: 400px",
     sm: "max-width: 600px",
-    md: "max-width: 900px",
+    md: "max-width: 800px",
     lg: "max-width: 1100px",
     xl: "max-width: 1400px",
     xxl: "max-width: 1600px",
