@@ -28,34 +28,59 @@ import { ProjArray } from "../customTypes/objectArrays";
 
 const SliderSection = styled.section`
   width: 100%;
+  height: 30vw;
+
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   position: relative;
+
+  @media screen and (${(props) => props.theme.responsive.lg}) {
+    height: fit-content;
+  }
 `;
 
 const NavigateArrow = styled.img`
   height: 5rem;
+
   margin-inline: 5px;
+
   vertical-align: bottom;
-  user-select: none;
+  position: absolute;
   z-index: 15;
+
+  user-select: none;
   opacity: 0.2;
   transition: all 0.15s;
+
   &:hover {
     cursor: pointer;
     opacity: 1;
   }
 `;
 
-const ExternalLink = styled.img`
+const LeftArrow = styled(NavigateArrow)``;
+const RightArrow = styled(NavigateArrow)`
+  right: 0;
+`;
+
+const ExternalLink = styled.a`
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+`;
+
+const ExternalLinkImg = styled.img`
   height: 3rem;
   width: 3rem;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+
   opacity: 0.2;
   transition: all 0.15s;
+
   &:hover {
     cursor: pointer;
     opacity: 1;
@@ -65,29 +90,43 @@ const ExternalLink = styled.img`
 const InfoDiv = styled(animated.div)`
   display: flex;
   align-items: center;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+
+  height: 100%;
+  width: 100%;
+
+  @media screen and (${(props) => props.theme.responsive.lg}) {
+    flex-direction: column;
+  }
 `;
 
 const SiteImg = styled.img`
   object-fit: cover;
   height: 100%;
   aspect-ratio: 1.7777777;
+  @media screen and (${(props) => props.theme.responsive.lg}) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const InfoTextDiv = styled.div`
   height: 100%;
-  flex-grow: 1;
-  flex-direction: column;
+
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   align-items: center;
   justify-content: space-around;
+
+  position: relative;
+
   color: ${(props) => props.theme.color.primary1};
   background-color: ${(props) => props.theme.color.primary2};
+
+  @media screen and (${(props) => props.theme.responsive.lg}) {
+    width: 100%;
+    padding-block: 3rem;
+  }
 `;
 
 const SiteHeader = styled.h2`
@@ -100,18 +139,27 @@ const SiteHeader = styled.h2`
 const SiteDescription = styled.p`
   font-size: 1.4rem;
   font-weight: 300;
+
+
+
+  @media screen and (${(props) => props.theme.responsive.lg}) {
+    margin-block: 5rem;
 `;
 
 const TechImgsDiv = styled.div`
+  width: clamp(200px, 80%, 500px);
+
+  margin-top: 2rem;
+
   display: flex;
   flex-wrap: wrap;
-  width: clamp(200px, 80%, 500px);
   justify-content: space-evenly;
 `;
 
 const TechLogo = styled.img`
   height: 5rem;
   width: 5rem;
+  margin-inline: 1rem;
 `;
 
 type Props = {
@@ -193,7 +241,7 @@ const ProjectsSlider = ({
     <SliderSection>
       {transitions((styles, i) => (
         <>
-          <NavigateArrow src={left_arrow} onClick={() => prevProject()} />
+          <LeftArrow src={left_arrow} onClick={() => prevProject()} />
           <InfoDiv style={styles} key={i}>
             <SiteImg
               src={webImgSwitch(
@@ -222,19 +270,20 @@ const ProjectsSlider = ({
                   i <= projects.length - 1 ? i : projects.length - 1
                 ].tech.map((t) => logoSwitch(t))}
               </TechImgsDiv>
+              <ExternalLink
+                target="_blank"
+                rel="noreferrer noopener"
+                href={
+                  projects[
+                    i <= projects.length - 1 ? i : projects.length - 1
+                  ].link
+                }
+              >
+                <ExternalLinkImg src={external_link} />
+              </ExternalLink>
             </InfoTextDiv>
           </InfoDiv>
-          <a
-            target="_blank"
-            rel="noreferrer noopener"
-            href={
-              projects[i <= projects.length - 1 ? i : projects.length - 1]
-                .link
-            }
-          >
-            <ExternalLink src={external_link} />
-          </a>
-          <NavigateArrow src={right_arrow} onClick={() => nextProject()} />
+          <RightArrow src={right_arrow} onClick={() => nextProject()} />
         </>
       ))}
     </SliderSection>

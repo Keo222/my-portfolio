@@ -8,11 +8,7 @@ import NavTicks from "../components/NavTicks";
 // Project Arrays
 import { clientProjects, personalProjects } from "../jsonDB/projects";
 
-const PortfolioPageContainer = styled.div`
-  display: grid;
-  height: calc(100vh - 173px);
-  grid-template-rows: 2fr clamp(150px, 30vw, 500px) 2fr;
-`;
+const PortfolioPageContainer = styled.div``;
 
 const TopLineDiv = styled.div`
   display: flex;

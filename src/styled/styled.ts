@@ -8,6 +8,15 @@ export const theme = {
     highlight1: "#317E13",
     highlight2: "#7261A3",
   },
+
+  responsive: {
+    xs: "max-width: 400px",
+    sm: "max-width: 600px",
+    md: "max-width: 900px",
+    lg: "max-width: 1100px",
+    xl: "max-width: 1400px",
+    xxl: "max-width: 1600px",
+  },
 };
 
 export const dixieTheme = {
