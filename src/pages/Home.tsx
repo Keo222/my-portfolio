@@ -15,7 +15,7 @@ const HomeContainer = styled.div`
 `;
 
 const LargeOutlineDiv = styled.div`
-  width: minmax(calc(80vw - 5rem), 9vw);
+  width: clamp(280px, calc(80vw - 5rem), 1400px);
   min-height: calc(95vh - 173px - 5rem);
 
   margin-left: clamp(5vw, 25vw, 25vw);
@@ -35,7 +35,10 @@ const LargeOutlineDiv = styled.div`
   position: relative;
 
   @media screen and (${(props) => props.theme.responsive.md}) {
-    margin-inline: 5rem;
+    margin-inline: auto;
+  }
+  @media screen and (${(props) => props.theme.responsive.xs}) {
+    width: 95vw;
   }
 `;
 
@@ -51,6 +54,9 @@ const HomeHeader = styled.h1`
   @media screen and (${(props) => props.theme.responsive.md}) {
     font-size: 4rem;
   }
+  @media screen and (${(props) => props.theme.responsive.sm}) {
+    font-size: 3rem;
+  }
 `;
 
 const HomeBlurb = styled.p`
@@ -58,7 +64,7 @@ const HomeBlurb = styled.p`
   font-size: 2.3rem;
   font-weight: 200;
   font-style: italic;
-  width: clamp(250px, 70%, 900px);
+  width: clamp(200px, 70%, 900px);
   margin: 0 auto;
   line-height: 3;
   text-align: center;
@@ -67,6 +73,10 @@ const HomeBlurb = styled.p`
   pointer-events: none;
   @media screen and (${(props) => props.theme.responsive.md}) {
     font-size: 2rem;
+    line-height: 2.3;
+  }
+  @media screen and (${(props) => props.theme.responsive.sm}) {
+    font-size: 1.6rem;
   }
 `;
 
