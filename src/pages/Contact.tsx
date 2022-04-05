@@ -60,20 +60,31 @@ const CenteringDiv = styled.div`
 `;
 
 const StyledSubmitButton = styled.button`
-  font-family: inherit;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.6rem;
   font-weight: 500;
   color: ${(props) => props.theme.color.primary1};
-  background-color: ${(props) => props.theme.color.highlight2};
+  text-decoration: none;
   padding: 1rem 2rem;
-  border: 3px solid ${(props) => props.theme.color.highlight2};
+  background-color: ${(props) => props.theme.color.highlight2};
   border-radius: 5px;
+  border: 3px solid ${(props) => props.theme.color.highlight2};
   transition: all 0.2s;
 
-  &:hover {
-    cursor: pointer;
+  &:hover,
+  &:focus,
+  &:focus-visible {
     color: ${(props) => props.theme.color.highlight2};
     background-color: ${(props) => props.theme.color.primary1};
+    outline: none;
+  }
+
+  @media screen and (${(props) => props.theme.responsive.lg}) {
+    margin-top: 2rem;
+  }
+
+  @media screen and (${(props) => props.theme.responsive.sm}) {
+    font-size: 1.4rem;
   }
 `;
 

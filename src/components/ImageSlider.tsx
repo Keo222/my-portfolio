@@ -17,6 +17,10 @@ const ImgAndArrows = styled.div`
   display: flex;
   height: 100%;
   align-items: center;
+
+  @media screen and (${(props) => props.theme.responsive.lg}) {
+    width: clamp(180px, 90%, 700px);
+  }
 `;
 
 const NavigateArrow = styled.img`
@@ -26,9 +30,15 @@ const NavigateArrow = styled.img`
   user-select: none;
   opacity: 0.2;
   transition: all 0.15s;
-  &:hover {
+  &:hover,
+  &:focus,
+  &:focus-visible {
     cursor: pointer;
     opacity: 1;
+  }
+
+  @media screen and (${(props) => props.theme.responsive.sm}) {
+    height: 3rem;
   }
 `;
 
@@ -40,6 +50,9 @@ const ImgDiv = styled(animated.div)`
   width: clamp(150px, 40vw, 500px);
   aspect-ratio: 0.8;
   border-radius: 10px;
+  @media screen and (${(props) => props.theme.responsive.lg}) {
+    width: clamp(150px, 80vw, 600px);
+  }
 `;
 
 const Image = styled(animated.img)`
@@ -98,6 +111,7 @@ const ImageSlider = () => {
       <NavigateArrow
         src={left_arrow}
         alt="Go back to previous image"
+        tabIndex={0}
         onClick={() => prevImg()}
       />
       {transitions((styles, i) => (
@@ -115,7 +129,8 @@ const ImageSlider = () => {
       </ImgDiv> */}
       <NavigateArrow
         src={right_arrow}
-        alt="Go back to previous image"
+        alt="Go back to next image"
+        tabIndex={0}
         onClick={() => nextImg()}
       />
     </ImgAndArrows>

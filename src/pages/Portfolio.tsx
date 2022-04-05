@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, KeyboardEvent } from "react";
 import styled from "styled-components";
 
 // Components
@@ -64,8 +64,12 @@ const Portfolio = () => {
   const [toggle, setToggle] = useState(true);
   const [currentProjNum, setCurrentProjNum] = useState(0);
 
-  const handleToggle = () => {
-    console.log("handleToggle");
+  const handleToggle = (e?: KeyboardEvent<HTMLDivElement>) => {
+    if (e) {
+      if (e.key !== "Enter") {
+        return;
+      }
+    }
     if (currentProjNum === 0) {
       setToggle((t) => !t);
     } else {
@@ -90,9 +94,11 @@ const Portfolio = () => {
           <Toggle
             bColor={toggle}
             onClick={() => handleToggle()}
+            onKeyDown={(e) => handleToggle(e)}
             role="switch"
             aria-label="Toggle between client projects and personal projects."
             aria-checked={toggle ? "true" : "false"}
+            tabIndex={0}
           >
             <ToggleBall pos={toggle} />
           </Toggle>

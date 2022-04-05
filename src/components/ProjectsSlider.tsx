@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, KeyboardEvent } from "react";
 import styled from "styled-components";
 import { animated, useSpringRef, useTransition } from "react-spring";
 
@@ -57,7 +57,9 @@ const NavigateArrow = styled.img`
   opacity: 0.2;
   transition: all 0.15s;
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:focus-visible {
     cursor: pointer;
     opacity: 1;
   }
@@ -72,6 +74,11 @@ const ExternalLink = styled.a`
   position: absolute;
   top: 2rem;
   right: 2rem;
+
+  &:focus img,
+  &:focus-visible img {
+    opacity: 1;
+  }
 `;
 
 const ExternalLinkImg = styled.img`
@@ -169,6 +176,8 @@ type Props = {
   setCurrentProj: Function;
 };
 
+type DirType = "next" | "prev";
+
 const ProjectsSlider = ({
   projects,
   currentProj,
@@ -238,11 +247,33 @@ const ProjectsSlider = ({
       currentProj === 0 ? projects.length - 1 : currentProj - 1
     );
   };
+
+  const keyboardHandleNav = (
+    e: KeyboardEvent<HTMLDivElement>,
+    dir: DirType
+  ) => {
+    if (e.key === "Enter") {
+      if (dir === "next") {
+        setCurrentProj(
+          currentProj === projects.length - 1 ? 0 : currentProj + 1
+        );
+      } else {
+        setCurrentProj(
+          currentProj === 0 ? projects.length - 1 : currentProj - 1
+        );
+      }
+    }
+  };
   return (
     <SliderSection>
       {transitions((styles, i) => (
         <>
-          <LeftArrow src={left_arrow} onClick={() => prevProject()} />
+          <LeftArrow
+            src={left_arrow}
+            tabIndex={0}
+            onClick={() => prevProject()}
+            onKeyDown={(e) => keyboardHandleNav(e, "prev")}
+          />
           <InfoDiv style={styles} key={i}>
             <SiteImg
               src={webImgSwitch(
@@ -284,7 +315,12 @@ const ProjectsSlider = ({
               </ExternalLink>
             </InfoTextDiv>
           </InfoDiv>
-          <RightArrow src={right_arrow} onClick={() => nextProject()} />
+          <RightArrow
+            src={right_arrow}
+            tabIndex={0}
+            onClick={() => nextProject()}
+            onKeyDown={(e) => keyboardHandleNav(e, "next")}
+          />
         </>
       ))}
     </SliderSection>

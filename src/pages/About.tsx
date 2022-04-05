@@ -5,15 +5,20 @@ import { Link } from "react-router-dom";
 // Components
 import ImageSlider from "../components/ImageSlider";
 
+// Logos
+import github from "../images/logos/github-black.svg";
+import linkedin from "../images/logos/linkedin_logo.svg";
+
 // Styled Components
 
 const AboutPageDiv = styled.div`
   display: flex;
   justify-content: space-around;
+  align-items: center;
   margin-inline: auto;
   margin-top: 3rem;
   margin-bottom: 5rem;
-  width: clamp(180px, 100vw, 1500px);
+  width: clamp(180px, 100vw, 1600px);
 
   @media screen and (${(props) => props.theme.responsive.lg}) {
     flex-direction: column;
@@ -21,7 +26,7 @@ const AboutPageDiv = styled.div`
 `;
 
 const AboutInfoSection = styled.section`
-  height: 100%;
+  min-height: 100%;
   flex-basis: 50%;
   display: flex;
   flex-direction: column;
@@ -53,7 +58,7 @@ const AboutInfoDiv = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin-block: 5rem;
+  margin-top: 3rem;
 
   @media screen and (${(props) => props.theme.responsive.lg}) {
     margin-block: 2rem;
@@ -71,21 +76,52 @@ const AboutInfoP = styled.p`
   }
 `;
 
+const SocialsDiv = styled.div`
+  display: flex;
+  height: 3rem;
+  margin-block: 3rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+const SocialLink = styled.a`
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    & img {
+      transform: translateY(-8px);
+    }
+  }
+`;
+
+const SocialLogo = styled.img`
+  height: 100%;
+  margin-inline: 2rem;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
 const ContactButton = styled(Link)`
   font-family: "Montserrat", sans-serif;
   font-size: 1.8rem;
-  font-weight: 400;
+  font-weight: 500;
   color: ${(props) => props.theme.color.primary1};
   text-decoration: none;
   padding: 1rem 2rem;
   background-color: ${(props) => props.theme.color.highlight2};
   border-radius: 5px;
-  border: 2px solid ${(props) => props.theme.color.highlight2};
+  border: 3px solid ${(props) => props.theme.color.highlight2};
   transition: all 0.2s;
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:focus-visible {
     color: ${(props) => props.theme.color.highlight2};
     background-color: ${(props) => props.theme.color.primary1};
+    outline: none;
   }
 
   @media screen and (${(props) => props.theme.responsive.lg}) {
@@ -104,6 +140,7 @@ const AboutPicsSection = styled.section`
   justify-content: center;
   @media screen and (${(props) => props.theme.responsive.lg}) {
     order: 1;
+    height: fit-content;
   }
 `;
 
@@ -128,6 +165,22 @@ const About = () => {
             spending time outdoors.
           </AboutInfoP>
         </AboutInfoDiv>
+        <SocialsDiv>
+          <SocialLink
+            href="https://github.com/Keo222"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <SocialLogo src={github} />
+          </SocialLink>
+          <SocialLink
+            href="https://www.linkedin.com/in/kyle-olsen-2958084b/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <SocialLogo src={linkedin} />
+          </SocialLink>
+        </SocialsDiv>
         <ContactButton to="/contact">Contact Kyle</ContactButton>
       </AboutInfoSection>
       <AboutPicsSection aria-label="Pictures of Kyle Olsen">

@@ -9,16 +9,22 @@ import harold_cursor from "../images/icons/hardold_purp_crayon_sm.png";
 // Styled Components
 
 const HomeContainer = styled.div`
-  height: calc(100vh - 173px);
+  min-height: calc(100vh - 173px);
   width: 100vw;
   overflow: hidden;
 `;
 
 const LargeOutlineDiv = styled.div`
-  margin-left: 20vw;
-  margin-top: calc(100vh - (95vh - 173px) - 173px);
-  width: calc(80vw - 5rem);
+  width: minmax(calc(80vw - 5rem), 9vw);
   min-height: calc(95vh - 173px - 5rem);
+
+  margin-left: clamp(5vw, 25vw, 25vw);
+  margin-right: 2vw;
+  margin-top: calc(100vh - (98vh - 173px) - 173px);
+
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
   background-color: ${(props) => props.theme.color.primary2};
   border: 1px solid ${(props) => props.theme.color.primary2};
   border-radius: 15px;
@@ -27,6 +33,10 @@ const LargeOutlineDiv = styled.div`
   align-items: center;
   justify-content: space-evenly;
   position: relative;
+
+  @media screen and (${(props) => props.theme.responsive.md}) {
+    margin-inline: 5rem;
+  }
 `;
 
 const HomeHeader = styled.h1`
@@ -37,6 +47,10 @@ const HomeHeader = styled.h1`
   margin: 0;
   z-index: 2;
   pointer-events: none;
+
+  @media screen and (${(props) => props.theme.responsive.md}) {
+    font-size: 4rem;
+  }
 `;
 
 const HomeBlurb = styled.p`
@@ -44,29 +58,37 @@ const HomeBlurb = styled.p`
   font-size: 2.3rem;
   font-weight: 200;
   font-style: italic;
-  width: 60%;
+  width: clamp(250px, 70%, 900px);
   margin: 0 auto;
   line-height: 3;
   text-align: center;
   color: ${(props) => props.theme.color.primary1};
   z-index: 2;
   pointer-events: none;
+  @media screen and (${(props) => props.theme.responsive.md}) {
+    font-size: 2rem;
+  }
 `;
 
 const LinkButton = styled(Link)`
   font-family: "Montserrat", sans-serif;
   font-size: 1.7rem;
-  font-weight: 400;
+  font-weight: 500;
   color: ${(props) => props.theme.color.primary1};
   text-decoration: none;
   padding: 1.2rem 2rem;
   background-color: ${(props) => props.theme.color.highlight1};
   border-radius: 5px;
+  border: 3px solid ${(props) => props.theme.color.highlight1};
   transition: all 0.2s;
   z-index: 2;
 
-  &:hover {
-    filter: brightness(1.2);
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    color: ${(props) => props.theme.color.highlight1};
+    background-color: ${(props) => props.theme.color.primary1};
+    outline: none;
   }
 `;
 
@@ -137,7 +159,9 @@ const Home = () => {
           learning more about the state of the web and how to make websites
           beautiful and intuitive”
         </HomeBlurb>
-        <LinkButton to="/portfolio">View Portfolio</LinkButton>
+        <LinkButton to="/portfolio" tabIndex={0}>
+          View Portfolio
+        </LinkButton>
       </LargeOutlineDiv>
     </HomeContainer>
   );

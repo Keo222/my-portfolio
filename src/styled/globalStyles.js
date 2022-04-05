@@ -15,6 +15,19 @@ export default createGlobalStyle`
 
     color: ${(props) => props.theme.color.primary2};;
     background-color: ${(props) => props.theme.color.primary1};
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: ${(props) => props.theme.color.primaryMid};
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color:  ${(props) => props.theme.color.highlight1};
+      border-radius: 30px;
+    }
   }
 
   code {
