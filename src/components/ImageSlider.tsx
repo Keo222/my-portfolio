@@ -36,10 +36,6 @@ const NavigateArrow = styled.img`
     cursor: pointer;
     opacity: 1;
   }
-
-  @media screen and (${(props) => props.theme.responsive.sm}) {
-    height: 3rem;
-  }
 `;
 
 const ImgDiv = styled(animated.div)`
