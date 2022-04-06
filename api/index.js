@@ -37,9 +37,9 @@ let mailOptions = {
 app.get("/api/mail", (req, res) => {
   transporter.sendMail(mailOptions, function (err, data) {
     if (err) {
-      console.log("Error", err);
+      res.send(err);
     } else {
-      console.log("Email sent successfully");
+      res.send("Email sent successfully");
     }
   });
 });
