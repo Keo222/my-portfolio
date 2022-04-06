@@ -34,7 +34,7 @@ let mailOptions = {
   text: "This is my nodemailer test",
 };
 
-app.post("/api/mail", (req, res) => {
+app.get("/api/mail", (req, res) => {
   transporter.sendMail(mailOptions, function (err, data) {
     if (err) {
       console.log("Error", err);
