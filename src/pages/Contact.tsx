@@ -103,7 +103,8 @@ const Contact = (props: Props) => {
     console.log("Subject: ", subject);
     console.log("Message: ", msg);
 
-    await fetch("/api/mail");
+    const data = await fetch("/api/mail");
+    console.log(data);
   };
 
   return (
