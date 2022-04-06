@@ -15,11 +15,10 @@ const HomeContainer = styled.div`
 `;
 
 const LargeOutlineDiv = styled.div`
-  width: clamp(280px, calc(80vw - 5rem), 1400px);
+  width: clamp(280px, calc(80% - 5rem), 1400px);
   min-height: calc(95vh - 173px - 5rem);
 
-  margin-left: clamp(5vw, 25vw, 25vw);
-  margin-right: 2vw;
+  margin-inline: auto;
   margin-top: calc(100vh - (98vh - 173px) - 173px);
 
   padding-top: 2rem;
