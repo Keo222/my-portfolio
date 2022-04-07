@@ -28,7 +28,7 @@ let transporter = nodemailer.createTransport({
 });
 
 let mailOptions = {
-  from: "kyote222@gmail.com",
+  from: "kyle.olsen222@gmail.com",
   to: "kyle.olsen222@gmail.com",
   subject: "test",
   text: "This is my nodemailer test",
