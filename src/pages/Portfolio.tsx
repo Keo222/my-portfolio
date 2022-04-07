@@ -79,7 +79,6 @@ const Portfolio = () => {
   };
 
   useEffect(() => {
-    console.log("currentProjNum updated:", currentProjNum);
     if (updating.current) {
       setToggle((t) => !t);
       updating.current = false;
@@ -96,6 +95,7 @@ const Portfolio = () => {
             onClick={() => handleToggle()}
             onKeyDown={(e) => handleToggle(e)}
             role="switch"
+            title="Toggle between client projects and personal projects."
             aria-label="Toggle between client projects and personal projects."
             aria-checked={toggle ? "true" : "false"}
             tabIndex={0}

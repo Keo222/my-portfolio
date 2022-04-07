@@ -52,7 +52,7 @@ const MainNav = (props: Props) => {
     <Nav id="navElem">
       <Link to="/">
         <LogoContainer>
-          <Logo src={myLogo} />
+          <Logo src={myLogo} title="Kyle Olsen Web Dev Logo"/>
         </LogoContainer>
       </Link>
       <NavLinksContainer>

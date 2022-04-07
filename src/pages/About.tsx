@@ -171,14 +171,14 @@ const About = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SocialLogo src={github} />
+            <SocialLogo src={github} title="Github" alt="Github Logo" />
           </SocialLink>
           <SocialLink
             href="https://www.linkedin.com/in/kyle-olsen-2958084b/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SocialLogo src={linkedin} />
+            <SocialLogo src={linkedin} title="LinkedIn" alt="LinkedIn Logo" />
           </SocialLink>
         </SocialsDiv>
         <ContactButton to="/contact">Contact Kyle</ContactButton>

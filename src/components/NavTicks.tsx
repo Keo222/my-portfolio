@@ -6,6 +6,7 @@ import { ProjArray } from "../customTypes/objectArrays";
 // Styled Components
 const TickContainer = styled.div`
   display: flex;
+  gap: 1rem;
 `;
 
 const Tick = styled.div<{ current: boolean; pType: string }>`
@@ -19,7 +20,8 @@ const Tick = styled.div<{ current: boolean; pType: string }>`
         ? props.theme.color.highlight2
         : "#000"};
   border-radius: 50%;
-  margin: 2rem 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
   background-color: ${(props) =>
     props.current && props.pType === "client"
       ? props.theme.color.highlight1
