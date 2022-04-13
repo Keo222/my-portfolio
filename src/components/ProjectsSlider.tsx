@@ -30,7 +30,7 @@ const SliderSection = styled.section`
   width: 100%;
   height: 30vw;
 
-  margin-top: 5rem;
+  margin-top: 1rem;
   margin-bottom: 2rem;
 
   display: flex;
@@ -54,7 +54,7 @@ const NavigateArrow = styled.img`
   z-index: 15;
 
   user-select: none;
-  opacity: 0.2;
+  opacity: 0.4;
   transition: all 0.15s;
 
   &:hover,
@@ -85,7 +85,7 @@ const ExternalLinkImg = styled.img`
   height: 3rem;
   width: 3rem;
 
-  opacity: 0.2;
+  opacity: 0.4;
   transition: all 0.15s;
 
   &:hover {
