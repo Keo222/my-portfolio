@@ -187,24 +187,24 @@ const ProjectsSlider = ({
   const logoSwitch = (tech: string) => {
     switch (tech) {
       case "React":
-        return <TechLogo key={tech} src={react_logo} alt="React logo" />;
+        return <TechLogo key={tech} src={react_logo} alt="React logo" title="React Logo" />;
       case "Typescript":
-        return <TechLogo key={tech} src={ts_logo} alt="Typescript logo" />;
+        return <TechLogo key={tech} src={ts_logo} alt="Typescript logo" title="Typescript Logo" />;
       case "Node.js":
         return (
-          <TechLogo key={tech} src={nodejs_logo} alt="Node.js logo" />
+          <TechLogo key={tech} src={nodejs_logo} alt="Node.js logo" title="Node.js Logo" />
         );
       case "PostgreSQL":
         return (
-          <TechLogo key={tech} src={postgres_logo} alt="PostgreSQL logo" />
+          <TechLogo key={tech} src={postgres_logo} alt="PostgreSQL logo" title="PostgreSQL Logo" />
         );
       case "Golang":
-        return <TechLogo key={tech} src={golang_logo} alt="Golang logo" />;
+        return <TechLogo key={tech} src={golang_logo} alt="Golang logo" title="Golang Logo" />;
       case "Svelte":
-        return <TechLogo key={tech} src={svelte_logo} alt="Svelte logo" />;
+        return <TechLogo key={tech} src={svelte_logo} alt="Svelte logo" title="Svelte Logo" />;
       default:
         return (
-          <TechLogo key="default" src={react_logo} alt="React logo" />
+          <TechLogo key="default" src={react_logo} alt="React logo" title="React Logo" />
         );
     }
   };
@@ -270,6 +270,7 @@ const ProjectsSlider = ({
         <>
           <LeftArrow
             src={left_arrow}
+            alt="Arrow pointing left. Go to previous project."
             tabIndex={0}
             onClick={() => prevProject()}
             onKeyDown={(e) => keyboardHandleNav(e, "prev")}
@@ -281,6 +282,11 @@ const ProjectsSlider = ({
                   i <= projects.length - 1 ? i : projects.length - 1
                 ].name
               )}
+              alt={
+                projects[
+                  i <= projects.length - 1 ? i : projects.length - 1
+                ].name
+              }
             />
             <InfoTextDiv>
               <SiteHeader>
@@ -311,12 +317,13 @@ const ProjectsSlider = ({
                   ].link
                 }
               >
-                <ExternalLinkImg src={external_link} />
+                <ExternalLinkImg src={external_link} alt="image to denote an external link"/>
               </ExternalLink>
             </InfoTextDiv>
           </InfoDiv>
           <RightArrow
             src={right_arrow}
+            alt="Arrow pointing right. Go to next project."
             tabIndex={0}
             onClick={() => nextProject()}
             onKeyDown={(e) => keyboardHandleNav(e, "next")}

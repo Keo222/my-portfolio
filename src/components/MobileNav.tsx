@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, KeyboardEvent } from "react";
 import styled from "styled-components";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
@@ -65,21 +65,26 @@ const StyledNavLink = styled(NavLink)<{ active: string }>`
   }
 `;
 
-type Props = {};
 
-const MobileNav = (props: Props) => {
+const MobileNav = () => {
   const [dropdown, setDropdown] = useState(false);
 
   const location = useLocation();
+
+  const handleKeyboardOpenNav = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter") {
+      setDropdown((d) => !d)
+    }
+  }
   return (
     <Nav id="navElem">
       <Link to="/">
         <LogoContainer>
-          <Logo src={myLogo} />
+          <Logo src={myLogo} title="Kyle Olsen Web Dev Logo"/>
         </LogoContainer>
       </Link>
-      <DropdownToggleContainer onClick={() => setDropdown((d) => !d)}>
-        <Logo src={hamburger} />
+      <DropdownToggleContainer onClick={() => setDropdown((d) => !d)} onKeyDown={(e) => handleKeyboardOpenNav(e)} tabIndex={0}>
+        <Logo src={hamburger} alt="Click to open dropdown navigation" />
       </DropdownToggleContainer>
       {dropdown && (
         <DropdownNav>

@@ -17,6 +17,7 @@ const ContactForm = styled.form`
   font-size: 1.6rem;
   width: clamp(180px, 70%, 800px);
   margin-inline: auto;
+  margin-bottom: 5rem;
 `;
 
 const InputGrouping = styled.div`
@@ -112,29 +113,40 @@ const Contact = (props: Props) => {
       <ContactHeading>Contact</ContactHeading>
       <ContactForm>
         <InputGrouping>
-          <StyledLabel>Name:</StyledLabel>
+          <StyledLabel htmlFor="name">Name:</StyledLabel>
           <StyledTextInput
+          type="text"
+            name="name"
+            id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </InputGrouping>
         <InputGrouping>
-          <StyledLabel>Email:</StyledLabel>
+          <StyledLabel htmlFor="email">Email:</StyledLabel>
           <StyledTextInput
+          type="email"
+            name="email"
+            id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </InputGrouping>
         <InputGrouping>
-          <StyledLabel>Subject:</StyledLabel>
+          <StyledLabel htmlFor="subject">Subject:</StyledLabel>
           <StyledTextInput
+          type="text"
+          name="subject"
+          id="subject"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
           />
         </InputGrouping>
         <InputGrouping>
-          <StyledLabel>Message:</StyledLabel>
+          <StyledLabel htmlFor="message">Message:</StyledLabel>
           <StyledTextArea
+            name="message"
+            id="message"
             value={msg}
             onChange={(e) => setMsg(e.target.value)}
           />
