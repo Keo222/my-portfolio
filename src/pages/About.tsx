@@ -127,10 +127,6 @@ const ContactButton = styled(Link)`
   @media screen and (${(props) => props.theme.responsive.lg}) {
     margin-top: 2rem;
   }
-
-  @media screen and (${(props) => props.theme.responsive.sm}) {
-    font-size: 1.4rem;
-  }
 `;
 
 const AboutPicsSection = styled.section`
@@ -178,7 +174,11 @@ const About = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SocialLogo src={linkedin} title="LinkedIn" alt="LinkedIn Logo" />
+            <SocialLogo
+              src={linkedin}
+              title="LinkedIn"
+              alt="LinkedIn Logo"
+            />
           </SocialLink>
         </SocialsDiv>
         <ContactButton to="/contact">Contact Kyle</ContactButton>

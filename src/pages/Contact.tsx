@@ -83,10 +83,6 @@ const StyledSubmitButton = styled.button`
   @media screen and (${(props) => props.theme.responsive.lg}) {
     margin-top: 2rem;
   }
-
-  @media screen and (${(props) => props.theme.responsive.sm}) {
-    font-size: 1.4rem;
-  }
 `;
 
 type Props = {};
@@ -115,7 +111,7 @@ const Contact = (props: Props) => {
         <InputGrouping>
           <StyledLabel htmlFor="name">Name:</StyledLabel>
           <StyledTextInput
-          type="text"
+            type="text"
             name="name"
             id="name"
             value={name}
@@ -125,7 +121,7 @@ const Contact = (props: Props) => {
         <InputGrouping>
           <StyledLabel htmlFor="email">Email:</StyledLabel>
           <StyledTextInput
-          type="email"
+            type="email"
             name="email"
             id="email"
             value={email}
@@ -135,9 +131,9 @@ const Contact = (props: Props) => {
         <InputGrouping>
           <StyledLabel htmlFor="subject">Subject:</StyledLabel>
           <StyledTextInput
-          type="text"
-          name="subject"
-          id="subject"
+            type="text"
+            name="subject"
+            id="subject"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
           />
