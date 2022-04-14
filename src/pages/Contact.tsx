@@ -98,7 +98,8 @@ const Contact = (props: Props) => {
     e.preventDefault();
 
     const data = await fetch("/api/mail");
-    console.log(data);
+    const text = await data.json();
+    console.log(text.msg);
   };
 
   return (

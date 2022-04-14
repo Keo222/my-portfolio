@@ -86,7 +86,7 @@ async function sendMail(email) {
 //   sendMail("kyote222@gmail.com");
 // });
 app.get("/api/mail", (req, res) => {
-  res.send("this is from the backend");
+  res.send({ msg: "from the backend" });
 });
 
 module.exports = app;
