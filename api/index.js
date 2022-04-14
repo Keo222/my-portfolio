@@ -81,7 +81,8 @@ OAuth2Client.setCredentials({
 //   }
 // }
 
-app.get("/api/mail", async (req, res) => {
+app.post("/api/mail", async (req, res) => {
+  const { name, email, subject, msg } = req.body;
   const CLIENT_EMAIL = process.env.EMAIL_USERNAME;
   const CLIENT_ID = process.env.CLIENT_ID;
   const CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET;
@@ -120,8 +121,8 @@ app.get("/api/mail", async (req, res) => {
     let mailOptions = {
       from: "kyle.olsen222@gmail.com",
       to: "kyle.olsen222@gmail.com",
-      subject: "test",
-      text: "This is my nodemailer test",
+      subject: subject,
+      text: `Message from: ${name}\nEmail: ${email}\nMessage:\n${msg}`,
     };
 
     // Set up the email options and delivering it

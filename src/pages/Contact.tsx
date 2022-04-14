@@ -96,10 +96,17 @@ const Contact = (props: Props) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const data = { name: name, email: email, subject: subject, msg: msg };
 
-    const res = await fetch("/api/mail");
-    const data = res.json();
-    console.log(data);
+    const res = await fetch("/api/mail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const resData = res.json();
+    console.log(resData);
   };
 
   return (
