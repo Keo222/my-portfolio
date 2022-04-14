@@ -96,10 +96,6 @@ const Contact = (props: Props) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Name: ", name);
-    console.log("Email: ", email);
-    console.log("Subject: ", subject);
-    console.log("Message: ", msg);
 
     const data = await fetch("/api/mail");
     console.log(data);

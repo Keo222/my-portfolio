@@ -81,8 +81,12 @@ async function sendMail(email) {
   }
 }
 
+// app.get("/api/mail", (req, res) => {
+//   console.log("mail api called");
+//   sendMail("kyote222@gmail.com");
+// });
 app.get("/api/mail", (req, res) => {
-  sendMail("kyote222@gmail.com");
+  res.send("this is from the backend");
 });
 
 module.exports = app;
