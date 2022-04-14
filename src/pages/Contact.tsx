@@ -106,7 +106,7 @@ const Contact = (props: Props) => {
       },
       body: JSON.stringify(data),
     });
-    const resData = res.json();
+    const resData = await res.json();
     console.log(resData);
   };
 
