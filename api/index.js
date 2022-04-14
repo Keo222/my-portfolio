@@ -30,17 +30,70 @@ OAuth2Client.setCredentials({
 
 // NODEMAILER
 
-async function sendMail(email) {
+// async function sendMail(email) {
+//   const CLIENT_EMAIL = process.env.EMAIL_USERNAME;
+//   const CLIENT_ID = process.env.CLIENT_ID;
+//   const CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET;
+//   const REDIRECT_URI = process.env.REDIRECT_URI;
+//   const REFRESH_TOKEN = process.env.OAUTH_REFRESH_TOKEN;
+//   const OAuth2Client = new google.auth.OAuth2(
+//     CLIENT_ID,
+//     CLIENT_SECRET,
+//     REDIRECT_URI
+//   );
+
+//   OAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+//   try {
+//     // Generate the accessToken on the fly
+//     console.log("before access token");
+//     const accessToken = await OAuth2Client.getAccessToken();
+//     console.log("after access token");
+
+//     // Create the email envelope (transport)
+//     const transport = nodemailer.createTransport({
+//       service: "gmail",
+//       auth: {
+//         type: "OAuth2",
+//         user: CLIENT_EMAIL,
+//         clientId: CLIENT_ID,
+//         clientSecret: CLIENT_SECRET,
+//         refreshToken: REFRESH_TOKEN,
+//         accessToken: accessToken,
+//       },
+//     });
+
+//     // Create the email options and body
+//     // ('email': user's email and 'name': is the e-book the user wants to receive)
+//     let mailOptions = {
+//       from: "kyle.olsen222@gmail.com",
+//       to: "kyle.olsen222@gmail.com",
+//       subject: "test",
+//       text: "This is my nodemailer test",
+//     };
+
+//     // Set up the email options and delivering it
+//     const result = transport.sendMail(mailOptions);
+//     console.log(result);
+//     return result;
+//   } catch (error) {
+//     console.log(error);
+//     return error;
+//   }
+// }
+
+app.get("/api/mail", async (req, res) => {
   const CLIENT_EMAIL = process.env.EMAIL_USERNAME;
   const CLIENT_ID = process.env.CLIENT_ID;
   const CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET;
   const REDIRECT_URI = process.env.REDIRECT_URI;
   const REFRESH_TOKEN = process.env.OAUTH_REFRESH_TOKEN;
+  console.log("before making oauth2 client");
   const OAuth2Client = new google.auth.OAuth2(
     CLIENT_ID,
     CLIENT_SECRET,
     REDIRECT_URI
   );
+  console.log("before setting oauth2 credentials");
 
   OAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
   try {
@@ -72,22 +125,18 @@ async function sendMail(email) {
     };
 
     // Set up the email options and delivering it
-    const result = await transport.sendMail(mailOptions);
+    const result = transport.sendMail(mailOptions);
     console.log(result);
-    return result;
+    res.send(result);
   } catch (error) {
     console.log(error);
-    return error;
+    res.send(error);
   }
-}
+});
 
 // app.get("/api/mail", (req, res) => {
-//   console.log("mail api called");
-//   sendMail("kyote222@gmail.com");
+//   console.log("from mail api");
+//   res.send({ msg: "from the backend" });
 // });
-app.get("/api/mail", (req, res) => {
-  console.log("from mail api");
-  res.send({ msg: "from the backend" });
-});
 
 module.exports = app;
