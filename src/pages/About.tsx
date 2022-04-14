@@ -79,10 +79,10 @@ const AboutInfoP = styled.p`
 const SocialsDiv = styled.div`
   display: flex;
   height: 3rem;
-  margin-block: 3rem;
+  margin-block: 5rem;
   width: 100%;
-  display: flex;
   justify-content: center;
+  gap: 4rem;
 `;
 
 const SocialLink = styled.a`
@@ -97,7 +97,6 @@ const SocialLink = styled.a`
 
 const SocialLogo = styled.img`
   height: 100%;
-  margin-inline: 2rem;
 
   &:focus {
     outline: none;
@@ -106,7 +105,7 @@ const SocialLogo = styled.img`
 
 const ContactButton = styled(Link)`
   font-family: "Montserrat", sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 500;
   color: ${(props) => props.theme.color.primary1};
   text-decoration: none;

@@ -1,6 +1,7 @@
 const app = require("express")();
 const { v4 } = require("uuid");
 const nodemailer = require("nodemailer");
+const { google } = require("googleapis");
 
 app.get("/api", (req, res) => {
   const path = `/api/item/${v4()}`;
@@ -14,34 +15,69 @@ app.get("/api/item/:slug", (req, res) => {
   res.end(`Item: ${slug}`);
 });
 
-// NODEMAILER
+// OAUTH
 
-let transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    type: "OAuth2",
-    user: process.env.MAIL_USERNAME,
-    pass: process.env.MAIL_PASSWORD,
-    clientId: process.env.OAUTH_CLIENT_SECRET,
-    refreshToekn: process.env.OAUTH_REFRESH_TOKEN,
-  },
+const OAuth2Client = new google.auth.OAuth2(
+  process.env.CLIENT_ID,
+  process.env.OAUTH_CLIENT_SECRET,
+  process.env.REDIRECT_URI
+);
+
+OAuth2Client.setCredentials({
+  refresh_token: process.env.OAUTH_REFRESH_TOKEN,
 });
 
-let mailOptions = {
-  from: "kyle.olsen222@gmail.com",
-  to: "kyle.olsen222@gmail.com",
-  subject: "test",
-  text: "This is my nodemailer test",
-};
+// NODEMAILER
+
+async function sendMail(email) {
+  const CLIENT_EMAIL = process.env.EMAIL_USERNAME;
+  const CLIENT_ID = process.env.CLIENT_ID;
+  const CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET;
+  const REDIRECT_URI = process.env.REDIRECT_URI;
+  const REFRESH_TOKEN = process.env.OAUTH_REFRESH_TOKEN;
+  const OAuth2Client = new google.auth.OAuth2(
+    CLIENT_ID,
+    CLIENT_SECRET,
+    REDIRECT_URI
+  );
+
+  OAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+  try {
+    // Generate the accessToken on the fly
+    const accessToken = await OAuth2Client.getAccessToken();
+
+    // Create the email envelope (transport)
+    const transport = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        type: "OAuth2",
+        user: CLIENT_EMAIL,
+        clientId: CLIENT_ID,
+        clientSecret: CLIENT_SECRET,
+        refreshToken: REFRESH_TOKEN,
+        accessToken: accessToken,
+      },
+    });
+
+    // Create the email options and body
+    // ('email': user's email and 'name': is the e-book the user wants to receive)
+    let mailOptions = {
+      from: "kyle.olsen222@gmail.com",
+      to: "kyle.olsen222@gmail.com",
+      subject: "test",
+      text: "This is my nodemailer test",
+    };
+
+    // Set up the email options and delivering it
+    const result = await transport.sendMail(mailOptions);
+    return result;
+  } catch (error) {
+    return error;
+  }
+}
 
 app.get("/api/mail", (req, res) => {
-  transporter.sendMail(mailOptions, function (err, data) {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send("Email sent successfully");
-    }
-  });
+  sendMail("kyote222@gmail.com");
 });
 
 module.exports = app;

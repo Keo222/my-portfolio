@@ -81,7 +81,8 @@ const HomeBlurb = styled.p`
 
 const LinkButton = styled(Link)`
   font-family: "Montserrat", sans-serif;
-  font-size: 1.7rem;
+
+  font-size: 1.6rem;
   font-weight: 500;
   color: ${(props) => props.theme.color.primary1};
   text-decoration: none;
