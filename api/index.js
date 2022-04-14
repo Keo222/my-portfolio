@@ -82,6 +82,7 @@ OAuth2Client.setCredentials({
 // }
 
 app.post("/api/mail", async (req, res) => {
+  console.log(req.body);
   const { name, email, subject, msg } = req.body;
   const CLIENT_EMAIL = process.env.EMAIL_USERNAME;
   const CLIENT_ID = process.env.CLIENT_ID;

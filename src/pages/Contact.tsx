@@ -101,6 +101,7 @@ const Contact = (props: Props) => {
     const res = await fetch("/api/mail", {
       method: "POST",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
