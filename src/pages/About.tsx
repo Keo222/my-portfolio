@@ -114,6 +114,7 @@ const ContactButton = styled(Link)`
   border-radius: 5px;
   border: 3px solid ${(props) => props.theme.color.highlight2};
   transition: all 0.2s;
+  cursor: pointer;
 
   &:hover,
   &:focus,

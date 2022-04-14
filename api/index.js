@@ -22,6 +22,7 @@ const OAuth2Client = new google.auth.OAuth2(
   process.env.OAUTH_CLIENT_SECRET,
   process.env.REDIRECT_URI
 );
+console.log("made new Oauth2 client");
 
 OAuth2Client.setCredentials({
   refresh_token: process.env.OAUTH_REFRESH_TOKEN,
@@ -44,7 +45,9 @@ async function sendMail(email) {
   OAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
   try {
     // Generate the accessToken on the fly
+    console.log("before access token");
     const accessToken = await OAuth2Client.getAccessToken();
+    console.log("after access token");
 
     // Create the email envelope (transport)
     const transport = nodemailer.createTransport({
@@ -70,8 +73,10 @@ async function sendMail(email) {
 
     // Set up the email options and delivering it
     const result = await transport.sendMail(mailOptions);
+    console.log(result);
     return result;
   } catch (error) {
+    console.log(error);
     return error;
   }
 }

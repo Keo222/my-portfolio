@@ -92,6 +92,7 @@ const LinkButton = styled(Link)`
   border: 3px solid ${(props) => props.theme.color.highlight1};
   transition: all 0.2s;
   z-index: 2;
+  cursor: pointer;
 
   &:hover,
   &:focus,
