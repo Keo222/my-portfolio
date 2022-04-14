@@ -125,7 +125,7 @@ app.get("/api/mail", async (req, res) => {
     };
 
     // Set up the email options and delivering it
-    const result = transport.sendMail(mailOptions);
+    const result = await transport.sendMail(mailOptions);
     console.log(result);
     res.send(result);
   } catch (error) {
