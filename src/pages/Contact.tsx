@@ -98,11 +98,8 @@ const Contact = (props: Props) => {
     e.preventDefault();
     const data = { name: name, email: email, subject: subject, msg: msg };
 
-    const res = await fetch("https://www.kyle-olsen.com/api/mail", {
+    const res = await fetch("/api/mail", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body: JSON.stringify(data),
     });
     if (res.ok) {
