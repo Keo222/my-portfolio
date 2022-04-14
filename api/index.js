@@ -22,7 +22,6 @@ const OAuth2Client = new google.auth.OAuth2(
   process.env.OAUTH_CLIENT_SECRET,
   process.env.REDIRECT_URI
 );
-console.log("made new Oauth2 client");
 
 OAuth2Client.setCredentials({
   refresh_token: process.env.OAUTH_REFRESH_TOKEN,
@@ -82,7 +81,7 @@ OAuth2Client.setCredentials({
 // }
 
 app.post("/api/mail", async (req, res) => {
-  console.log(req.body);
+  console.log(req);
   const { name, email, subject, msg } = req.body;
   const CLIENT_EMAIL = process.env.EMAIL_USERNAME;
   const CLIENT_ID = process.env.CLIENT_ID;
