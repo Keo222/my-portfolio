@@ -100,67 +100,67 @@ const Contact = (props: Props) => {
   const [subject, setSubject] = useState("");
   const [msg, setMsg] = useState("");
 
-  const [nameInvalid, setNameInvalid] = useState(false)
-  const [emailInvalid, setEmailInvalid] = useState(false)
-  const [subjectInvalid, setSubjectInvalid] = useState(false)
-  const [msgInvalid, setMsgInvalid] = useState(false)
-  const [success, setSuccess] = useState(false)
+  const [nameInvalid, setNameInvalid] = useState(false);
+  const [emailInvalid, setEmailInvalid] = useState(false);
+  const [subjectInvalid, setSubjectInvalid] = useState(false);
+  const [msgInvalid, setMsgInvalid] = useState(false);
+  const [success, setSuccess] = useState<boolean | "none">("none");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // FORM VALIDATION
-    let valid = true
+    let valid = true;
 
     // NAME VALIDATION
     if (name === "") {
-      console.log("name required")
-      setNameInvalid(true)
-      valid = false
+      console.log("name required");
+      setNameInvalid(true);
+      valid = false;
     } else {
-      setNameInvalid(false)
+      setNameInvalid(false);
     }
 
     // EMAIL VALIDATION
-    const emailRegex = new RegExp(/^.+@.+\.[a-zA-Z]{2,3}$/gm)
+    const emailRegex = new RegExp(/^.+@.+\.[a-zA-Z]{2,3}$/gm);
 
     if (!emailRegex.test(email)) {
-      console.log("invalid email")
-      setEmailInvalid(true)
-      valid = false
+      console.log("invalid email");
+      setEmailInvalid(true);
+      valid = false;
     } else {
-      setEmailInvalid(false)
+      setEmailInvalid(false);
     }
 
     // SUBJECT VALIDATION
     if (subject === "") {
-      console.log("subject required")
-      setSubjectInvalid(true)
-      valid = false
+      console.log("subject required");
+      setSubjectInvalid(true);
+      valid = false;
     } else {
-      setSubjectInvalid(false)
+      setSubjectInvalid(false);
     }
 
     // MESSAGE VALIDATION
     if (msg === "") {
-      console.log("message required")
-      setMsgInvalid(true)
-      valid = false
+      console.log("message required");
+      setMsgInvalid(true);
+      valid = false;
     } else {
-      setMsgInvalid(false)
+      setMsgInvalid(false);
     }
 
     // IF INAVLID
     if (!valid) {
-      return
+      return;
     }
 
     const data = { name: name, email: email, subject: subject, msg: msg };
 
-    setName("")
-    setEmail("")
-    setSubject("")
-    setMsg("")
+    setName("");
+    setEmail("");
+    setSubject("");
+    setMsg("");
 
     const res = await fetch("/api/mail", {
       method: "POST",
@@ -172,8 +172,9 @@ const Contact = (props: Props) => {
     if (res.ok) {
       const resData = await res.json();
       console.log(resData);
-      setSuccess(true)
+      setSuccess(true);
     } else {
+      setSuccess(false);
       console.log("error");
     }
   };
@@ -182,7 +183,15 @@ const Contact = (props: Props) => {
     <>
       <ContactHeading>Contact</ContactHeading>
       <ContactForm>
-        {success && <FormAlert alertMsg="Message sent successfully!" alertType="success"/>}
+        {success === true && (
+          <FormAlert
+            alertMsg="Message sent successfully!"
+            alertType="success"
+          />
+        )}
+        {success === false && (
+          <FormAlert alertMsg="Message failed!" alertType="error" />
+        )}
         <InputGrouping>
           <StyledLabel htmlFor="name">Name:</StyledLabel>
           <StyledTextInput
@@ -192,7 +201,9 @@ const Contact = (props: Props) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          {nameInvalid && <FormAlert alertMsg={"Name is required"} alertType="error" />}
+          {nameInvalid && (
+            <FormAlert alertMsg={"Name is required"} alertType="error" />
+          )}
         </InputGrouping>
         <InputGrouping>
           <StyledLabel htmlFor="email">Email:</StyledLabel>
@@ -203,7 +214,9 @@ const Contact = (props: Props) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          {emailInvalid && <FormAlert alertMsg={"Invalid email"} alertType="error" /> }
+          {emailInvalid && (
+            <FormAlert alertMsg={"Invalid email"} alertType="error" />
+          )}
         </InputGrouping>
         <InputGrouping>
           <StyledLabel htmlFor="subject">Subject:</StyledLabel>
@@ -214,7 +227,12 @@ const Contact = (props: Props) => {
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
           />
-          {subjectInvalid && <FormAlert alertMsg={"Subject is required"} alertType="error" /> }
+          {subjectInvalid && (
+            <FormAlert
+              alertMsg={"Subject is required"}
+              alertType="error"
+            />
+          )}
         </InputGrouping>
         <InputGrouping>
           <StyledLabel htmlFor="message">Message:</StyledLabel>
@@ -224,7 +242,12 @@ const Contact = (props: Props) => {
             value={msg}
             onChange={(e) => setMsg(e.target.value)}
           />
-          {msgInvalid && <FormAlert alertMsg={"Message is required"} alertType="error" />} 
+          {msgInvalid && (
+            <FormAlert
+              alertMsg={"Message is required"}
+              alertType="error"
+            />
+          )}
         </InputGrouping>
         <CenteringDiv>
           <StyledSubmitButton onClick={(e) => handleSubmit(e)}>
