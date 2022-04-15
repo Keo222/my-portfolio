@@ -1,8 +1,15 @@
-const app = require("express")();
+const express = require("express");
 const { v4 } = require("uuid");
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
 
+const app = express();
+
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded());
+
+// API
 app.get("/api", (req, res) => {
   const path = `/api/item/${v4()}`;
   res.setHeader("Content-Type", "text/html");
