@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+// Components
+import FormAlert from "../components/FormAlert";
+
 // Styled Components
 const ContactHeading = styled.h1`
   font-family: "Montserrat", sans-serif;
@@ -73,12 +76,15 @@ const StyledSubmitButton = styled.button`
   transition: all 0.2s;
   cursor: pointer;
 
-  &:hover,
-  &:focus,
-  &:focus-visible {
+  &:hover {
     color: ${(props) => props.theme.color.highlight2};
     background-color: ${(props) => props.theme.color.primary1};
     outline: none;
+  }
+
+  &:focus,
+  &:focus-visible {
+    transform: scale(1.05);
   }
 
   @media screen and (${(props) => props.theme.responsive.lg}) {
@@ -94,9 +100,66 @@ const Contact = (props: Props) => {
   const [subject, setSubject] = useState("");
   const [msg, setMsg] = useState("");
 
+  const [nameInvalid, setNameInvalid] = useState(false)
+  const [emailInvalid, setEmailInvalid] = useState(false)
+  const [subjectInvalid, setSubjectInvalid] = useState(false)
+  const [msgInvalid, setMsgInvalid] = useState(false)
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // FORM VALIDATION
+    let valid = true
+
+    // NAME VALIDATION
+    if (name === "") {
+      console.log("name required")
+      setNameInvalid(true)
+      valid = false
+    } else {
+      setNameInvalid(false)
+    }
+
+    // EMAIL VALIDATION
+    const emailRegex = new RegExp(/^.+@.+\.[a-zA-Z]{2,3}$/gm)
+
+    if (!emailRegex.test(email)) {
+      console.log("invalid email")
+      setEmailInvalid(true)
+      valid = false
+    } else {
+      setEmailInvalid(false)
+    }
+
+    // SUBJECT VALIDATION
+    if (subject === "") {
+      console.log("subject required")
+      setSubjectInvalid(true)
+      valid = false
+    } else {
+      setSubjectInvalid(false)
+    }
+
+    // MESSAGE VALIDATION
+    if (msg === "") {
+      console.log("message required")
+      setMsgInvalid(true)
+      valid = false
+    } else {
+      setMsgInvalid(false)
+    }
+
+    // IF INAVLID
+    if (!valid) {
+      return
+    }
+
     const data = { name: name, email: email, subject: subject, msg: msg };
+
+    setName("")
+    setEmail("")
+    setSubject("")
+    setMsg("")
 
     const res = await fetch("/api/mail", {
       method: "POST",
@@ -126,6 +189,7 @@ const Contact = (props: Props) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
+          {nameInvalid && <FormAlert errMsg={"Name is required"} />}
         </InputGrouping>
         <InputGrouping>
           <StyledLabel htmlFor="email">Email:</StyledLabel>
@@ -136,6 +200,7 @@ const Contact = (props: Props) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          {emailInvalid && <FormAlert errMsg={"Invalid email"} /> }
         </InputGrouping>
         <InputGrouping>
           <StyledLabel htmlFor="subject">Subject:</StyledLabel>
@@ -146,6 +211,7 @@ const Contact = (props: Props) => {
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
           />
+          {subjectInvalid && <FormAlert errMsg={"Subject is required"} />}
         </InputGrouping>
         <InputGrouping>
           <StyledLabel htmlFor="message">Message:</StyledLabel>
@@ -155,6 +221,7 @@ const Contact = (props: Props) => {
             value={msg}
             onChange={(e) => setMsg(e.target.value)}
           />
+          {msgInvalid && <FormAlert errMsg={"Message is required"} />} 
         </InputGrouping>
         <CenteringDiv>
           <StyledSubmitButton onClick={(e) => handleSubmit(e)}>
