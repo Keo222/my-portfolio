@@ -104,6 +104,7 @@ const Contact = (props: Props) => {
   const [emailInvalid, setEmailInvalid] = useState(false)
   const [subjectInvalid, setSubjectInvalid] = useState(false)
   const [msgInvalid, setMsgInvalid] = useState(false)
+  const [success, setSuccess] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -171,6 +172,7 @@ const Contact = (props: Props) => {
     if (res.ok) {
       const resData = await res.json();
       console.log(resData);
+      setSuccess(true)
     } else {
       console.log("error");
     }
@@ -180,6 +182,7 @@ const Contact = (props: Props) => {
     <>
       <ContactHeading>Contact</ContactHeading>
       <ContactForm>
+        {success && <FormAlert alertMsg="Message sent successfully!" alertType="success"/>}
         <InputGrouping>
           <StyledLabel htmlFor="name">Name:</StyledLabel>
           <StyledTextInput
@@ -189,7 +192,7 @@ const Contact = (props: Props) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          {nameInvalid && <FormAlert errMsg={"Name is required"} />}
+          {nameInvalid && <FormAlert alertMsg={"Name is required"} alertType="error" />}
         </InputGrouping>
         <InputGrouping>
           <StyledLabel htmlFor="email">Email:</StyledLabel>
@@ -200,7 +203,7 @@ const Contact = (props: Props) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          {emailInvalid && <FormAlert errMsg={"Invalid email"} /> }
+          {emailInvalid && <FormAlert alertMsg={"Invalid email"} alertType="error" /> }
         </InputGrouping>
         <InputGrouping>
           <StyledLabel htmlFor="subject">Subject:</StyledLabel>
@@ -211,7 +214,7 @@ const Contact = (props: Props) => {
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
           />
-          {subjectInvalid && <FormAlert errMsg={"Subject is required"} />}
+          {subjectInvalid && <FormAlert alertMsg={"Subject is required"} alertType="error" /> }
         </InputGrouping>
         <InputGrouping>
           <StyledLabel htmlFor="message">Message:</StyledLabel>
@@ -221,7 +224,7 @@ const Contact = (props: Props) => {
             value={msg}
             onChange={(e) => setMsg(e.target.value)}
           />
-          {msgInvalid && <FormAlert errMsg={"Message is required"} />} 
+          {msgInvalid && <FormAlert alertMsg={"Message is required"} alertType="error" />} 
         </InputGrouping>
         <CenteringDiv>
           <StyledSubmitButton onClick={(e) => handleSubmit(e)}>

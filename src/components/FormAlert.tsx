@@ -2,10 +2,10 @@ import React from 'react'
 import styled from "styled-components";
 
 // Styled components
-const ErrorContainer = styled.div`
-    border: 2px solid red;
+const ErrorContainer = styled.div<{success: boolean}>`
+    border: 2px solid ${({ success }) => success ? "rgb(47, 245, 47)" : "rgb(255, 0, 0)" };
     border-radius: 5px;
-    background-color: rgba(255, 0, 0, 0.2);
+    background-color: ${({ success }) => success ? "rgba(47, 245, 47, 0.2)" : "rgba(255, 0, 0, 0.2)" };
     width: 100%;
     margin-top: 0.5rem;
 `
@@ -17,13 +17,14 @@ font-size: 1.4rem;
 
 
 type Props = {
-    errMsg: string
+    alertMsg: string
+    alertType: "success" | "error"
 }
 
-const FormAlert = ({errMsg}: Props) => {
+const FormAlert = ({alertMsg, alertType}: Props) => {
   return (
-    <ErrorContainer>
-        <ErrorMessage>{errMsg}</ErrorMessage>
+    <ErrorContainer success={alertType === "success"}>
+        <ErrorMessage>{alertMsg}</ErrorMessage>
     </ErrorContainer>
   )
 }
