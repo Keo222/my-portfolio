@@ -105,6 +105,7 @@ const Contact = (props: Props) => {
   const [subjectInvalid, setSubjectInvalid] = useState(false);
   const [msgInvalid, setMsgInvalid] = useState(false);
   const [success, setSuccess] = useState<boolean | "none">("none");
+  const [tooManyEmails, setTooManyEmails] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -155,12 +156,15 @@ const Contact = (props: Props) => {
       return;
     }
 
-    const data = { name: name, email: email, subject: subject, msg: msg };
+    const emails = window.sessionStorage.getItem("emails");
+    console.log(emails);
 
-    setName("");
-    setEmail("");
-    setSubject("");
-    setMsg("");
+    if (emails !== null && parseInt(emails) > 5) {
+      setTooManyEmails(true);
+      return;
+    }
+
+    const data = { name: name, email: email, subject: subject, msg: msg };
 
     const res = await fetch("/api/mail", {
       method: "POST",
@@ -173,10 +177,26 @@ const Contact = (props: Props) => {
       const resData = await res.json();
       console.log(resData);
       setSuccess(true);
+      if (emails === null) {
+        window.sessionStorage.setItem("emails", "1");
+      } else if (typeof parseInt(emails) === "number") {
+        window.sessionStorage.setItem(
+          "emails",
+          (parseInt(emails) + 1).toString()
+        );
+      } else {
+        console.log("Type Error Occurred");
+        return;
+      }
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMsg("");
     } else {
       setSuccess(false);
       console.log("error");
     }
+    return;
   };
 
   return (
@@ -191,6 +211,12 @@ const Contact = (props: Props) => {
         )}
         {success === false && (
           <FormAlert alertMsg="Message failed!" alertType="error" />
+        )}
+        {tooManyEmails === true && (
+          <FormAlert
+            alertMsg="You've reached your max number of messages"
+            alertType="error"
+          />
         )}
         <InputGrouping>
           <StyledLabel htmlFor="name">Name:</StyledLabel>
