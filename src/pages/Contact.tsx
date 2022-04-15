@@ -100,6 +100,9 @@ const Contact = (props: Props) => {
 
     const res = await fetch("/api/mail", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(data),
     });
     if (res.ok) {
