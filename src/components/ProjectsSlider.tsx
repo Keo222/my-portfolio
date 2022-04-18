@@ -16,12 +16,6 @@ import golang_logo from "../images/logos/golang_logo.svg";
 import svelte_logo from "../images/logos/svelte_logo.svg";
 
 // WEBSITE IMAGES
-// My Portfolio
-import my_portfolio_home from "../images/websites/my_portfolio/my_portfolio_home.png";
-import audio_engineer_home from "../images/websites/audio_engineer/audio_engineer_home.png";
-import artist_store from "../images/websites/artist/artist_store.png";
-
-import coming_soon from "../images/websites/coming_soon.jpg";
 
 // Types
 import { ProjArray } from "../customTypes/objectArrays";
@@ -74,6 +68,16 @@ const ExternalLink = styled.a`
   position: absolute;
   top: 2rem;
   right: 2rem;
+
+  &:focus img,
+  &:focus-visible img {
+    opacity: 1;
+  }
+`;
+const BottomLink = styled.a`
+  position: absolute;
+  right: 40rem;
+  bottom: 2rem;
 
   &:focus img,
   &:focus-visible img {
@@ -134,7 +138,7 @@ const InfoTextDiv = styled.div`
   }
 `;
 
-const SiteHeader = styled.h2`
+const SiteHeader = styled.h3`
   font-family: "Montserrat", sans-serif;
   font-size: 2rem;
   font-weight: 800;
@@ -178,47 +182,73 @@ type Props = {
 
 type DirType = "next" | "prev";
 
-const ProjectsSlider = ({
-  projects,
-  currentProj,
-  setCurrentProj,
-}: Props) => {
+const ProjectsSlider = ({ projects, currentProj, setCurrentProj }: Props) => {
   // Tech Logo Switch
   const logoSwitch = (tech: string) => {
     switch (tech) {
       case "React":
-        return <TechLogo key={tech} src={react_logo} alt="React logo" title="React Logo" />;
+        return (
+          <TechLogo
+            key={tech}
+            src={react_logo}
+            alt="React logo"
+            title="React Logo"
+          />
+        );
       case "Typescript":
-        return <TechLogo key={tech} src={ts_logo} alt="Typescript logo" title="Typescript Logo" />;
+        return (
+          <TechLogo
+            key={tech}
+            src={ts_logo}
+            alt="Typescript logo"
+            title="Typescript Logo"
+          />
+        );
       case "Node.js":
         return (
-          <TechLogo key={tech} src={nodejs_logo} alt="Node.js logo" title="Node.js Logo" />
+          <TechLogo
+            key={tech}
+            src={nodejs_logo}
+            alt="Node.js logo"
+            title="Node.js Logo"
+          />
         );
       case "PostgreSQL":
         return (
-          <TechLogo key={tech} src={postgres_logo} alt="PostgreSQL logo" title="PostgreSQL Logo" />
+          <TechLogo
+            key={tech}
+            src={postgres_logo}
+            alt="PostgreSQL logo"
+            title="PostgreSQL Logo"
+          />
         );
       case "Golang":
-        return <TechLogo key={tech} src={golang_logo} alt="Golang logo" title="Golang Logo" />;
+        return (
+          <TechLogo
+            key={tech}
+            src={golang_logo}
+            alt="Golang logo"
+            title="Golang Logo"
+          />
+        );
       case "Svelte":
-        return <TechLogo key={tech} src={svelte_logo} alt="Svelte logo" title="Svelte Logo" />;
+        return (
+          <TechLogo
+            key={tech}
+            src={svelte_logo}
+            alt="Svelte logo"
+            title="Svelte Logo"
+          />
+        );
       default:
         return (
-          <TechLogo key="default" src={react_logo} alt="React logo" title="React Logo" />
+          <TechLogo
+            key="default"
+            src={react_logo}
+            alt="React logo"
+            title="React Logo"
+          />
         );
-    }
-  };
-  // Webiste Image Switch
-  const webImgSwitch = (name: string) => {
-    switch (name) {
-      case "Audio Engineering Website":
-        return audio_engineer_home;
-      case "Artist Portfolio & Shop":
-        return artist_store;
-      case "My Website":
-        return my_portfolio_home;
-      default:
-        return coming_soon;
     }
   };
   // Slider Animations
@@ -238,14 +268,10 @@ const ProjectsSlider = ({
   }, [currentProj, transRef]);
   // Navigate Projects
   const nextProject = () => {
-    setCurrentProj(
-      currentProj === projects.length - 1 ? 0 : currentProj + 1
-    );
+    setCurrentProj(currentProj === projects.length - 1 ? 0 : currentProj + 1);
   };
   const prevProject = () => {
-    setCurrentProj(
-      currentProj === 0 ? projects.length - 1 : currentProj - 1
-    );
+    setCurrentProj(currentProj === 0 ? projects.length - 1 : currentProj - 1);
   };
 
   const keyboardHandleNav = (
@@ -277,30 +303,26 @@ const ProjectsSlider = ({
           />
           <InfoDiv style={styles} key={i}>
             <SiteImg
-              src={webImgSwitch(
-                projects[
-                  i <= projects.length - 1 ? i : projects.length - 1
-                ].name
-              )}
+              src={
+                projects[i <= projects.length - 1 ? i : projects.length - 1]
+                  .mainImg
+              }
               alt={
-                projects[
-                  i <= projects.length - 1 ? i : projects.length - 1
-                ].name
+                projects[i <= projects.length - 1 ? i : projects.length - 1]
+                  .name
               }
             />
             <InfoTextDiv>
               <SiteHeader>
                 {
-                  projects[
-                    i <= projects.length - 1 ? i : projects.length - 1
-                  ].name
+                  projects[i <= projects.length - 1 ? i : projects.length - 1]
+                    .name
                 }
               </SiteHeader>
               <SiteDescription>
                 {
-                  projects[
-                    i <= projects.length - 1 ? i : projects.length - 1
-                  ].description
+                  projects[i <= projects.length - 1 ? i : projects.length - 1]
+                    .description
                 }
               </SiteDescription>
               <TechImgsDiv>
@@ -312,12 +334,14 @@ const ProjectsSlider = ({
                 target="_blank"
                 rel="noreferrer noopener"
                 href={
-                  projects[
-                    i <= projects.length - 1 ? i : projects.length - 1
-                  ].link
+                  projects[i <= projects.length - 1 ? i : projects.length - 1]
+                    .link
                 }
               >
-                <ExternalLinkImg src={external_link} alt="image to denote an external link"/>
+                <ExternalLinkImg
+                  src={external_link}
+                  alt="image to denote an external link"
+                />
               </ExternalLink>
             </InfoTextDiv>
           </InfoDiv>

@@ -4,6 +4,7 @@ import styled from "styled-components";
 // Components
 import ProjectsSlider from "../components/ProjectsSlider";
 import NavTicks from "../components/NavTicks";
+import LongProjDesc from "../components/LongProjDesc";
 
 // Project Arrays
 import { clientProjects, personalProjects } from "../jsonDB/projects";
@@ -33,9 +34,7 @@ const Toggle = styled.div<{ bColor: boolean }>`
   height: 3rem;
   border-radius: 20px;
   background-color: ${(props) =>
-    props.bColor
-      ? props.theme.color.highlight1
-      : props.theme.color.highlight2};
+    props.bColor ? props.theme.color.highlight1 : props.theme.color.highlight2};
   display: flex;
   align-items: center;
   transition: all 0.4s;
@@ -57,6 +56,20 @@ const ToggleBall = styled.div<{ pos: boolean }>`
 const NavTicksDiv = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+const LongDescSection = styled.section`
+  width: clamp(260px, 80%, 900px);
+  margin-inline: auto;
+`;
+const SectionTitle = styled.h2<{ mainHighlight: boolean }>`
+  font-size: 2.6rem;
+  text-decoration: underline;
+  color: ${(props) =>
+    props.mainHighlight === true
+      ? props.theme.color.highlight1
+      : props.theme.color.highlight2};
+  margin-bottom: 3rem;
 `;
 
 const Portfolio = () => {
@@ -118,6 +131,30 @@ const Portfolio = () => {
           projType={toggle}
         />
       </NavTicksDiv>
+      <LongDescSection>
+        <SectionTitle mainHighlight={true}>Client Projects</SectionTitle>
+        {clientProjects.map((p) => (
+          <LongProjDesc
+            mainHighlight={true}
+            projName={p.name}
+            projId={p.id}
+            tech={p.tech}
+            link={p.link}
+            mainImg={p.mainImg}
+          />
+        ))}
+        <SectionTitle mainHighlight={false}>Personal Projects</SectionTitle>
+        {personalProjects.map((p) => (
+          <LongProjDesc
+            mainHighlight={false}
+            projName={p.name}
+            projId={p.id}
+            tech={p.tech}
+            link={p.link}
+            mainImg={p.mainImg}
+          />
+        ))}
+      </LongDescSection>
     </PortfolioPageContainer>
   );
 };

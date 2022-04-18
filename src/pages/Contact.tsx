@@ -157,7 +157,6 @@ const Contact = (props: Props) => {
     }
 
     const emails = window.sessionStorage.getItem("emails");
-    console.log(emails);
 
     if (emails !== null && parseInt(emails) > 5) {
       setTooManyEmails(true);
@@ -194,7 +193,6 @@ const Contact = (props: Props) => {
       setMsg("");
     } else {
       setSuccess(false);
-      console.log("error");
     }
     return;
   };
