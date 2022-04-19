@@ -24,6 +24,7 @@ const ProjImg = styled.img`
 
 const TechUsedText = styled.p`
   text-align: center;
+  font-size: 1.3rem;
 `;
 
 const ProjTitle = styled.a<{ mainHighlight: boolean }>`
@@ -46,7 +47,7 @@ const ProjTitle = styled.a<{ mainHighlight: boolean }>`
 const AboutProjText = styled.p`
   font-size: 1.6rem;
   line-height: 1.8em;
-  width: 80%;
+  width: clamp(240px, 80%, 700px);
   margin-inline: auto;
 `;
 type Props = {
@@ -67,7 +68,7 @@ const LongProjDesc = ({
   mainImg,
 }: Props) => {
   return (
-    <ProjDiv bgColor={mainHighlight} id={`#${projId}`}>
+    <ProjDiv bgColor={mainHighlight} id={projId}>
       <ImgDiv>
         <ProjImg src={mainImg} />
       </ImgDiv>
@@ -81,28 +82,29 @@ const LongProjDesc = ({
         {projName}
       </ProjTitle>
       <AboutProjText>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti vero
-        quis libero earum consectetur, consequuntur provident quaerat
-        repudiandae voluptatem ratione totam, aut in repellendus veniam deleniti
-        neque soluta maiores? Culpa doloribus vel labore eius, nesciunt eaque!
-        Aliquid ducimus officiis consequuntur, delectus harum hic quam qui
-        dolorum tenetur similique quia vitae numquam voluptatum minima a at sunt
-        possimus eligendi! Soluta architecto earum est unde, repellendus quaerat
-        non amet officia, vel quia enim perferendis illo iusto omnis, a alias
-        explicabo consequuntur iste animi dolor? Facilis laboriosam, iure
-        corrupti, laudantium odio vero consectetur nemo voluptatem magnam illum
-        nam consequuntur cumque cum illo? Tempore fugiat laborum culpa? Vero
-        unde aliquid, ipsam doloribus architecto quasi fugiat nemo, ut itaque
-        aut nihil natus id atque, quam nesciunt voluptatum blanditiis minima.
-        Tenetur corrupti porro amet ipsam deleniti suscipit adipisci. Recusandae
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti
+        vero quis libero earum consectetur, consequuntur provident quaerat
+        repudiandae voluptatem ratione totam, aut in repellendus veniam
+        deleniti neque soluta maiores? Culpa doloribus vel labore eius,
+        nesciunt eaque! Aliquid ducimus officiis consequuntur, delectus
+        harum hic quam qui dolorum tenetur similique quia vitae numquam
+        voluptatum minima a at sunt possimus eligendi! Soluta architecto
+        earum est unde, repellendus quaerat non amet officia, vel quia enim
+        perferendis illo iusto omnis, a alias explicabo consequuntur iste
+        animi dolor? Facilis laboriosam, iure corrupti, laudantium odio
+        vero consectetur nemo voluptatem magnam illum nam consequuntur
+        cumque cum illo? Tempore fugiat laborum culpa? Vero unde aliquid,
+        ipsam doloribus architecto quasi fugiat nemo, ut itaque aut nihil
+        natus id atque, quam nesciunt voluptatum blanditiis minima. Tenetur
+        corrupti porro amet ipsam deleniti suscipit adipisci. Recusandae
         possimus quisquam unde. Atque recusandae rem molestias, laboriosam
         similique odio minus repellat sequi omnis aspernatur maiores soluta
         magni sapiente ratione aliquam officia eligendi aut ullam. Impedit,
-        tempore eveniet. Facere ducimus, dolore quidem eaque illum natus aliquid
-        aperiam aut? Error voluptatem accusamus, aliquam aspernatur quam nisi
-        fugiat, eos suscipit saepe obcaecati, ducimus dicta repudiandae
-        doloribus. Molestiae assumenda doloremque rem quo veniam, odit delectus
-        temporibus architecto ab, fugit vitae.
+        tempore eveniet. Facere ducimus, dolore quidem eaque illum natus
+        aliquid aperiam aut? Error voluptatem accusamus, aliquam aspernatur
+        quam nisi fugiat, eos suscipit saepe obcaecati, ducimus dicta
+        repudiandae doloribus. Molestiae assumenda doloremque rem quo
+        veniam, odit delectus temporibus architecto ab, fugit vitae.
       </AboutProjText>
     </ProjDiv>
   );

@@ -3,22 +3,23 @@ import styled from "styled-components";
 import { animated, useSpringRef, useTransition } from "react-spring";
 
 // Icons
-import right_arrow from "../images/icons/right_arrow.svg";
-import left_arrow from "../images/icons/left_arrow.svg";
-import external_link from "../images/icons/external_link.svg";
+import right_arrow from "../../images/icons/right_arrow.svg";
+import left_arrow from "../../images/icons/left_arrow.svg";
+import down_arrow from "../../images/icons/down_arrow.svg";
+import external_link from "../../images/icons/external_link.svg";
 
 // Logos
-import react_logo from "../images/logos/react_logo.svg";
-import ts_logo from "../images/logos/typescript_logo.svg";
-import nodejs_logo from "../images/logos/nodejs_logo.svg";
-import postgres_logo from "../images/logos/postgresql_logo.svg";
-import golang_logo from "../images/logos/golang_logo.svg";
-import svelte_logo from "../images/logos/svelte_logo.svg";
+import react_logo from "../../images/logos/react_logo.svg";
+import ts_logo from "../../images/logos/typescript_logo.svg";
+import nodejs_logo from "../../images/logos/nodejs_logo.svg";
+import postgres_logo from "../../images/logos/postgresql_logo.svg";
+import golang_logo from "../../images/logos/golang_logo.svg";
+import svelte_logo from "../../images/logos/svelte_logo.svg";
 
 // WEBSITE IMAGES
 
 // Types
-import { ProjArray } from "../customTypes/objectArrays";
+import { ProjArray } from "../../customTypes/objectArrays";
 
 const SliderSection = styled.section`
   width: 100%;
@@ -74,10 +75,24 @@ const ExternalLink = styled.a`
     opacity: 1;
   }
 `;
+const ExternalLinkImg = styled.img`
+  height: 3rem;
+  width: 3rem;
+
+  opacity: 0.4;
+  transition: all 0.15s;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
+`;
 const BottomLink = styled.a`
   position: absolute;
-  right: 40rem;
+  z-index: 15;
+  left: 50%;
   bottom: 2rem;
+  transform: translateX(-50%);
 
   &:focus img,
   &:focus-visible img {
@@ -85,9 +100,9 @@ const BottomLink = styled.a`
   }
 `;
 
-const ExternalLinkImg = styled.img`
-  height: 3rem;
-  width: 3rem;
+const DownArrow = styled.img`
+  height: 5rem;
+  width: 5rem;
 
   opacity: 0.4;
   transition: all 0.15s;
@@ -182,7 +197,11 @@ type Props = {
 
 type DirType = "next" | "prev";
 
-const ProjectsSlider = ({ projects, currentProj, setCurrentProj }: Props) => {
+const ProjectsSlider = ({
+  projects,
+  currentProj,
+  setCurrentProj,
+}: Props) => {
   // Tech Logo Switch
   const logoSwitch = (tech: string) => {
     switch (tech) {
@@ -268,10 +287,14 @@ const ProjectsSlider = ({ projects, currentProj, setCurrentProj }: Props) => {
   }, [currentProj, transRef]);
   // Navigate Projects
   const nextProject = () => {
-    setCurrentProj(currentProj === projects.length - 1 ? 0 : currentProj + 1);
+    setCurrentProj(
+      currentProj === projects.length - 1 ? 0 : currentProj + 1
+    );
   };
   const prevProject = () => {
-    setCurrentProj(currentProj === 0 ? projects.length - 1 : currentProj - 1);
+    setCurrentProj(
+      currentProj === 0 ? projects.length - 1 : currentProj - 1
+    );
   };
 
   const keyboardHandleNav = (
@@ -304,25 +327,29 @@ const ProjectsSlider = ({ projects, currentProj, setCurrentProj }: Props) => {
           <InfoDiv style={styles} key={i}>
             <SiteImg
               src={
-                projects[i <= projects.length - 1 ? i : projects.length - 1]
-                  .mainImg
+                projects[
+                  i <= projects.length - 1 ? i : projects.length - 1
+                ].mainImg
               }
               alt={
-                projects[i <= projects.length - 1 ? i : projects.length - 1]
-                  .name
+                projects[
+                  i <= projects.length - 1 ? i : projects.length - 1
+                ].name
               }
             />
             <InfoTextDiv>
               <SiteHeader>
                 {
-                  projects[i <= projects.length - 1 ? i : projects.length - 1]
-                    .name
+                  projects[
+                    i <= projects.length - 1 ? i : projects.length - 1
+                  ].name
                 }
               </SiteHeader>
               <SiteDescription>
                 {
-                  projects[i <= projects.length - 1 ? i : projects.length - 1]
-                    .description
+                  projects[
+                    i <= projects.length - 1 ? i : projects.length - 1
+                  ].description
                 }
               </SiteDescription>
               <TechImgsDiv>
@@ -330,12 +357,22 @@ const ProjectsSlider = ({ projects, currentProj, setCurrentProj }: Props) => {
                   i <= projects.length - 1 ? i : projects.length - 1
                 ].tech.map((t) => logoSwitch(t))}
               </TechImgsDiv>
+              <BottomLink
+                href={`#${
+                  projects[
+                    i <= projects.length - 1 ? i : projects.length - 1
+                  ].id
+                }`}
+              >
+                <DownArrow src={down_arrow} />
+              </BottomLink>
               <ExternalLink
                 target="_blank"
                 rel="noreferrer noopener"
                 href={
-                  projects[i <= projects.length - 1 ? i : projects.length - 1]
-                    .link
+                  projects[
+                    i <= projects.length - 1 ? i : projects.length - 1
+                  ].link
                 }
               >
                 <ExternalLinkImg
