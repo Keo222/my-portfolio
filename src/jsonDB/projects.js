@@ -12,7 +12,7 @@ export const clientProjects = [
     description:
       "Audio Engineering website made for client to showcase work and get new clients.",
     tech: ["React", "Node.js", "PostgreSQL"],
-    link: "http://joel-website.herokuapp.com",
+    link: "http://audio-engineer.herokuapp.com",
     mainImg: audio_engineer_home,
   },
   {
