@@ -5,7 +5,8 @@ import { animated, useTransition, useSpringRef } from "react-spring";
 
 // Images of Me
 import ORSymph from "../images/me/ORSymphony500x500.jpg";
-import flamingo from "../images/me/flamingo500x750.jpg";
+import beach_kyle from "../images/me/beach_kyle500x667.jpg";
+import woods_kyle from "../images/me/woods_kyle500x667.jpg";
 import bear from "../images/me/bear500x750.jpg";
 
 // Icons Images
@@ -61,16 +62,16 @@ const ImageSlider = () => {
   const [currentImg, setCurrentImg] = useState(0);
   const images = [
     {
+      src: beach_kyle,
+      alt: "Kyle Olsen at Cannon Beach",
+    },
+    {
       src: ORSymph,
-      alt: "Picture of Kyle and the Oregon Symphony bassoon section after a concert",
+      alt: "Kyle Olsen and the Oregon Symphony bassoon section after a concert",
     },
     {
-      src: flamingo,
-      alt: "Picture of a flamingo",
-    },
-    {
-      src: bear,
-      alt: "Picture of a bear",
+      src: woods_kyle,
+      alt: "Kyle Olsen standing in the woods",
     },
   ];
 
