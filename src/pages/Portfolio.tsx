@@ -133,61 +133,34 @@ const Portfolio = () => {
           projType={toggle}
         />
       </NavTicksDiv>
-      {toggle ? (
-        <LongDescSection>
-          <SectionTitle mainHighlight={true}>Client Projects</SectionTitle>
-          {clientProjects.map((p) => (
-            <LongProjDesc
-              mainHighlight={true}
-              projName={p.name}
-              projId={p.id}
-              tech={p.tech}
-              link={p.link}
-              mainImg={p.mainImg}
-            />
-          ))}
-          <SectionTitle mainHighlight={false}>
-            Personal Projects
-          </SectionTitle>
-          {personalProjects.map((p) => (
-            <LongProjDesc
-              mainHighlight={false}
-              projName={p.name}
-              projId={p.id}
-              tech={p.tech}
-              link={p.link}
-              mainImg={p.mainImg}
-            />
-          ))}
-        </LongDescSection>
-      ) : (
-        <LongDescSection>
-          <SectionTitle mainHighlight={false}>
-            Personal Projects
-          </SectionTitle>
-          {personalProjects.map((p) => (
-            <LongProjDesc
-              mainHighlight={false}
-              projName={p.name}
-              projId={p.id}
-              tech={p.tech}
-              link={p.link}
-              mainImg={p.mainImg}
-            />
-          ))}
-          <SectionTitle mainHighlight={true}>Client Projects</SectionTitle>
-          {clientProjects.map((p) => (
-            <LongProjDesc
-              mainHighlight={true}
-              projName={p.name}
-              projId={p.id}
-              tech={p.tech}
-              link={p.link}
-              mainImg={p.mainImg}
-            />
-          ))}
-        </LongDescSection>
-      )}
+      <LongDescSection>
+        <SectionTitle mainHighlight={true}>Client Projects</SectionTitle>
+        {clientProjects.map((p) => (
+          <LongProjDesc
+            mainHighlight={true}
+            projName={p.name}
+            projId={p.id}
+            tech={p.tech}
+            link={p.link}
+            mainImg={p.mainImg}
+            longDesc={p.long_description}
+          />
+        ))}
+        <SectionTitle mainHighlight={false}>
+          Personal Projects
+        </SectionTitle>
+        {personalProjects.map((p) => (
+          <LongProjDesc
+            mainHighlight={false}
+            projName={p.name}
+            projId={p.id}
+            tech={p.tech}
+            link={p.link}
+            mainImg={p.mainImg}
+            longDesc={p.long_description}
+          />
+        ))}
+      </LongDescSection>
     </PortfolioPageContainer>
   );
 };

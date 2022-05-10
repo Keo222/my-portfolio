@@ -87,31 +87,53 @@ const ExternalLinkImg = styled.img`
     opacity: 1;
   }
 `;
+// const BottomLink = styled.a`
+//   position: absolute;
+//   z-index: 15;
+//   left: 50%;
+//   bottom: 2rem;
+//   transform: translateX(-50%);
+
+//   &:focus img,
+//   &:focus-visible img {
+//     opacity: 1;
+//   }
+// `;
 const BottomLink = styled.a`
   position: absolute;
   z-index: 15;
   left: 50%;
-  bottom: 2rem;
+  bottom: 3rem;
   transform: translateX(-50%);
+  padding: 1.5rem 2.2rem;
+  background: ${(props) => props.theme.color.primary2};
+  color: ${(props) => props.theme.color.primary1};
+  border-radius: 100px;
+  border: 2px solid ${(props) => props.theme.color.primary1};
+  text-decoration: none;
 
-  &:focus img,
-  &:focus-visible img {
-    opacity: 1;
-  }
-`;
-
-const DownArrow = styled.img`
-  height: 5rem;
-  width: 5rem;
-
-  opacity: 0.4;
+  opacity: 0.7;
   transition: all 0.15s;
 
+  &:focus,
+  &:focus-visible,
   &:hover {
-    cursor: pointer;
     opacity: 1;
   }
 `;
+
+// const DownArrow = styled.img`
+//   height: 5rem;
+//   width: 5rem;
+
+//   opacity: 0.4;
+//   transition: all 0.15s;
+
+//   &:hover {
+//     cursor: pointer;
+//     opacity: 1;
+//   }
+// `;
 
 const InfoDiv = styled(animated.div)`
   display: flex;
@@ -155,18 +177,20 @@ const InfoTextDiv = styled.div`
 
 const SiteHeader = styled.h3`
   font-family: "Montserrat", sans-serif;
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-weight: 800;
   letter-spacing: 4px;
   text-align: center;
 `;
 
 const SiteDescription = styled.p`
-  font-size: 1.4rem;
-  font-weight: 300;
+  font-size: 1.5rem;
+  font-weight: 400;
   text-align: center;
+  line-height: 2;
+  color: #cbcbcb;
 
-  width: 80%;
+  width: 65%;
 
   @media screen and (${(props) => props.theme.responsive.lg}) {
     margin-block: 5rem;
@@ -364,7 +388,8 @@ const ProjectsSlider = ({
                   ].id
                 }`}
               >
-                <DownArrow src={down_arrow} />
+                {/* <DownArrow src={down_arrow} /> */}
+                Learn More...
               </BottomLink>
               <ExternalLink
                 target="_blank"

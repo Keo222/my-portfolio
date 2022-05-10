@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, KeyboardEvent } from "react";
 import styled from "styled-components";
 
 import { animated, useTransition, useSpringRef } from "react-spring";
@@ -58,6 +58,8 @@ const Image = styled(animated.img)`
   border-radius: 10px;
 `;
 
+type DirType = "next" | "prev";
+
 const ImageSlider = () => {
   const [currentImg, setCurrentImg] = useState(0);
   const images = [
@@ -103,6 +105,19 @@ const ImageSlider = () => {
     setCurrentImg(currentImg === 0 ? images.length - 1 : currentImg - 1);
   };
 
+  const keyboardHandleNav = (
+    e: KeyboardEvent<HTMLDivElement>,
+    dir: DirType
+  ) => {
+    if (e.key === "Enter") {
+      if (dir === "prev") {
+        prevImg();
+      } else {
+        nextImg();
+      }
+    }
+  };
+
   return (
     <ImgAndArrows>
       <NavigateArrow
@@ -110,6 +125,7 @@ const ImageSlider = () => {
         alt="Go back to previous image"
         tabIndex={0}
         onClick={() => prevImg()}
+        onKeyDown={(e) => keyboardHandleNav(e, "prev")}
       />
       {transitions((styles, i) => (
         <ImgDiv>
@@ -129,6 +145,7 @@ const ImageSlider = () => {
         alt="Go back to next image"
         tabIndex={0}
         onClick={() => nextImg()}
+        onKeyDown={(e) => keyboardHandleNav(e, "next")}
       />
     </ImgAndArrows>
   );

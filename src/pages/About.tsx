@@ -58,8 +58,6 @@ const AboutInfoDiv = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin-top: 3rem;
-
   @media screen and (${(props) => props.theme.responsive.lg}) {
     margin-block: 2rem;
   }
@@ -79,13 +77,19 @@ const AboutInfoP = styled.p`
 const SocialsDiv = styled.div`
   display: flex;
   height: 3rem;
-  margin-block: 5rem;
+  margin-top: 3rem;
+  margin-bottom: 5rem;
   width: 100%;
   justify-content: center;
   gap: 4rem;
 `;
 
 const SocialLink = styled.a`
+  transition: all 0.2s;
+
+  &:hover {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+  }
   &:focus,
   &:focus-visible {
     outline: none;
@@ -157,8 +161,8 @@ const About = () => {
             development.
           </AboutInfoP>
           <AboutInfoP>
-            In his free time Kyle enjoys distance running, gardening, and
-            spending time outdoors.
+            In his free time Kyle enjoys running, gardening, and spending
+            time outdoors.
           </AboutInfoP>
         </AboutInfoDiv>
         <SocialsDiv>
