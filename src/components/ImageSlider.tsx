@@ -7,7 +7,6 @@ import { animated, useTransition, useSpringRef } from "react-spring";
 import ORSymph from "../images/me/ORSymphony500x500.jpg";
 import beach_kyle from "../images/me/beach_kyle500x667.jpg";
 import woods_kyle from "../images/me/woods_kyle500x667.jpg";
-import bear from "../images/me/bear500x750.jpg";
 
 // Icons Images
 import right_arrow from "../images/icons/right_arrow.svg";

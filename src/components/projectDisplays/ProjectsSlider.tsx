@@ -5,7 +5,6 @@ import { animated, useSpringRef, useTransition } from "react-spring";
 // Icons
 import right_arrow from "../../images/icons/right_arrow.svg";
 import left_arrow from "../../images/icons/left_arrow.svg";
-import down_arrow from "../../images/icons/down_arrow.svg";
 import external_link from "../../images/icons/external_link.svg";
 
 // Logos

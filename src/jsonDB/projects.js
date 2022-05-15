@@ -17,17 +17,17 @@ export const clientProjects = [
     link: "http://audio-engineer.herokuapp.com",
     mainImg: audio_engineer_home,
   },
-  {
-    name: "Personal Musician Website",
-    id: "personal-musician",
-    description:
-      "Website for a classical musician to organize lesson materials, schedule lessons, and advertise themselves.",
-    long_description:
-      "Website for a classical musician to organize lesson materials and schedule lessons.",
-    tech: ["React", "Node.js"],
-    link: "https://www.bassoonswithoutborders.com",
-    mainImg: coming_soon,
-  },
+  // {
+  //   name: "Personal Musician Website",
+  //   id: "personal-musician",
+  //   description:
+  //     "Website for a classical musician to organize lesson materials, schedule lessons, and advertise themselves.",
+  //   long_description:
+  //     "Website for a classical musician to organize lesson materials and schedule lessons.",
+  //   tech: ["React", "Node.js"],
+  //   link: "https://www.bassoonswithoutborders.com",
+  //   mainImg: coming_soon,
+  // },
   {
     name: "Artist Portfolio & Shop",
     id: "artist",

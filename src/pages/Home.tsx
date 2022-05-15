@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 // Cursor Image
 import harold_cursor from "../images/icons/hardold_purp_crayon_sm.png";
@@ -162,6 +163,13 @@ const Home = () => {
 
   return (
     <HomeContainer>
+      <Helmet>
+        <title>Kyle Olsen: Web Developer</title>
+        <meta
+          name="description"
+          content="Kyle Olsen is a web developer in the Portland, Oregon area. Kyle Olsen is a fullstack web developer focusing on React.js, Node.js, and Express.js"
+        />
+      </Helmet>
       <LargeOutlineDiv id="canvas-container">
         <MyCanvas id="canvas"></MyCanvas>
         <HomeHeader>Kyle Olsen</HomeHeader>

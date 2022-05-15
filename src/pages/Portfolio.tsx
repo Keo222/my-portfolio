@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, KeyboardEvent } from "react";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 
 // Components
 import ProjectsSlider from "../components/projectDisplays/ProjectsSlider";
@@ -102,6 +103,9 @@ const Portfolio = () => {
 
   return (
     <PortfolioPageContainer>
+      <Helmet>
+        <title>Kyle Olsen: Portfolio</title>
+      </Helmet>
       <TopLineDiv>
         <ToggleDiv>
           <ToggleDescriptor>Client Projects</ToggleDescriptor>

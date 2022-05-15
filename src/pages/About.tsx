@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 // Components
 import ImageSlider from "../components/ImageSlider";
@@ -147,6 +148,9 @@ const AboutPicsSection = styled.section`
 const About = () => {
   return (
     <AboutPageDiv>
+      <Helmet>
+        <title>Kyle Olsen: About</title>
+      </Helmet>
       <AboutInfoSection aria-label="About Kyle Olsen">
         <AboutHeader>About</AboutHeader>
         <AboutInfoDiv>

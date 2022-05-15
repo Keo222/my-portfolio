@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 
 // Components
 import FormAlert from "../components/FormAlert";
@@ -199,6 +200,9 @@ const Contact = (props: Props) => {
 
   return (
     <>
+      <Helmet>
+        <title>Kyle Olsen: Contact</title>
+      </Helmet>
       <ContactHeading>Contact</ContactHeading>
       <ContactForm>
         {success === true && (
