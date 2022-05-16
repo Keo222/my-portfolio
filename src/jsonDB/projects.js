@@ -14,7 +14,7 @@ export const clientProjects = [
     long_description:
       "This Audio Engineering website is built using a React frontend, a Node/Express backend, and a PostgreSQL database. The goal of this application was to present my clients' full body of work in one place where the user can peruse particular genres and get an idea of if their music would be a good fit for my clients particular engineering style. To do this I made embeddable tracks for 3 major music streaming services (Spotify, Apple Music, and Tidal) and allowed the user to select their streaming service of choice. Then the correct embeddable music players will show up for each track within the database. Speaking of which, there are multiple admin tools to help the client add new tracks, genres, and text into their database.",
     tech: ["React", "Node.js", "PostgreSQL"],
-    link: "http://audio-engineer.herokuapp.com",
+    link: "https://audio-engineer.herokuapp.com",
     mainImg: audio_engineer_home,
   },
   // {
@@ -36,7 +36,7 @@ export const clientProjects = [
     long_description:
       "Website for an artist to show portfolio, sell art, and accept commissions",
     tech: ["React", "Node.js"],
-    link: "http://bassoon-reeds.herokuapp.com",
+    link: "https://artist-portfolio-app.herokuapp.com",
     mainImg: artist_store,
   },
 ];

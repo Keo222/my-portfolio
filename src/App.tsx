@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
+import Error404 from "./pages/Error404";
 
 // COMPONENTS
 import Navbar from "./components/Navbar";
@@ -26,6 +27,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<Error404 />} />
           </Routes>
         </Router>
       </ThemeProvider>
