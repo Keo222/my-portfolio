@@ -2,10 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const navEl = document.querySelector("nav");
-
-const navHeight = navEl?.offsetHeight;
-
 // Styled Components
 const PageContainer = styled.div`
   display: flex;
