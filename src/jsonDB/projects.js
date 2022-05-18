@@ -10,7 +10,7 @@ export const clientProjects = [
     name: "Audio Engineering Website",
     id: "audio-engineer",
     description:
-      "Audio Engineering website made for client to showcase work and get new clients. Includes admin tools for client to update website.",
+      "Audio Engineering website made for music engineer to showcase work and get new clients. Includes admin tools for client to update website.",
     long_description:
       "This Audio Engineering website is built using a React frontend, a Node/Express backend, and a PostgreSQL database. The goal of this application was to present my clients' full body of work in one place where the user can peruse particular genres and get an idea of if their music would be a good fit for my clients particular engineering style. To do this I made embeddable tracks for 3 major music streaming services (Spotify, Apple Music, and Tidal) and allowed the user to select their streaming service of choice. Then the correct embeddable music players will show up for each track within the database. Speaking of which, there are multiple admin tools to help the client add new tracks, genres, and text into their database.",
     tech: ["React", "Node.js", "PostgreSQL"],
@@ -34,7 +34,7 @@ export const clientProjects = [
     description:
       "Website for an artist to show off their portfolio, sell art, and accept commissions.",
     long_description:
-      "Website for an artist to show portfolio, sell art, and accept commissions",
+      "The Artist Portfolio website was built using a React frontend and a Node/Express backend. The cart checkout uses Stripe, although Stripe is disabled because the site is currently inactive. This website was built to accommodate the needs of a screen printer. They were wanting a place to showcase their previous projects as well as a way to sell currently listed items and accept commission requests.",
     tech: ["React", "Node.js"],
     link: "https://artist-portfolio-app.herokuapp.com",
     mainImg: artist_store,
@@ -48,7 +48,7 @@ export const personalProjects = [
     description:
       "My own personal website for displaying my web development portfolio.",
     long_description:
-      "Audio Engineering website made for client to showcase work and get new clients.",
+      "This is the website you’re currently looking at! It’s built using React with a serverless function hosted on Vercel to handle the contact form logic. I wanted this site to be as simple as possible while still showing off my projects. This website is the first one I ever used Typescript on. There is also a hidden extra on the homepage where your cursor turns into Harold from Harold and the Purple Crayon and you get to draw on a canvas element in the middle of the screen.",
     tech: ["React", "Typescript"],
     link: "https://www.kyle-olsen.com",
     mainImg: my_portfolio_home,

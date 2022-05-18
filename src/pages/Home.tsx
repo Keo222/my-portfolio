@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
+import picOfMe from "../images/me/beach_kyle500x667.jpg";
+
 // Cursor Image
 import harold_cursor from "../images/icons/hardold_purp_crayon_sm.png";
 
@@ -167,8 +169,16 @@ const Home = () => {
         <title>Kyle Olsen: Web Developer</title>
         <meta
           name="description"
-          content="Kyle Olsen is a web developer in the Portland, Oregon area. Kyle Olsen is a fullstack web developer focusing on React.js, Node.js, and Express.js"
+          content="Kyle Olsen is a web developer in the Portland, Oregon area. Kyle Olsen is a fullstack web developer focusing on React.js, Node.js, Express.js, and PostgreSQL."
         />
+        <meta name="twitter:card" content="summary" />
+        <meta property="og:url" content="https://www.kyle-olsen.com" />
+        <meta property="og:title" content="Kyle Olsen - Web Dev" />
+        <meta
+          property="og:description"
+          content="Kyle Olsen is a web developer in the Portland, Oregon area. Kyle Olsen is a fullstack web developer focusing on React.js, Node.js, Express.js, and PostgreSQL."
+        />
+        <meta property="og:image" content={picOfMe} />
       </Helmet>
       <LargeOutlineDiv id="canvas-container">
         <MyCanvas id="canvas"></MyCanvas>

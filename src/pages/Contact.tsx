@@ -7,14 +7,24 @@ import FormAlert from "../components/FormAlert";
 
 // Styled Components
 const ContactHeading = styled.h1`
-  font-family: "Montserrat", sans-serif;
+  /* font-family: "Montserrat", sans-serif;
   font-size: 3.6rem;
   font-weight: 400;
   color: ${(props) => props.theme.color.highlight1};
-  text-align: center;
   letter-spacing: 6px;
   margin-top: 3rem;
+  margin-bottom: 5rem; */
+  text-align: center;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 3.6rem;
+  font-weight: 400;
+  letter-spacing: 3px;
+
+  margin-top: 3rem;
   margin-bottom: 5rem;
+  color: ${(props) => props.theme.color.highlight1};
+  text-transform: uppercase;
 `;
 
 const ContactForm = styled.form`
@@ -202,6 +212,10 @@ const Contact = (props: Props) => {
     <>
       <Helmet>
         <title>Kyle Olsen: Contact</title>
+        <meta
+          name="description"
+          content="Kyle Olsen is a web developer in the Portland, Oregon area. Kyle Olsen is a fullstack web developer focusing on React.js, Node.js, Express.js, and PostgreSQL. Contact him here."
+        />
       </Helmet>
       <ContactHeading>Contact</ContactHeading>
       <ContactForm>

@@ -105,6 +105,10 @@ const Portfolio = () => {
     <PortfolioPageContainer>
       <Helmet>
         <title>Kyle Olsen: Portfolio</title>
+        <meta
+          name="description"
+          content="Kyle Olsen is a web developer in the Portland, Oregon area. Kyle Olsen is a fullstack web developer focusing on React.js, Node.js, Express.js, and PostgreSQL. View his portfolio here."
+        />
       </Helmet>
       <TopLineDiv>
         <ToggleDiv>
