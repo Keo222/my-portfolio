@@ -54,14 +54,14 @@ export const personalProjects = [
     mainImg: my_portfolio_home,
   },
   {
-    name: "Couples Calendar",
-    id: "couples-calendar",
+    name: "Tandemly",
+    id: "tandemly",
     description:
       "This is an app I am working on to help my girlfriend and I with date ideas.",
     long_description:
       "This is an app I'm developing to help my girlfriend and I decide on date ideas as well as just figure out what we want to do on any given night. So far I've done some work using the Google Maps and Google Places API's to keep track of places we want to go on dates. I've also been looking into movie API's such as IMDB's API and The MovieDB API. I'm hoping to use one or both of these to make a combined movie watch list that will keep track of who wants to watch which movies and help to randomly select movies on our list based on criteria such as genre, length, and streaming platform availability. Beyond this I have a couple ideas to help facilitate decision making like a spinner to choose between dinner ideas where we can input some of our current favorite easy dinners. More than anything I'm hoping to make the app extremely modular so it's easy to expand upon when our hobbies and interests grow. At some point it'd be nice to add hikes, live shows, art projects, etc..",
-    tech: ["React"],
-    link: "https://www.google.com",
+    tech: ["React", "Typescript"],
+    link: "#",
     mainImg: coming_soon,
   },
 ];
