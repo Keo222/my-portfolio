@@ -74,22 +74,35 @@ const CenteringDiv = styled.div`
   justify-content: center;
 `;
 
-const StyledSubmitButton = styled.button`
+const StyledSubmitButton = styled.button<{ loading: boolean }>`
   font-family: "Montserrat", sans-serif;
   font-size: 1.6rem;
   font-weight: 500;
   color: ${(props) => props.theme.color.primary1};
   text-decoration: none;
   padding: 1rem 2rem;
-  background-color: ${(props) => props.theme.color.highlight2};
+  background-color: ${(props) =>
+    props.loading
+      ? props.theme.color.primaryMid
+      : props.theme.color.highlight2};
   border-radius: 5px;
-  border: 3px solid ${(props) => props.theme.color.highlight2};
+  border: 3px solid
+    ${(props) =>
+      props.loading
+        ? props.theme.color.primaryMid
+        : props.theme.color.highlight2};
   transition: all 0.2s;
-  cursor: pointer;
+  cursor: ${({ loading }) => (loading ? "wait" : "pointer")};
 
   &:hover {
-    color: ${(props) => props.theme.color.highlight2};
-    background-color: ${(props) => props.theme.color.primary1};
+    color: ${(props) =>
+      props.loading
+        ? props.theme.color.primary1
+        : props.theme.color.highlight2};
+    background-color: ${(props) =>
+      props.loading
+        ? props.theme.color.primaryMid
+        : props.theme.color.primary1};
     outline: none;
   }
 
@@ -106,11 +119,13 @@ const StyledSubmitButton = styled.button`
 type Props = {};
 
 const Contact = (props: Props) => {
+  // Form States
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [msg, setMsg] = useState("");
 
+  // Error States
   const [nameInvalid, setNameInvalid] = useState(false);
   const [emailInvalid, setEmailInvalid] = useState(false);
   const [subjectInvalid, setSubjectInvalid] = useState(false);
@@ -118,8 +133,12 @@ const Contact = (props: Props) => {
   const [success, setSuccess] = useState<boolean | "none">("none");
   const [tooManyEmails, setTooManyEmails] = useState(false);
 
+  // Loading State
+  const [loadingState, setLoadingState] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoadingState(true);
 
     // FORM VALIDATION
     let valid = true;
@@ -164,6 +183,7 @@ const Contact = (props: Props) => {
 
     // IF INAVLID
     if (!valid) {
+      setLoadingState(false);
       return;
     }
 
@@ -171,6 +191,7 @@ const Contact = (props: Props) => {
 
     if (emails !== null && parseInt(emails) > 5) {
       setTooManyEmails(true);
+      setLoadingState(false);
       return;
     }
 
@@ -196,6 +217,7 @@ const Contact = (props: Props) => {
         );
       } else {
         console.log("Type Error Occurred");
+        setLoadingState(false);
         return;
       }
       setName("");
@@ -205,6 +227,7 @@ const Contact = (props: Props) => {
     } else {
       setSuccess(false);
     }
+    setLoadingState(false);
     return;
   };
 
@@ -292,7 +315,10 @@ const Contact = (props: Props) => {
           )}
         </InputGrouping>
         <CenteringDiv>
-          <StyledSubmitButton onClick={(e) => handleSubmit(e)}>
+          <StyledSubmitButton
+            loading={loadingState}
+            onClick={(e) => handleSubmit(e)}
+          >
             Send Message
           </StyledSubmitButton>
         </CenteringDiv>
