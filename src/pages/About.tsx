@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -88,10 +87,7 @@ const SocialsDiv = styled.div`
 const SocialLink = styled.a`
   transition: all 0.2s;
 
-  &:hover {
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
-  }
-  &:focus,
+  &:hover,
   &:focus-visible {
     outline: none;
     & img {
@@ -159,18 +155,17 @@ const About = () => {
         <AboutHeader>About</AboutHeader>
         <AboutInfoDiv>
           <AboutInfoP>
-            Kyle was born and raised in Oregon. He has a Bachelor’s of
-            Music from Rice University in Houston, TX and also attended The
-            Juilliard School while pursuing a Master’s of Music degree.
-            Currently he is building websites as a self-taught web
-            developer while continuing to play music regularly with the
-            Oregon Symphony, the Portland Opera, and the Oregon Ballet
-            Theater. Kyle hopes to find a fulltime career in web
-            development.
+            Kyle was born and raised in Oregon. He has a Bachelor’s of Music
+            from Rice University in Houston, TX and also attended The Juilliard
+            School while pursuing a Master’s of Music degree. Currently he is
+            building websites as a self-taught web developer while continuing to
+            play music regularly with the Oregon Symphony, the Portland Opera,
+            and the Oregon Ballet Theater. Kyle hopes to find a fulltime career
+            in web development.
           </AboutInfoP>
           <AboutInfoP>
-            In his free time Kyle enjoys running, gardening, and spending
-            time outdoors.
+            In his free time Kyle enjoys running, gardening, and spending time
+            outdoors.
           </AboutInfoP>
         </AboutInfoDiv>
         <SocialsDiv>
@@ -186,11 +181,7 @@ const About = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SocialLogo
-              src={linkedin}
-              title="LinkedIn"
-              alt="LinkedIn Logo"
-            />
+            <SocialLogo src={linkedin} title="LinkedIn" alt="LinkedIn Logo" />
           </SocialLink>
         </SocialsDiv>
         <ContactButton to="/contact">Contact Kyle</ContactButton>
