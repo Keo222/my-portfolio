@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 // Styled components
@@ -17,14 +16,16 @@ const ErrorMessage = styled.p`
 `;
 
 type Props = {
-  alertMsg: string;
+  alertMsg?: string;
   alertType: "success" | "error";
 };
 
 const FormAlert = ({ alertMsg, alertType }: Props) => {
   return (
     <ErrorContainer success={alertType === "success"}>
-      <ErrorMessage>{alertMsg}</ErrorMessage>
+      <ErrorMessage>
+        {alertMsg ? alertMsg : alertType === "success" ? "Success!" : "Error"}
+      </ErrorMessage>
     </ErrorContainer>
   );
 };

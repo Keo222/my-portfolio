@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 // Styled Components
@@ -30,7 +29,6 @@ const TechUsedText = styled.p`
 const ProjTitle = styled.a<{ mainHighlight: boolean }>`
   font-size: 2rem;
   font-weight: 400;
-  /* text-align: center; */
   color: inherit;
   display: inline-block;
   margin-block: 2rem;
@@ -61,13 +59,13 @@ type Props = {
 };
 
 const LongProjDesc = ({
-  mainHighlight,
+  mainHighlight, // used for styling & highlighting the title to one of the main colors on the website
   projName,
   projId,
-  tech,
-  link,
-  mainImg,
-  longDesc,
+  tech, // used to display logos for tech stack used
+  link, // link to website
+  mainImg, // screenshot of website
+  longDesc, // description of website
 }: Props) => {
   return (
     <ProjDiv bgColor={mainHighlight} id={projId}>
