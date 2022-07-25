@@ -3,17 +3,10 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
 // Components
-import FormAlert from "../components/FormAlert/";
+import FormAlert from "components/FormAlert";
 
 // Styled Components
 const ContactHeading = styled.h1`
-  /* font-family: "Montserrat", sans-serif;
-  font-size: 3.6rem;
-  font-weight: 400;
-  color: ${(props) => props.theme.color.highlight1};
-  letter-spacing: 6px;
-  margin-top: 3rem;
-  margin-bottom: 5rem; */
   text-align: center;
 
   font-family: "Montserrat", sans-serif;

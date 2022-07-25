@@ -8,6 +8,8 @@ const ErrorContainer = styled.div<{ success: boolean }>`
   background-color: ${({ success }) =>
     success ? "rgba(47, 245, 47, 0.2)" : "rgba(255, 0, 0, 0.2)"};
   margin-top: 0.5rem;
+  padding: 0.3em;
+  font-weight: bold;
 `;
 const ErrorMessage = styled.p`
   font-size: 1.4rem;
