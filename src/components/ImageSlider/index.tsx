@@ -3,14 +3,11 @@ import styled from "styled-components";
 
 import { animated, useTransition, useSpringRef } from "react-spring";
 
-// Images of Me
-import ORSymph from "../images/me/ORSymphony500x500.jpg";
-import beach_kyle from "../images/me/beach_kyle500x667.jpg";
-import woods_kyle from "../images/me/woods_kyle500x667.jpg";
+import { personalImages } from "jsonDB/images";
 
 // Icons Images
-import right_arrow from "../images/icons/right_arrow.svg";
-import left_arrow from "../images/icons/left_arrow.svg";
+import right_arrow from "images/icons/right_arrow.svg";
+import left_arrow from "images/icons/left_arrow.svg";
 
 // Styled Components
 const ImgAndArrows = styled.div`
@@ -57,24 +54,16 @@ const Image = styled(animated.img)`
   border-radius: 10px;
 `;
 
+type Props = {
+  images: string[];
+  currentImg: number;
+  setCurrentImg: React.Dispatch<React.SetStateAction<number>>;
+};
+
 type DirType = "next" | "prev";
 
 const ImageSlider = () => {
   const [currentImg, setCurrentImg] = useState(0);
-  const images = [
-    {
-      src: beach_kyle,
-      alt: "Kyle Olsen at Cannon Beach",
-    },
-    {
-      src: ORSymph,
-      alt: "Kyle Olsen and the Oregon Symphony bassoon section after a concert",
-    },
-    {
-      src: woods_kyle,
-      alt: "Kyle Olsen standing in the woods",
-    },
-  ];
 
   // Slider Animations
   const transRef = useSpringRef();
@@ -98,10 +87,14 @@ const ImageSlider = () => {
 
   // Navigate Images
   const nextImg = () => {
-    setCurrentImg(currentImg === images.length - 1 ? 0 : currentImg + 1);
+    setCurrentImg(
+      currentImg === personalImages.length - 1 ? 0 : currentImg + 1
+    );
   };
   const prevImg = () => {
-    setCurrentImg(currentImg === 0 ? images.length - 1 : currentImg - 1);
+    setCurrentImg(
+      currentImg === 0 ? personalImages.length - 1 : currentImg - 1
+    );
   };
 
   const keyboardHandleNav = (
@@ -127,18 +120,15 @@ const ImageSlider = () => {
         onKeyDown={(e) => keyboardHandleNav(e, "prev")}
       />
       {transitions((styles, i) => (
-        <ImgDiv>
+        <ImgDiv data-testId="personalImg-testId">
           <Image
             key={i}
             style={styles}
-            src={images[i].src}
-            alt={images[i].alt}
+            src={personalImages[i].src}
+            alt={personalImages[i].alt}
           />
         </ImgDiv>
       ))}
-      {/* <ImgDiv>
-        <Image src={flamingo} alt="its a flamingo" />
-      </ImgDiv> */}
       <NavigateArrow
         src={right_arrow}
         alt="Go back to next image"
