@@ -1,13 +1,14 @@
-import React, { useState, useEffect, KeyboardEvent } from "react";
+import { useState, useEffect, KeyboardEvent } from "react";
 import styled from "styled-components";
 
 import { animated, useTransition, useSpringRef } from "react-spring";
 
-import { personalImages } from "jsonDB/images";
-
 // Icons Images
 import right_arrow from "images/icons/right_arrow.svg";
 import left_arrow from "images/icons/left_arrow.svg";
+
+// Types
+import { ImgArray } from "customTypes";
 
 // Styled Components
 const ImgAndArrows = styled.div`
@@ -55,16 +56,13 @@ const Image = styled(animated.img)`
 `;
 
 type Props = {
-  images: string[];
-  currentImg: number;
-  setCurrentImg: React.Dispatch<React.SetStateAction<number>>;
+  images: ImgArray;
 };
 
 type DirType = "next" | "prev";
 
-const ImageSlider = () => {
+const ImageSlider = ({ images }: Props) => {
   const [currentImg, setCurrentImg] = useState(0);
-
   // Slider Animations
   const transRef = useSpringRef();
   const transitions = useTransition(currentImg, {
@@ -87,14 +85,10 @@ const ImageSlider = () => {
 
   // Navigate Images
   const nextImg = () => {
-    setCurrentImg(
-      currentImg === personalImages.length - 1 ? 0 : currentImg + 1
-    );
+    setCurrentImg(currentImg === images.length - 1 ? 0 : currentImg + 1);
   };
   const prevImg = () => {
-    setCurrentImg(
-      currentImg === 0 ? personalImages.length - 1 : currentImg - 1
-    );
+    setCurrentImg(currentImg === 0 ? images.length - 1 : currentImg - 1);
   };
 
   const keyboardHandleNav = (
@@ -120,12 +114,12 @@ const ImageSlider = () => {
         onKeyDown={(e) => keyboardHandleNav(e, "prev")}
       />
       {transitions((styles, i) => (
-        <ImgDiv data-testId="personalImg-testId">
+        <ImgDiv data-testid="imgContainer-testId">
           <Image
             key={i}
             style={styles}
-            src={personalImages[i].src}
-            alt={personalImages[i].alt}
+            src={images[i].src}
+            alt={images[i].alt}
           />
         </ImgDiv>
       ))}

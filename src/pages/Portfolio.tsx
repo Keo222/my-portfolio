@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 
 // Components
 import ProjectsSlider from "../components/projectDisplays/ProjectsSlider";
-import NavTicks from "../components/NavTicks";
+import SliderTicks from "../components/SliderTicks";
 import LongProjDesc from "../components/projectDisplays/LongProjDesc";
 
 // Project Arrays
@@ -35,9 +35,7 @@ const Toggle = styled.div<{ bColor: boolean }>`
   height: 3rem;
   border-radius: 20px;
   background-color: ${(props) =>
-    props.bColor
-      ? props.theme.color.highlight1
-      : props.theme.color.highlight2};
+    props.bColor ? props.theme.color.highlight1 : props.theme.color.highlight2};
   display: flex;
   align-items: center;
   transition: all 0.4s;
@@ -134,7 +132,7 @@ const Portfolio = () => {
         setCurrentProj={setCurrentProjNum}
       />
       <NavTicksDiv>
-        <NavTicks
+        <SliderTicks
           projects={toggle ? clientProjects : personalProjects}
           setCurrentProj={setCurrentProjNum}
           currentProj={currentProjNum}
@@ -154,9 +152,7 @@ const Portfolio = () => {
             longDesc={p.long_description}
           />
         ))}
-        <SectionTitle mainHighlight={false}>
-          Personal Projects
-        </SectionTitle>
+        <SectionTitle mainHighlight={false}>Personal Projects</SectionTitle>
         {personalProjects.map((p) => (
           <LongProjDesc
             mainHighlight={false}

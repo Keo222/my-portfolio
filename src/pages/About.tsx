@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { personalImages } from "jsonDB/images";
 
 // Components
 import ImageSlider from "../components/ImageSlider";
@@ -187,7 +188,7 @@ const About = () => {
         <ContactButton to="/contact">Contact Kyle</ContactButton>
       </AboutInfoSection>
       <AboutPicsSection aria-label="Pictures of Kyle Olsen">
-        <ImageSlider />
+        <ImageSlider images={personalImages} />
       </AboutPicsSection>
     </AboutPageDiv>
   );

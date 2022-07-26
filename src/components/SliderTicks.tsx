@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 
-import { ProjArray } from "../customTypes/objectArrays";
+import { ProjArray } from "../customTypes";
 
 // Styled Components
 const TickContainer = styled.div`
@@ -42,7 +41,7 @@ type Props = {
   projType: boolean;
 };
 
-const NavTicks = ({
+const SliderTicks = ({
   projects,
   setCurrentProj,
   currentProj,
@@ -62,4 +61,4 @@ const NavTicks = ({
   );
 };
 
-export default NavTicks;
+export default SliderTicks;

@@ -16,7 +16,7 @@ import golang_logo from "images/logos/golang_logo.svg";
 import svelte_logo from "images/logos/svelte_logo.svg";
 
 // Types
-import { ProjArray } from "../../../customTypes/objectArrays";
+import { ProjArray } from "../../../customTypes";
 
 const SliderSection = styled.section`
   width: 100%;
