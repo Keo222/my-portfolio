@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { ProjArray } from "../customTypes";
+import { ProjArray } from "customTypes";
 
 // Styled Components
 const TickContainer = styled.div`
@@ -41,7 +41,7 @@ type Props = {
   projType: boolean;
 };
 
-const SliderTicks = ({
+const CarouselTicks = ({
   projects,
   setCurrentProj,
   currentProj,
@@ -61,4 +61,4 @@ const SliderTicks = ({
   );
 };
 
-export default SliderTicks;
+export default CarouselTicks;

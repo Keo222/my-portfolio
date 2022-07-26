@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ImageSlider from ".";
+import ImageCarousel from ".";
 
 // Personal Images
 import { personalImages } from "jsonDB";
@@ -7,11 +7,11 @@ import { personalImages } from "jsonDB";
 import { ThemeProvider } from "styled-components";
 import { theme } from "styled/styled";
 
-describe("ImageSlider Component", () => {
+describe("ImageCarousel Component", () => {
   it("renders", () => {
     render(
       <ThemeProvider theme={theme}>
-        <ImageSlider images={personalImages} />
+        <ImageCarousel images={personalImages} />
       </ThemeProvider>
     );
     const sliderComponentImg = screen.getByTestId("imgContainer-testId");

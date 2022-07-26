@@ -1,5 +1,5 @@
 import { screen, render } from "@testing-library/react";
-import ProjectsSlider from ".";
+import ProjectsCarousel from ".";
 
 // Projects for slider
 import { clientProjects, personalProjects } from "../../../jsonDB/projects";
@@ -11,12 +11,12 @@ import { theme } from "../../../styled/styled";
 const personalProjArrLen = personalProjects.length;
 const clientProjArrLen = personalProjects.length;
 
-describe("ProjectsSlider component", () => {
+describe("ProjectsCarousel component", () => {
   for (let i = 0; i < personalProjArrLen; i++) {
     it(`can render slide ${i} of ${personalProjArrLen} of personal projects`, () => {
       render(
         <ThemeProvider theme={theme}>
-          <ProjectsSlider
+          <ProjectsCarousel
             projects={personalProjects}
             currentProj={i}
             setCurrentProj={() => 1}
@@ -31,7 +31,7 @@ describe("ProjectsSlider component", () => {
     it(`can render slide ${i} of ${clientProjArrLen} of client projects`, () => {
       render(
         <ThemeProvider theme={theme}>
-          <ProjectsSlider
+          <ProjectsCarousel
             projects={clientProjects}
             currentProj={i}
             setCurrentProj={() => 1}

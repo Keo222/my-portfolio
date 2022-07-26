@@ -61,7 +61,7 @@ type Props = {
 
 type DirType = "next" | "prev";
 
-const ImageSlider = ({ images }: Props) => {
+const ImageCarousel = ({ images }: Props) => {
   const [currentImg, setCurrentImg] = useState(0);
   // Slider Animations
   const transRef = useSpringRef();
@@ -134,4 +134,4 @@ const ImageSlider = ({ images }: Props) => {
   );
 };
 
-export default ImageSlider;
+export default ImageCarousel;

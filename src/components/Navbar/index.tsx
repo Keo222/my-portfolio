@@ -1,12 +1,12 @@
-import { useState, useEffect, useCallback, KeyboardEvent } from "react";
+import { useState, useEffect, KeyboardEvent } from "react";
 import styled from "styled-components";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
 // Icons
-import hamburger from "../images/icons/hamburger.svg";
+import hamburger from "images/icons/hamburger.svg";
 
 // Logo
-import myLogo from "../images/logos/myLogo.png";
+import myLogo from "images/logos/myLogo.png";
 
 // Styled Components
 const Nav = styled.nav`
@@ -106,7 +106,7 @@ const Navbar = () => {
     }
   };
   return (
-    <Nav id="navElem">
+    <Nav id="navElem" data-testid="nav-testId">
       <Link to="/">
         <LogoContainer>
           <Logo src={myLogo} title="Kyle Olsen Web Dev Logo" />

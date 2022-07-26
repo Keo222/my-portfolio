@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef, KeyboardEvent } from "react";
+import { useState, useEffect, useRef, KeyboardEvent } from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
 // Components
-import ProjectsSlider from "../components/projectDisplays/ProjectsSlider";
-import SliderTicks from "../components/SliderTicks";
+import { ProjectsCarousel, CarouselTicks } from "../components/Carousels";
 import LongProjDesc from "../components/projectDisplays/LongProjDesc";
 
 // Project Arrays
@@ -126,13 +125,13 @@ const Portfolio = () => {
           <ToggleDescriptor>Personal Projects</ToggleDescriptor>
         </ToggleDiv>
       </TopLineDiv>
-      <ProjectsSlider
+      <ProjectsCarousel
         projects={toggle ? clientProjects : personalProjects}
         currentProj={currentProjNum}
         setCurrentProj={setCurrentProjNum}
       />
       <NavTicksDiv>
-        <SliderTicks
+        <CarouselTicks
           projects={toggle ? clientProjects : personalProjects}
           setCurrentProj={setCurrentProjNum}
           currentProj={currentProjNum}

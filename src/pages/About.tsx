@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import { personalImages } from "jsonDB/images";
 
 // Components
-import ImageSlider from "../components/ImageSlider";
+import { ImageCarousel } from "../components/Carousels";
 
 // Logos
 import github from "../images/logos/github-black.svg";
@@ -188,7 +188,7 @@ const About = () => {
         <ContactButton to="/contact">Contact Kyle</ContactButton>
       </AboutInfoSection>
       <AboutPicsSection aria-label="Pictures of Kyle Olsen">
-        <ImageSlider images={personalImages} />
+        <ImageCarousel images={personalImages} />
       </AboutPicsSection>
     </AboutPageDiv>
   );

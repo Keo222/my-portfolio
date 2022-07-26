@@ -194,7 +194,7 @@ type Props = {
 
 type DirType = "next" | "prev";
 
-const ProjectsSlider = ({ projects, currentProj, setCurrentProj }: Props) => {
+const ProjectsCarousel = ({ projects, currentProj, setCurrentProj }: Props) => {
   // Tech Logo Switch
   const logoSwitch = (tech: string) => {
     switch (tech) {
@@ -378,4 +378,4 @@ const ProjectsSlider = ({ projects, currentProj, setCurrentProj }: Props) => {
   );
 };
 
-export default ProjectsSlider;
+export default ProjectsCarousel;
