@@ -66,4 +66,22 @@ describe("LongProjDesc component", () => {
     );
     expect(projComponentDesc).toBeInTheDocument();
   });
+
+  it("has the correct img src", () => {
+    render(
+      <ThemeProvider theme={theme}>
+        <LongProjDesc
+          mainHighlight={true}
+          projName="Custom Proj Name"
+          projId="tandemly"
+          tech={["React"]}
+          link="https://www.google.com/"
+          mainImg={coming_soon}
+          longDesc="Here is my long description for testing"
+        />
+      </ThemeProvider>
+    );
+    const projImg = document.querySelector("img");
+    expect(projImg).toHaveAttribute("src", coming_soon);
+  });
 });
