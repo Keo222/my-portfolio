@@ -1,4 +1,4 @@
-import React, { useState, KeyboardEvent } from "react";
+import { useState, KeyboardEvent } from "react";
 import styled from "styled-components";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
@@ -65,7 +65,6 @@ const StyledNavLink = styled(NavLink)<{ active: string }>`
   }
 `;
 
-
 const MobileNav = () => {
   const [dropdown, setDropdown] = useState(false);
 
@@ -73,17 +72,21 @@ const MobileNav = () => {
 
   const handleKeyboardOpenNav = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "Enter") {
-      setDropdown((d) => !d)
+      setDropdown((d) => !d);
     }
-  }
+  };
   return (
     <Nav id="navElem">
       <Link to="/">
         <LogoContainer>
-          <Logo src={myLogo} title="Kyle Olsen Web Dev Logo"/>
+          <Logo src={myLogo} title="Kyle Olsen Web Dev Logo" />
         </LogoContainer>
       </Link>
-      <DropdownToggleContainer onClick={() => setDropdown((d) => !d)} onKeyDown={(e) => handleKeyboardOpenNav(e)} tabIndex={0}>
+      <DropdownToggleContainer
+        onClick={() => setDropdown((d) => !d)}
+        onKeyDown={(e) => handleKeyboardOpenNav(e)}
+        tabIndex={0}
+      >
         <Logo src={hamburger} alt="Click to open dropdown navigation" />
       </DropdownToggleContainer>
       {dropdown && (
@@ -104,9 +107,7 @@ const MobileNav = () => {
               About
             </StyledNavLink>
             <StyledNavLink
-              active={
-                location.pathname === "/portfolio" ? "true" : "false"
-              }
+              active={location.pathname === "/portfolio" ? "true" : "false"}
               onClick={() => setDropdown(false)}
               to="/portfolio"
             >

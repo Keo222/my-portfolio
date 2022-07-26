@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
@@ -52,7 +51,7 @@ const MainNav = (props: Props) => {
     <Nav id="navElem">
       <Link to="/">
         <LogoContainer>
-          <Logo src={myLogo} title="Kyle Olsen Web Dev Logo"/>
+          <Logo src={myLogo} title="Kyle Olsen Web Dev Logo" />
         </LogoContainer>
       </Link>
       <NavLinksContainer>
