@@ -3,10 +3,10 @@ import LongProjDesc from ".";
 
 // styled-components work arounds
 import { ThemeProvider } from "styled-components";
-import { theme } from "../../../styled/styled";
+import { theme } from "styled/styled";
 
 // image
-import coming_soon from "../../../images/websites/coming_soon.jpg";
+import coming_soon from "images/websites/coming_soon.jpg";
 
 describe("LongProjDesc component", () => {
   it("has the correct project name", () => {
