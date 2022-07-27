@@ -53,11 +53,6 @@ const ToggleBall = styled.div<{ pos: boolean }>`
   transition: all 0.4s;
 `;
 
-const NavTicksDiv = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
 const LongDescSection = styled.section`
   width: clamp(260px, 80%, 900px);
   margin-inline: auto;
@@ -74,7 +69,7 @@ const SectionTitle = styled.h2<{ mainHighlight: boolean }>`
 
 const Portfolio = () => {
   const updating = useRef(false);
-  const [toggle, setToggle] = useState(true);
+  const [toggled, setToggled] = useState(true);
   const [currentProjNum, setCurrentProjNum] = useState(0);
 
   const handleToggle = (e?: KeyboardEvent<HTMLDivElement>) => {
@@ -84,7 +79,7 @@ const Portfolio = () => {
       }
     }
     if (currentProjNum === 0) {
-      setToggle((t) => !t);
+      setToggled((t) => !t);
     } else {
       updating.current = true;
       setCurrentProjNum(0);
@@ -93,7 +88,7 @@ const Portfolio = () => {
 
   useEffect(() => {
     if (updating.current) {
-      setToggle((t) => !t);
+      setToggled((t) => !t);
       updating.current = false;
     }
   }, [currentProjNum]);
@@ -104,40 +99,33 @@ const Portfolio = () => {
         <title>Kyle Olsen: Portfolio</title>
         <meta
           name="description"
-          content="Kyle Olsen is a web developer in the Portland, Oregon area. Kyle Olsen is a fullstack web developer focusing on React.js, Node.js, Express.js, and PostgreSQL. View his portfolio here."
+          content="Kyle Olsen is a web developer in the Portland, Oregon area. Kyle Olsen is a fullstack web developer focusing on React.js, Typescript,ß Node.js, Express.js, and PostgreSQL. View his portfolio here."
         />
       </Helmet>
       <TopLineDiv>
         <ToggleDiv>
           <ToggleDescriptor>Client Projects</ToggleDescriptor>
           <Toggle
-            bColor={toggle}
+            bColor={toggled}
             onClick={() => handleToggle()}
             onKeyDown={(e) => handleToggle(e)}
             role="switch"
             title="Toggle between client projects and personal projects."
             aria-label="Toggle between client projects and personal projects."
-            aria-checked={toggle ? "true" : "false"}
+            aria-checked={toggled ? "true" : "false"}
             tabIndex={0}
           >
-            <ToggleBall pos={toggle} />
+            <ToggleBall pos={toggled} />
           </Toggle>
           <ToggleDescriptor>Personal Projects</ToggleDescriptor>
         </ToggleDiv>
       </TopLineDiv>
       <ProjectsCarousel
-        projects={toggle ? clientProjects : personalProjects}
+        projects={toggled ? clientProjects : personalProjects}
         currentProj={currentProjNum}
         setCurrentProj={setCurrentProjNum}
+        toggled={toggled}
       />
-      <NavTicksDiv>
-        <CarouselTicks
-          projects={toggle ? clientProjects : personalProjects}
-          setCurrentProj={setCurrentProjNum}
-          currentProj={currentProjNum}
-          projType={toggle}
-        />
-      </NavTicksDiv>
       <LongDescSection>
         <SectionTitle mainHighlight={true}>Client Projects</SectionTitle>
         {clientProjects.map((p) => (

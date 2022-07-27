@@ -20,6 +20,7 @@ describe("ProjectsCarousel component", () => {
             projects={personalProjects}
             currentProj={i}
             setCurrentProj={() => 1}
+            toggled={true}
           />
         </ThemeProvider>
       );
@@ -35,6 +36,7 @@ describe("ProjectsCarousel component", () => {
             projects={clientProjects}
             currentProj={i}
             setCurrentProj={() => 1}
+            toggled={true}
           />
         </ThemeProvider>
       );

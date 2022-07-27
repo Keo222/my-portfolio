@@ -3,6 +3,9 @@ import styled from "styled-components";
 
 import { animated, useTransition, useSpringRef } from "react-spring";
 
+// Components
+import CarouselTicks from "../CarouselTicks";
+
 // Icons Images
 import right_arrow from "images/icons/right_arrow.svg";
 import left_arrow from "images/icons/left_arrow.svg";
@@ -11,6 +14,11 @@ import left_arrow from "images/icons/left_arrow.svg";
 import { ImgArray } from "customTypes";
 
 // Styled Components
+const SliderAndTicks = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`;
 const ImgAndArrows = styled.div`
   display: flex;
   height: 100%;
@@ -105,32 +113,40 @@ const ImageCarousel = ({ images }: Props) => {
   };
 
   return (
-    <ImgAndArrows>
-      <NavigateArrow
-        src={left_arrow}
-        alt="Go back to previous image"
-        tabIndex={0}
-        onClick={() => prevImg()}
-        onKeyDown={(e) => keyboardHandleNav(e, "prev")}
+    <SliderAndTicks>
+      <ImgAndArrows>
+        <NavigateArrow
+          src={left_arrow}
+          alt="Go back to previous image"
+          tabIndex={0}
+          onClick={() => prevImg()}
+          onKeyDown={(e) => keyboardHandleNav(e, "prev")}
+        />
+        {transitions((styles, i) => (
+          <ImgDiv data-testid="imgContainer-testId">
+            <Image
+              key={i}
+              style={styles}
+              src={images[i].src}
+              alt={images[i].alt}
+            />
+          </ImgDiv>
+        ))}
+        <NavigateArrow
+          src={right_arrow}
+          alt="Go back to next image"
+          tabIndex={0}
+          onClick={() => nextImg()}
+          onKeyDown={(e) => keyboardHandleNav(e, "next")}
+        />
+      </ImgAndArrows>
+      <CarouselTicks
+        numSlides={images.length}
+        current={currentImg}
+        setCurrent={setCurrentImg}
+        color="secondary"
       />
-      {transitions((styles, i) => (
-        <ImgDiv data-testid="imgContainer-testId">
-          <Image
-            key={i}
-            style={styles}
-            src={images[i].src}
-            alt={images[i].alt}
-          />
-        </ImgDiv>
-      ))}
-      <NavigateArrow
-        src={right_arrow}
-        alt="Go back to next image"
-        tabIndex={0}
-        onClick={() => nextImg()}
-        onKeyDown={(e) => keyboardHandleNav(e, "next")}
-      />
-    </ImgAndArrows>
+    </SliderAndTicks>
   );
 };
 

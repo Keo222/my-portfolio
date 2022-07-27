@@ -1,30 +1,36 @@
 import styled from "styled-components";
 
-import { ProjArray } from "customTypes";
-
 // Styled Components
-const TickContainer = styled.div`
+const CarouslTicksDiv = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const TickMarkContainer = styled.div`
   display: flex;
   gap: 1rem;
 `;
 
-const Tick = styled.div<{ current: boolean; pType: string }>`
+const Tick = styled.div<{
+  current: boolean;
+  color: "primary" | "secondary";
+}>`
   height: 1rem;
   width: 1rem;
   border: 1px solid
     ${(props) =>
-      props.current && props.pType === "client"
+      props.current && props.color === "primary"
         ? props.theme.color.highlight1
-        : props.current && props.pType === "personal"
+        : props.current && props.color === "secondary"
         ? props.theme.color.highlight2
         : "#000"};
   border-radius: 50%;
   margin-top: 1rem;
   margin-bottom: 2rem;
   background-color: ${(props) =>
-    props.current && props.pType === "client"
+    props.current && props.color === "primary"
       ? props.theme.color.highlight1
-      : props.current && props.pType === "personal"
+      : props.current && props.color === "secondary"
       ? props.theme.color.highlight2
       : ""};
   transition: all 0.2s;
@@ -35,29 +41,26 @@ const Tick = styled.div<{ current: boolean; pType: string }>`
 `;
 
 type Props = {
-  projects: ProjArray;
-  setCurrentProj: Function;
-  currentProj: number;
-  projType: boolean;
+  numSlides: number;
+  setCurrent: Function;
+  current: number;
+  color: "primary" | "secondary";
 };
 
-const CarouselTicks = ({
-  projects,
-  setCurrentProj,
-  currentProj,
-  projType,
-}: Props) => {
+const CarouselTicks = ({ numSlides, current, setCurrent, color }: Props) => {
   return (
-    <TickContainer>
-      {projects.map((p, i) => (
-        <Tick
-          key={i}
-          onClick={() => setCurrentProj(i)}
-          current={currentProj === i}
-          pType={projType ? "client" : "personal"}
-        />
-      ))}
-    </TickContainer>
+    <CarouslTicksDiv>
+      <TickMarkContainer>
+        {[...Array(numSlides).keys()].map((p, i) => (
+          <Tick
+            key={i}
+            onClick={() => setCurrent(i)}
+            current={current === i}
+            color={color}
+          />
+        ))}
+      </TickMarkContainer>
+    </CarouslTicksDiv>
   );
 };
 
