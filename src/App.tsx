@@ -22,13 +22,15 @@ function App() {
         <GlobalStyles />
         <Router>
           <Navbar />
-          <Routes>
-            <Route index element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<Error404 />} />
-          </Routes>
+          <main>
+            <Routes>
+              <Route index element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<Error404 />} />
+            </Routes>
+          </main>
         </Router>
       </ThemeProvider>
     </>

@@ -10,14 +10,13 @@ import picOfMe from "../images/me/beach_kyle500x667.jpg";
 import harold_cursor from "../images/icons/hardold_purp_crayon_sm.png";
 
 // Styled Components
-
 const HomeContainer = styled.div`
   min-height: calc(100vh - 173px);
   width: 100vw;
   overflow: hidden;
 `;
 
-const LargeOutlineDiv = styled.div`
+const LargeOutlineSection = styled.section`
   width: clamp(280px, calc(80% - 5rem), 1400px);
   min-height: calc(95vh - 173px - 5rem);
 
@@ -180,9 +179,9 @@ const Home = () => {
         />
         <meta property="og:image" content={picOfMe} />
       </Helmet>
-      <LargeOutlineDiv id="canvas-container">
+      <LargeOutlineSection id="canvas-container" aria-labelledby="home-header">
         <MyCanvas id="canvas"></MyCanvas>
-        <HomeHeader>Kyle Olsen</HomeHeader>
+        <HomeHeader id="home-header">Kyle Olsen</HomeHeader>
         <HomeBlurb>
           “My name is Kyle Olsen. I am a curious web developer perpetually
           learning more about the state of the web and how to make websites
@@ -191,7 +190,7 @@ const Home = () => {
         <LinkButton to="/portfolio" tabIndex={0}>
           View Portfolio
         </LinkButton>
-      </LargeOutlineDiv>
+      </LargeOutlineSection>
     </HomeContainer>
   );
 };

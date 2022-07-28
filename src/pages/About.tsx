@@ -152,8 +152,8 @@ const About = () => {
           content="Kyle Olsen is a web developer in the Portland, Oregon area. Kyle Olsen is a fullstack web developer focusing on React.js, Node.js, Express.js, and PostgreSQL. Read more about him here."
         />
       </Helmet>
-      <AboutInfoSection aria-label="About Kyle Olsen">
-        <AboutHeader>About</AboutHeader>
+      <AboutInfoSection aria-labelledby="about-header">
+        <AboutHeader id="about-header">About</AboutHeader>
         <AboutInfoDiv>
           <AboutInfoP>
             Kyle was born and raised in Oregon. He has a Bachelor’s of Music

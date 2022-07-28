@@ -17,6 +17,7 @@ import { ImgArray } from "customTypes";
 const SliderAndTicks = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2rem;
 `;
 const ImgAndArrows = styled.div`
@@ -118,6 +119,7 @@ const ImageCarousel = ({ images }: Props) => {
         <NavigateArrow
           src={left_arrow}
           alt="Go back to previous image"
+          role="button"
           tabIndex={0}
           onClick={() => prevImg()}
           onKeyDown={(e) => keyboardHandleNav(e, "prev")}
@@ -135,6 +137,7 @@ const ImageCarousel = ({ images }: Props) => {
         <NavigateArrow
           src={right_arrow}
           alt="Go back to next image"
+          role="button"
           tabIndex={0}
           onClick={() => nextImg()}
           onKeyDown={(e) => keyboardHandleNav(e, "next")}

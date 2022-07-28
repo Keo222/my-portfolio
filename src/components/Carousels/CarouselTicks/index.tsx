@@ -57,6 +57,8 @@ const CarouselTicks = ({ numSlides, current, setCurrent, color }: Props) => {
             onClick={() => setCurrent(i)}
             current={current === i}
             color={color}
+            role="button"
+            aria-label={`Go to slide ${i + 1}`}
           />
         ))}
       </TickMarkContainer>

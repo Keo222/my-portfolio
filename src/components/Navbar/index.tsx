@@ -106,80 +106,82 @@ const Navbar = () => {
     }
   };
   return (
-    <Nav id="navElem" data-testid="nav-testId">
-      <Link to="/">
-        <LogoContainer>
-          <Logo src={myLogo} title="Kyle Olsen Web Dev Logo" />
-        </LogoContainer>
-      </Link>
-      <NavLinksContainer>
-        <StyledNavLink
-          active={location.pathname === "/" ? "true" : "false"}
-          to="/"
+    <header>
+      <Nav id="navElem" data-testid="nav-testId">
+        <Link to="/" aria-label="Home - logo link">
+          <LogoContainer>
+            <Logo src={myLogo} title="Kyle Olsen Web Dev Logo" />
+          </LogoContainer>
+        </Link>
+        <NavLinksContainer>
+          <StyledNavLink
+            active={location.pathname === "/" ? "true" : "false"}
+            to="/"
+          >
+            Home
+          </StyledNavLink>
+          <StyledNavLink
+            active={location.pathname === "/about" ? "true" : "false"}
+            to="/about"
+          >
+            About
+          </StyledNavLink>
+          <StyledNavLink
+            active={location.pathname === "/portfolio" ? "true" : "false"}
+            to="/portfolio"
+          >
+            Portfolio
+          </StyledNavLink>
+          <StyledNavLink
+            active={location.pathname === "/contact" ? "true" : "false"}
+            to="/contact"
+          >
+            Contact
+          </StyledNavLink>
+        </NavLinksContainer>
+        <DropdownToggleContainer
+          onClick={() => setDropdown((d) => !d)}
+          onKeyDown={(e) => handleKeyboardOpenNav(e)}
+          tabIndex={0}
         >
-          Home
-        </StyledNavLink>
-        <StyledNavLink
-          active={location.pathname === "/about" ? "true" : "false"}
-          to="/about"
-        >
-          About
-        </StyledNavLink>
-        <StyledNavLink
-          active={location.pathname === "/portfolio" ? "true" : "false"}
-          to="/portfolio"
-        >
-          Portfolio
-        </StyledNavLink>
-        <StyledNavLink
-          active={location.pathname === "/contact" ? "true" : "false"}
-          to="/contact"
-        >
-          Contact
-        </StyledNavLink>
-      </NavLinksContainer>
-      <DropdownToggleContainer
-        onClick={() => setDropdown((d) => !d)}
-        onKeyDown={(e) => handleKeyboardOpenNav(e)}
-        tabIndex={0}
-      >
-        <Logo src={hamburger} alt="Click to open dropdown navigation" />
-      </DropdownToggleContainer>
-      {dropdown && (
-        <DropdownNav>
-          <DropdownLinksContainer>
-            <StyledNavLink
-              active={location.pathname === "/" ? "true" : "false"}
-              onClick={() => setDropdown(false)}
-              to="/"
-            >
-              Home
-            </StyledNavLink>
-            <StyledNavLink
-              active={location.pathname === "/about" ? "true" : "false"}
-              onClick={() => setDropdown(false)}
-              to="/about"
-            >
-              About
-            </StyledNavLink>
-            <StyledNavLink
-              active={location.pathname === "/portfolio" ? "true" : "false"}
-              onClick={() => setDropdown(false)}
-              to="/portfolio"
-            >
-              Portfolio
-            </StyledNavLink>
-            <StyledNavLink
-              active={location.pathname === "/contact" ? "true" : "false"}
-              onClick={() => setDropdown(false)}
-              to="/contact"
-            >
-              Contact
-            </StyledNavLink>
-          </DropdownLinksContainer>
-        </DropdownNav>
-      )}
-    </Nav>
+          <Logo src={hamburger} alt="Click to open dropdown navigation" />
+        </DropdownToggleContainer>
+        {dropdown && (
+          <DropdownNav>
+            <DropdownLinksContainer>
+              <StyledNavLink
+                active={location.pathname === "/" ? "true" : "false"}
+                onClick={() => setDropdown(false)}
+                to="/"
+              >
+                Home
+              </StyledNavLink>
+              <StyledNavLink
+                active={location.pathname === "/about" ? "true" : "false"}
+                onClick={() => setDropdown(false)}
+                to="/about"
+              >
+                About
+              </StyledNavLink>
+              <StyledNavLink
+                active={location.pathname === "/portfolio" ? "true" : "false"}
+                onClick={() => setDropdown(false)}
+                to="/portfolio"
+              >
+                Portfolio
+              </StyledNavLink>
+              <StyledNavLink
+                active={location.pathname === "/contact" ? "true" : "false"}
+                onClick={() => setDropdown(false)}
+                to="/contact"
+              >
+                Contact
+              </StyledNavLink>
+            </DropdownLinksContainer>
+          </DropdownNav>
+        )}
+      </Nav>
+    </header>
   );
 };
 
