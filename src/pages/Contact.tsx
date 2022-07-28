@@ -109,9 +109,7 @@ const StyledSubmitButton = styled.button<{ loading: boolean }>`
   }
 `;
 
-type Props = {};
-
-const Contact = (props: Props) => {
+const Contact = () => {
   // Form States
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -234,7 +232,7 @@ const Contact = (props: Props) => {
         />
       </Helmet>
       <ContactHeading>Contact</ContactHeading>
-      <ContactForm>
+      <ContactForm aria-label="contact form">
         {success === true && (
           <FormAlert
             alertMsg="Message sent successfully!"
