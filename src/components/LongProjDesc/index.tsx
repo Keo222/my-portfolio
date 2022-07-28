@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 // Styled Components
-const ProjDiv = styled.div<{ bgColor: boolean }>`
+const ProjArticle = styled.article<{ bgColor: boolean }>`
   margin-bottom: 8rem;
   padding: 5rem 4rem;
   /* border: 2px solid ${(props) => props.theme.color.highlight1}; */
@@ -26,15 +26,17 @@ const TechUsedText = styled.p`
   font-size: 1.3rem;
 `;
 
-const ProjTitle = styled.a<{ mainHighlight: boolean }>`
+const ProjTitle = styled.h3<{ mainHighlight: boolean }>`
   font-size: 2rem;
   font-weight: 400;
-  color: inherit;
-  display: inline-block;
   margin-block: 2rem;
-  transition: color 0.2s;
+  transition: color 0.1s;
 
-  &:hover {
+  & > a {
+    color: inherit;
+  }
+
+  & > a:hover {
     color: ${(props) =>
       props.mainHighlight === true
         ? props.theme.color.highlight1
@@ -68,25 +70,31 @@ const LongProjDesc = ({
   longDesc, // description of website
 }: Props) => {
   return (
-    <ProjDiv bgColor={mainHighlight} id={projId}>
+    <ProjArticle
+      bgColor={mainHighlight}
+      id={projId}
+      aria-labelledby={`${projId}-header`}
+    >
       <ImgDiv>
-        <a href={link} target="_blank" rel="noopener noreferrer">
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${projName}`}
+        >
           <ProjImg src={mainImg} />
         </a>
       </ImgDiv>
       <TechUsedText>
         <b>Tech:</b> {tech.join(", ")}
       </TechUsedText>
-      <ProjTitle
-        mainHighlight={mainHighlight}
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {projName}
+      <ProjTitle id={`${projId}-header`} mainHighlight={mainHighlight}>
+        <a href={link} target="_blank" rel="noopener noreferrer">
+          {projName}
+        </a>
       </ProjTitle>
       <AboutProjText>{longDesc}</AboutProjText>
-    </ProjDiv>
+    </ProjArticle>
   );
 };
 

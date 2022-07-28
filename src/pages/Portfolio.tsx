@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
 // Components
-import { ProjectsCarousel, CarouselTicks } from "../components/Carousels";
+import { ProjectsCarousel } from "../components/Carousels";
 import LongProjDesc from "components/LongProjDesc";
 
 // Project Arrays
@@ -17,12 +17,13 @@ const TopLineDiv = styled.div`
   align-items: center;
 `;
 
-const ToggleDiv = styled.div`
+const ToggleSection = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1.5rem;
 `;
-const ToggleDescriptor = styled.p`
+const ToggleDescriptor = styled.label`
   font-size: 1.6rem;
   font-weight: 500;
   margin-inline: 1rem;
@@ -103,7 +104,7 @@ const Portfolio = () => {
         />
       </Helmet>
       <TopLineDiv>
-        <ToggleDiv>
+        <ToggleSection aria-label="toggle controls">
           <ToggleDescriptor>Client Projects</ToggleDescriptor>
           <Toggle
             bColor={toggled}
@@ -118,39 +119,49 @@ const Portfolio = () => {
             <ToggleBall pos={toggled} />
           </Toggle>
           <ToggleDescriptor>Personal Projects</ToggleDescriptor>
-        </ToggleDiv>
+        </ToggleSection>
       </TopLineDiv>
-      <ProjectsCarousel
-        projects={toggled ? clientProjects : personalProjects}
-        currentProj={currentProjNum}
-        setCurrentProj={setCurrentProjNum}
-        toggled={toggled}
-      />
-      <LongDescSection>
-        <SectionTitle mainHighlight={true}>Client Projects</SectionTitle>
-        {clientProjects.map((p) => (
-          <LongProjDesc
-            mainHighlight={true}
-            projName={p.name}
-            projId={p.id}
-            tech={p.tech}
-            link={p.link}
-            mainImg={p.mainImg}
-            longDesc={p.long_description}
-          />
-        ))}
-        <SectionTitle mainHighlight={false}>Personal Projects</SectionTitle>
-        {personalProjects.map((p) => (
-          <LongProjDesc
-            mainHighlight={false}
-            projName={p.name}
-            projId={p.id}
-            tech={p.tech}
-            link={p.link}
-            mainImg={p.mainImg}
-            longDesc={p.long_description}
-          />
-        ))}
+      <section aria-label="project carousel">
+        <ProjectsCarousel
+          projects={toggled ? clientProjects : personalProjects}
+          currentProj={currentProjNum}
+          setCurrentProj={setCurrentProjNum}
+          toggled={toggled}
+        />
+      </section>
+      <LongDescSection aria-label="long project descriptions">
+        <section aria-labelledby="client-projects-header">
+          <SectionTitle mainHighlight={true} id="client-projects-header">
+            Client Projects
+          </SectionTitle>
+          {clientProjects.map((p) => (
+            <LongProjDesc
+              mainHighlight={true}
+              projName={p.name}
+              projId={p.id}
+              tech={p.tech}
+              link={p.link}
+              mainImg={p.mainImg}
+              longDesc={p.long_description}
+            />
+          ))}
+        </section>
+        <section aria-labelledby="personal-projects-header">
+          <SectionTitle id="personal-projects-header" mainHighlight={false}>
+            Personal Projects
+          </SectionTitle>
+          {personalProjects.map((p) => (
+            <LongProjDesc
+              mainHighlight={false}
+              projName={p.name}
+              projId={p.id}
+              tech={p.tech}
+              link={p.link}
+              mainImg={p.mainImg}
+              longDesc={p.long_description}
+            />
+          ))}
+        </section>
       </LongDescSection>
     </PortfolioPageContainer>
   );
