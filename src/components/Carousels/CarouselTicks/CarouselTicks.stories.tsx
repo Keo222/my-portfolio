@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import CarouselTicks from "../CarouselTicks";
 
 export default {
-  title: "Carousel Ticks",
+  title: "Carousels/Carousel Ticks",
   component: CarouselTicks,
 } as ComponentMeta<typeof CarouselTicks>;
 

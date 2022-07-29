@@ -5,7 +5,7 @@ import ImageCarousel from "../ImageCarousel";
 import { personalImages } from "jsonDB";
 
 export default {
-  title: "Image Carousel",
+  title: "Carousels/Image Carousel",
   component: ImageCarousel,
 } as ComponentMeta<typeof ImageCarousel>;
 
