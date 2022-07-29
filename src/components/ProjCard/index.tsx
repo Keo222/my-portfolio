@@ -60,7 +60,7 @@ type Props = {
   longDesc: string;
 };
 
-const LongProjDesc = ({
+const ProjCard = ({
   mainHighlight, // used for styling & highlighting the title to one of the main colors on the website
   projName,
   projId,
@@ -98,4 +98,4 @@ const LongProjDesc = ({
   );
 };
 
-export default LongProjDesc;
+export default ProjCard;

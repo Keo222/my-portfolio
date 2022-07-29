@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 
 // Components
 import { ProjectsCarousel } from "../components/Carousels";
-import LongProjDesc from "components/LongProjDesc";
+import LongProjDesc from "components/ProjCard";
 
 // Project Arrays
 import { clientProjects, personalProjects } from "../jsonDB/projects";
