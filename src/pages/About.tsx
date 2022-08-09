@@ -152,25 +152,25 @@ const About = () => {
         <title>Kyle Olsen: About</title>
         <meta
           name="description"
-          content="Kyle Olsen is a web developer in the Portland, Oregon area. Kyle Olsen is a fullstack web developer focusing on React.js, Node.js, Express.js, and PostgreSQL. Read more about him here."
+          content="Hi! My name is Kyle Olsen and I am a web developer in the Portland, Oregon area. I am a fullstack web developer focusing on React.js, Node.js, Express.js, and PostgreSQL. Read more about me here."
         />
       </Helmet>
       <AboutInfoSection aria-label="About Kyle Olsen">
         <AboutHeader>About</AboutHeader>
         <AboutInfoDiv>
           <AboutInfoP>
-            Kyle was born and raised in Oregon. He has a Bachelor’s of
-            Music from Rice University in Houston, TX and also attended The
-            Juilliard School while pursuing a Master’s of Music degree.
-            Currently he is building websites as a self-taught web
-            developer while continuing to play music regularly with the
-            Oregon Symphony, the Portland Opera, and the Oregon Ballet
-            Theater. Kyle hopes to find a fulltime career in web
+            Hi! My name is Kyle Olsen and I was born and raised in Oregon.
+            I have a Bachelor’s of Music from Rice University in Houston,
+            TX and I also attended The Juilliard School while pursuing a
+            Master’s of Music degree. Currently, I'm building websites as a
+            self-taught web developer while continuing to play music
+            regularly with the Oregon Symphony, the Portland Opera, and the
+            Oregon Ballet Theater. I hope to find a fulltime career in web
             development.
           </AboutInfoP>
           <AboutInfoP>
-            In his free time Kyle enjoys running, gardening, and spending
-            time outdoors.
+            In my free time I enjoy running, gardening, and spending time
+            outdoors.
           </AboutInfoP>
         </AboutInfoDiv>
         <SocialsDiv>
@@ -193,7 +193,7 @@ const About = () => {
             />
           </SocialLink>
         </SocialsDiv>
-        <ContactButton to="/contact">Contact Kyle</ContactButton>
+        <ContactButton to="/contact">Contact Me</ContactButton>
       </AboutInfoSection>
       <AboutPicsSection aria-label="Pictures of Kyle Olsen">
         <ImageSlider />

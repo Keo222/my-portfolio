@@ -23,7 +23,10 @@ type Props = {
 
 const FormAlert = ({ alertMsg, alertType }: Props) => {
   return (
-    <ErrorContainer success={alertType === "success"}>
+    <ErrorContainer
+      data-testid="message-container"
+      success={alertType === "success"}
+    >
       <ErrorMessage>{alertMsg}</ErrorMessage>
     </ErrorContainer>
   );
