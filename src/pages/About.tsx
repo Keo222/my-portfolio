@@ -1,10 +1,10 @@
-import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { personalImages } from "jsonDB/images";
 
 // Components
-import ImageSlider from "../components/ImageSlider";
+import { ImageCarousel } from "../components/Carousels";
 
 // Logos
 import github from "../images/logos/github-black.svg";
@@ -88,10 +88,7 @@ const SocialsDiv = styled.div`
 const SocialLink = styled.a`
   transition: all 0.2s;
 
-  &:hover {
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
-  }
-  &:focus,
+  &:hover,
   &:focus-visible {
     outline: none;
     & img {
@@ -155,8 +152,8 @@ const About = () => {
           content="Hi! My name is Kyle Olsen and I am a web developer in the Portland, Oregon area. I am a fullstack web developer focusing on React.js, Node.js, Express.js, and PostgreSQL. Read more about me here."
         />
       </Helmet>
-      <AboutInfoSection aria-label="About Kyle Olsen">
-        <AboutHeader>About</AboutHeader>
+      <AboutInfoSection aria-labelledby="about-header">
+        <AboutHeader id="about-header">About</AboutHeader>
         <AboutInfoDiv>
           <AboutInfoP>
             Hi! My name is Kyle Olsen and I was born and raised in Oregon.
@@ -196,7 +193,7 @@ const About = () => {
         <ContactButton to="/contact">Contact Me</ContactButton>
       </AboutInfoSection>
       <AboutPicsSection aria-label="Pictures of Kyle Olsen">
-        <ImageSlider />
+        <ImageCarousel images={personalImages} />
       </AboutPicsSection>
     </AboutPageDiv>
   );

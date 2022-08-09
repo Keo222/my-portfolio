@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef, KeyboardEvent } from "react";
+import { useState, useEffect, useRef, KeyboardEvent } from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
 // Components
-import ProjectsSlider from "../components/projectDisplays/ProjectsSlider";
-import NavTicks from "../components/NavTicks";
-import LongProjDesc from "../components/projectDisplays/LongProjDesc";
+import { ProjectsCarousel } from "../components/Carousels";
+import LongProjDesc from "components/ProjCard";
 
 // Project Arrays
 import { clientProjects, personalProjects } from "../jsonDB/projects";
@@ -18,12 +17,13 @@ const TopLineDiv = styled.div`
   align-items: center;
 `;
 
-const ToggleDiv = styled.div`
+const ToggleSection = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1.5rem;
 `;
-const ToggleDescriptor = styled.p`
+const ToggleDescriptor = styled.label`
   font-size: 1.6rem;
   font-weight: 500;
   margin-inline: 1rem;
@@ -35,9 +35,7 @@ const Toggle = styled.div<{ bColor: boolean }>`
   height: 3rem;
   border-radius: 20px;
   background-color: ${(props) =>
-    props.bColor
-      ? props.theme.color.highlight1
-      : props.theme.color.highlight2};
+    props.bColor ? props.theme.color.highlight1 : props.theme.color.highlight2};
   display: flex;
   align-items: center;
   transition: all 0.4s;
@@ -56,11 +54,6 @@ const ToggleBall = styled.div<{ pos: boolean }>`
   transition: all 0.4s;
 `;
 
-const NavTicksDiv = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
 const LongDescSection = styled.section`
   width: clamp(260px, 80%, 900px);
   margin-inline: auto;
@@ -77,7 +70,7 @@ const SectionTitle = styled.h2<{ mainHighlight: boolean }>`
 
 const Portfolio = () => {
   const updating = useRef(false);
-  const [toggle, setToggle] = useState(true);
+  const [toggled, setToggled] = useState(true);
   const [currentProjNum, setCurrentProjNum] = useState(0);
 
   const handleToggle = (e?: KeyboardEvent<HTMLDivElement>) => {
@@ -87,7 +80,7 @@ const Portfolio = () => {
       }
     }
     if (currentProjNum === 0) {
-      setToggle((t) => !t);
+      setToggled((t) => !t);
     } else {
       updating.current = true;
       setCurrentProjNum(0);
@@ -96,7 +89,7 @@ const Portfolio = () => {
 
   useEffect(() => {
     if (updating.current) {
-      setToggle((t) => !t);
+      setToggled((t) => !t);
       updating.current = false;
     }
   }, [currentProjNum]);
@@ -107,67 +100,68 @@ const Portfolio = () => {
         <title>Kyle Olsen: Portfolio</title>
         <meta
           name="description"
-          content="Kyle Olsen is a web developer in the Portland, Oregon area. Kyle Olsen is a fullstack web developer focusing on React.js, Node.js, Express.js, and PostgreSQL. View his portfolio here."
+          content="Kyle Olsen is a web developer in the Portland, Oregon area. Kyle Olsen is a fullstack web developer focusing on React.js, Typescript,ß Node.js, Express.js, and PostgreSQL. View his portfolio here."
         />
       </Helmet>
       <TopLineDiv>
-        <ToggleDiv>
+        <ToggleSection aria-label="toggle controls">
           <ToggleDescriptor>Client Projects</ToggleDescriptor>
           <Toggle
-            bColor={toggle}
+            bColor={toggled}
             onClick={() => handleToggle()}
             onKeyDown={(e) => handleToggle(e)}
             role="switch"
             title="Toggle between client projects and personal projects."
             aria-label="Toggle between client projects and personal projects."
-            aria-checked={toggle ? "true" : "false"}
+            aria-checked={toggled ? "true" : "false"}
             tabIndex={0}
           >
-            <ToggleBall pos={toggle} />
+            <ToggleBall pos={toggled} />
           </Toggle>
           <ToggleDescriptor>Personal Projects</ToggleDescriptor>
-        </ToggleDiv>
+        </ToggleSection>
       </TopLineDiv>
-      <ProjectsSlider
-        projects={toggle ? clientProjects : personalProjects}
-        currentProj={currentProjNum}
-        setCurrentProj={setCurrentProjNum}
-      />
-      <NavTicksDiv>
-        <NavTicks
-          projects={toggle ? clientProjects : personalProjects}
-          setCurrentProj={setCurrentProjNum}
+      <section aria-label="project carousel">
+        <ProjectsCarousel
+          projects={toggled ? clientProjects : personalProjects}
           currentProj={currentProjNum}
-          projType={toggle}
+          setCurrentProj={setCurrentProjNum}
+          toggled={toggled}
         />
-      </NavTicksDiv>
-      <LongDescSection>
-        <SectionTitle mainHighlight={true}>Client Projects</SectionTitle>
-        {clientProjects.map((p) => (
-          <LongProjDesc
-            mainHighlight={true}
-            projName={p.name}
-            projId={p.id}
-            tech={p.tech}
-            link={p.link}
-            mainImg={p.mainImg}
-            longDesc={p.long_description}
-          />
-        ))}
-        <SectionTitle mainHighlight={false}>
-          Personal Projects
-        </SectionTitle>
-        {personalProjects.map((p) => (
-          <LongProjDesc
-            mainHighlight={false}
-            projName={p.name}
-            projId={p.id}
-            tech={p.tech}
-            link={p.link}
-            mainImg={p.mainImg}
-            longDesc={p.long_description}
-          />
-        ))}
+      </section>
+      <LongDescSection aria-label="long project descriptions">
+        <section aria-labelledby="client-projects-header">
+          <SectionTitle mainHighlight={true} id="client-projects-header">
+            Client Projects
+          </SectionTitle>
+          {clientProjects.map((p) => (
+            <LongProjDesc
+              mainHighlight={true}
+              projName={p.name}
+              projId={p.id}
+              tech={p.tech}
+              link={p.link}
+              mainImg={p.mainImg}
+              longDesc={p.long_description}
+            />
+          ))}
+        </section>
+        <section aria-labelledby="personal-projects-header">
+          <SectionTitle id="personal-projects-header" mainHighlight={false}>
+            Personal Projects
+          </SectionTitle>
+          {personalProjects.map((p) => (
+            <LongProjDesc
+              mainHighlight={false}
+              projName={p.name}
+              projId={p.id}
+              tech={p.tech}
+              link={p.link}
+              mainImg={p.mainImg}
+              longDesc={p.long_description}
+            />
+          ))}
+        </section>
       </LongDescSection>
     </PortfolioPageContainer>
   );

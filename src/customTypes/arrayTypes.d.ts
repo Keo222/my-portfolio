@@ -1,3 +1,8 @@
+export type ImgArray = {
+  src: string;
+  alt: string;
+}[];
+
 export type ProjArray = {
   name: string;
   id: string;

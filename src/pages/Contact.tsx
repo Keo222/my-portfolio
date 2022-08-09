@@ -3,17 +3,10 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
 // Components
-import FormAlert from "../components/FormAlert";
+import FormAlert from "components/FormAlert";
 
 // Styled Components
 const ContactHeading = styled.h1`
-  /* font-family: "Montserrat", sans-serif;
-  font-size: 3.6rem;
-  font-weight: 400;
-  color: ${(props) => props.theme.color.highlight1};
-  letter-spacing: 6px;
-  margin-top: 3rem;
-  margin-bottom: 5rem; */
   text-align: center;
 
   font-family: "Montserrat", sans-serif;
@@ -116,9 +109,7 @@ const StyledSubmitButton = styled.button<{ loading: boolean }>`
   }
 `;
 
-type Props = {};
-
-const Contact = (props: Props) => {
+const Contact = () => {
   // Form States
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -241,7 +232,7 @@ const Contact = (props: Props) => {
         />
       </Helmet>
       <ContactHeading>Contact</ContactHeading>
-      <ContactForm>
+      <ContactForm aria-label="contact form">
         {success === true && (
           <FormAlert
             alertMsg="Message sent successfully!"
@@ -293,10 +284,7 @@ const Contact = (props: Props) => {
             onChange={(e) => setSubject(e.target.value)}
           />
           {subjectInvalid && (
-            <FormAlert
-              alertMsg={"Subject is required"}
-              alertType="error"
-            />
+            <FormAlert alertMsg={"Subject is required"} alertType="error" />
           )}
         </InputGrouping>
         <InputGrouping>
@@ -308,10 +296,7 @@ const Contact = (props: Props) => {
             onChange={(e) => setMsg(e.target.value)}
           />
           {msgInvalid && (
-            <FormAlert
-              alertMsg={"Message is required"}
-              alertType="error"
-            />
+            <FormAlert alertMsg={"Message is required"} alertType="error" />
           )}
         </InputGrouping>
         <CenteringDiv>

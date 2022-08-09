@@ -1,24 +1,25 @@
-import React, { useEffect, KeyboardEvent } from "react";
+import { useEffect, KeyboardEvent } from "react";
 import styled from "styled-components";
 import { animated, useSpringRef, useTransition } from "react-spring";
 
+// Components
+import CarouselTicks from "../CarouselTicks";
+
 // Icons
-import right_arrow from "../../images/icons/right_arrow.svg";
-import left_arrow from "../../images/icons/left_arrow.svg";
-import external_link from "../../images/icons/external_link.svg";
+import right_arrow from "images/icons/right_arrow.svg";
+import left_arrow from "images/icons/left_arrow.svg";
+import external_link from "images/icons/external_link.svg";
 
 // Logos
-import react_logo from "../../images/logos/react_logo.svg";
-import ts_logo from "../../images/logos/typescript_logo.svg";
-import nodejs_logo from "../../images/logos/nodejs_logo.svg";
-import postgres_logo from "../../images/logos/postgresql_logo.svg";
-import golang_logo from "../../images/logos/golang_logo.svg";
-import svelte_logo from "../../images/logos/svelte_logo.svg";
-
-// WEBSITE IMAGES
+import react_logo from "images/logos/react_logo.svg";
+import ts_logo from "images/logos/typescript_logo.svg";
+import nodejs_logo from "images/logos/nodejs_logo.svg";
+import postgres_logo from "images/logos/postgresql_logo.svg";
+import golang_logo from "images/logos/golang_logo.svg";
+import svelte_logo from "images/logos/svelte_logo.svg";
 
 // Types
-import { ProjArray } from "../../customTypes/objectArrays";
+import { ProjArray } from "../../../customTypes";
 
 const SliderSection = styled.section`
   width: 100%;
@@ -86,21 +87,10 @@ const ExternalLinkImg = styled.img`
     opacity: 1;
   }
 `;
-// const BottomLink = styled.a`
-//   position: absolute;
-//   z-index: 15;
-//   left: 50%;
-//   bottom: 2rem;
-//   transform: translateX(-50%);
-
-//   &:focus img,
-//   &:focus-visible img {
-//     opacity: 1;
-//   }
-// `;
 const BottomLink = styled.a`
   position: absolute;
   z-index: 15;
+  font-size: 14px;
   left: 50%;
   bottom: 3rem;
   transform: translateX(-50%);
@@ -120,19 +110,6 @@ const BottomLink = styled.a`
     opacity: 1;
   }
 `;
-
-// const DownArrow = styled.img`
-//   height: 5rem;
-//   width: 5rem;
-
-//   opacity: 0.4;
-//   transition: all 0.15s;
-
-//   &:hover {
-//     cursor: pointer;
-//     opacity: 1;
-//   }
-// `;
 
 const InfoDiv = styled(animated.div)`
   display: flex;
@@ -216,14 +193,16 @@ type Props = {
   projects: ProjArray;
   currentProj: number;
   setCurrentProj: Function;
+  toggled: boolean;
 };
 
 type DirType = "next" | "prev";
 
-const ProjectsSlider = ({
+const ProjectsCarousel = ({
   projects,
   currentProj,
   setCurrentProj,
+  toggled,
 }: Props) => {
   // Tech Logo Switch
   const logoSwitch = (tech: string) => {
@@ -310,14 +289,10 @@ const ProjectsSlider = ({
   }, [currentProj, transRef]);
   // Navigate Projects
   const nextProject = () => {
-    setCurrentProj(
-      currentProj === projects.length - 1 ? 0 : currentProj + 1
-    );
+    setCurrentProj(currentProj === projects.length - 1 ? 0 : currentProj + 1);
   };
   const prevProject = () => {
-    setCurrentProj(
-      currentProj === 0 ? projects.length - 1 : currentProj - 1
-    );
+    setCurrentProj(currentProj === 0 ? projects.length - 1 : currentProj - 1);
   };
 
   const keyboardHandleNav = (
@@ -337,86 +312,87 @@ const ProjectsSlider = ({
     }
   };
   return (
-    <SliderSection>
-      {transitions((styles, i) => (
-        <>
-          <LeftArrow
-            src={left_arrow}
-            alt="Arrow pointing left. Go to previous project."
-            tabIndex={0}
-            onClick={() => prevProject()}
-            onKeyDown={(e) => keyboardHandleNav(e, "prev")}
-          />
-          <InfoDiv style={styles} key={i}>
-            <SiteImg
-              src={
-                projects[
-                  i <= projects.length - 1 ? i : projects.length - 1
-                ].mainImg
-              }
-              alt={
-                projects[
-                  i <= projects.length - 1 ? i : projects.length - 1
-                ].name
-              }
+    <>
+      <SliderSection>
+        {transitions((styles, i) => (
+          <>
+            <LeftArrow
+              src={left_arrow}
+              alt="Arrow pointing left. Go to previous project."
+              tabIndex={0}
+              onClick={() => prevProject()}
+              onKeyDown={(e) => keyboardHandleNav(e, "prev")}
             />
-            <InfoTextDiv>
-              <SiteHeader>
-                {
-                  projects[
-                    i <= projects.length - 1 ? i : projects.length - 1
-                  ].name
+            <InfoDiv data-testid="slide-testId" style={styles} key={i}>
+              <SiteImg
+                src={
+                  projects[i <= projects.length - 1 ? i : projects.length - 1]
+                    .mainImg
                 }
-              </SiteHeader>
-              <SiteDescription>
-                {
-                  projects[
-                    i <= projects.length - 1 ? i : projects.length - 1
-                  ].description
+                alt={
+                  projects[i <= projects.length - 1 ? i : projects.length - 1]
+                    .name
                 }
-              </SiteDescription>
-              <TechImgsDiv>
-                {projects[
-                  i <= projects.length - 1 ? i : projects.length - 1
-                ].tech.map((t) => logoSwitch(t))}
-              </TechImgsDiv>
-              <BottomLink
-                href={`#${
-                  projects[
+              />
+              <InfoTextDiv>
+                <SiteHeader>
+                  {
+                    projects[i <= projects.length - 1 ? i : projects.length - 1]
+                      .name
+                  }
+                </SiteHeader>
+                <SiteDescription>
+                  {
+                    projects[i <= projects.length - 1 ? i : projects.length - 1]
+                      .description
+                  }
+                </SiteDescription>
+                <TechImgsDiv>
+                  {projects[
                     i <= projects.length - 1 ? i : projects.length - 1
-                  ].id
-                }`}
-              >
-                {/* <DownArrow src={down_arrow} /> */}
-                Learn More...
-              </BottomLink>
-              <ExternalLink
-                target="_blank"
-                rel="noreferrer noopener"
-                href={
-                  projects[
-                    i <= projects.length - 1 ? i : projects.length - 1
-                  ].link
-                }
-              >
-                <ExternalLinkImg
-                  src={external_link}
-                  alt="image to denote an external link"
-                />
-              </ExternalLink>
-            </InfoTextDiv>
-          </InfoDiv>
-          <RightArrow
-            src={right_arrow}
-            alt="Arrow pointing right. Go to next project."
-            tabIndex={0}
-            onClick={() => nextProject()}
-            onKeyDown={(e) => keyboardHandleNav(e, "next")}
-          />
-        </>
-      ))}
-    </SliderSection>
+                  ].tech.map((t) => logoSwitch(t))}
+                </TechImgsDiv>
+                <BottomLink
+                  href={`#${
+                    projects[i <= projects.length - 1 ? i : projects.length - 1]
+                      .id
+                  }`}
+                >
+                  Learn More...
+                </BottomLink>
+                <ExternalLink
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  href={
+                    projects[i <= projects.length - 1 ? i : projects.length - 1]
+                      .link
+                  }
+                >
+                  <ExternalLinkImg
+                    src={external_link}
+                    alt="image to denote an external link"
+                  />
+                </ExternalLink>
+              </InfoTextDiv>
+            </InfoDiv>
+            <RightArrow
+              src={right_arrow}
+              alt="Arrow pointing right. Go to next project."
+              tabIndex={0}
+              onClick={() => nextProject()}
+              onKeyDown={(e) => keyboardHandleNav(e, "next")}
+            />
+          </>
+        ))}
+      </SliderSection>
+      <CarouselTicks
+        numSlides={projects.length}
+        setCurrent={setCurrentProj}
+        current={currentProj}
+        color={toggled ? "primary" : "secondary"}
+      />
+    </>
   );
 };
 
-export default ProjectsSlider;
+export default ProjectsCarousel;
