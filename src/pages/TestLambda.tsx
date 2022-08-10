@@ -1,4 +1,3 @@
-import axios from "axios";
 import { FormEvent, useState } from "react";
 import styled from "styled-components";
 
@@ -10,13 +9,23 @@ const StyledForm = styled.form`
   gap: 2rem;
 `;
 
-type Props = {};
-
-const TestLambda = (props: Props) => {
+const TestLambda = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+
+  async function lambdaTest(e: FormEvent) {
+    e.preventDefault();
+    const res = await fetch(
+      "https://hefhiaszu3.execute-api.us-west-2.amazonaws.com/test"
+    );
+
+    const lambdaResponse = await res.json();
+
+    console.log(res);
+    console.log(lambdaResponse);
+  }
 
   async function handleFormSubmission(e: FormEvent) {
     e.preventDefault();
@@ -25,20 +34,25 @@ const TestLambda = (props: Props) => {
     const formattedSubject = encodeURIComponent(email);
     const formattedMessage = encodeURIComponent(subject);
     // const fetchURL = `https://hwuc2agny7.execute-api.us-west-2.amazonaws.com/default/sendPortfolioContactEmail/?name=${formattedName}&email=${formattedEmail}&subject=${formattedSubject}&message=${formattedMessage}`;
-    const fetchURL = "https://481nloupo2.execute-api.us-west-2.amazonaws.com";
+    const fetchURL =
+      "https://hefhiaszu3.execute-api.us-west-2.amazonaws.com/contact";
     const data = {
-      name: name,
-      email: email,
-      subject: subject,
-      message: message,
+      name: formattedName,
+      email: formattedEmail,
+      subject: formattedSubject,
+      message: formattedMessage,
     };
-    fetch(fetchURL, {
-      method: "POST",
-      mode: "no-cors",
-      body: JSON.stringify(data),
-    })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    try {
+      const res = await fetch(fetchURL, {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      const resData = await res.json();
+      console.log(res);
+      console.log(resData);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
