@@ -45,6 +45,9 @@ const TestLambda = () => {
     try {
       const res = await fetch(fetchURL, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(data),
       });
       const resData = await res.json();
@@ -56,17 +59,20 @@ const TestLambda = () => {
   }
 
   return (
-    <StyledForm onSubmit={(e) => handleFormSubmission(e)}>
-      <label>Name: </label>
-      <input type="text" onChange={(e) => setName(e.target.value)} />
-      <label>Email: </label>
-      <input type="email" onChange={(e) => setEmail(e.target.value)} />
-      <label>Subject: </label>
-      <input type="text" onChange={(e) => setSubject(e.target.value)} />
-      <label>Message: </label>
-      <textarea onChange={(e) => setMessage(e.target.value)} />
-      <button type="submit">Submit</button>
-    </StyledForm>
+    <>
+      <StyledForm onSubmit={(e) => handleFormSubmission(e)}>
+        <label>Name: </label>
+        <input type="text" onChange={(e) => setName(e.target.value)} />
+        <label>Email: </label>
+        <input type="email" onChange={(e) => setEmail(e.target.value)} />
+        <label>Subject: </label>
+        <input type="text" onChange={(e) => setSubject(e.target.value)} />
+        <label>Message: </label>
+        <textarea onChange={(e) => setMessage(e.target.value)} />
+        <button type="submit">Submit</button>
+      </StyledForm>
+      <button onClick={(e) => lambdaTest(e)}>TEST LAMBDA</button>
+    </>
   );
 };
 
