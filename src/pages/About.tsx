@@ -166,7 +166,7 @@ const About = () => {
               fulltime career in web development.
             </AboutInfoP>
             <AboutInfoP>
-              In my free time I enjoy running, gardening, and spending time
+              In my free time I enjoy running, gardening, and exploring the
               outdoors.
             </AboutInfoP>
           </AboutInfoDiv>
