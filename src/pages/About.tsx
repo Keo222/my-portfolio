@@ -156,13 +156,14 @@ const About = () => {
           <AboutHeader id="about-header">About</AboutHeader>
           <AboutInfoDiv>
             <AboutInfoP>
-              Hi! My name is Kyle Olsen and I was born and raised in Oregon. I
-              have a Bachelor’s of Music from Rice University in Houston, TX and
-              I also attended The Juilliard School while pursuing a Master’s of
-              Music degree. Currently, I'm building websites as a self-taught
-              web developer while continuing to play music regularly with the
-              Oregon Symphony, the Portland Opera, and the Oregon Ballet
-              Theater. I hope to find a fulltime career in web development.
+              Hi! My name is Kyle Olsen and I was born and raised in
+              Oregon. I have a Bachelor’s of Music from Rice University in
+              Houston, TX and I also attended The Juilliard School while
+              pursuing a Master’s of Music degree. Currently, I'm building
+              websites as a self-taught web developer while continuing to
+              play music regularly with the Oregon Symphony, the Portland
+              Opera, and the Oregon Ballet Theater. I hope to find a
+              fulltime career in web development.
             </AboutInfoP>
             <AboutInfoP>
               In my free time I enjoy running, gardening, and spending time
@@ -178,11 +179,15 @@ const About = () => {
               <SocialLogo src={github} title="Github" alt="Github Logo" />
             </SocialLink>
             <SocialLink
-              href="https://www.linkedin.com/in/kyle-olsen-2958084b/"
+              href="https://www.linkedin.com/in/kyle-olsen-dev/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <SocialLogo src={linkedin} title="LinkedIn" alt="LinkedIn Logo" />
+              <SocialLogo
+                src={linkedin}
+                title="LinkedIn"
+                alt="LinkedIn Logo"
+              />
             </SocialLink>
           </SocialsDiv>
           <ContactButton to="/contact">Contact Me</ContactButton>
