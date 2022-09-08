@@ -289,10 +289,14 @@ const ProjectsCarousel = ({
   }, [currentProj, transRef]);
   // Navigate Projects
   const nextProject = () => {
-    setCurrentProj(currentProj === projects.length - 1 ? 0 : currentProj + 1);
+    setCurrentProj(
+      currentProj === projects.length - 1 ? 0 : currentProj + 1
+    );
   };
   const prevProject = () => {
-    setCurrentProj(currentProj === 0 ? projects.length - 1 : currentProj - 1);
+    setCurrentProj(
+      currentProj === 0 ? projects.length - 1 : currentProj - 1
+    );
   };
 
   const keyboardHandleNav = (
@@ -325,26 +329,44 @@ const ProjectsCarousel = ({
             />
             <InfoDiv data-testid="slide-testId" style={styles} key={i}>
               <SiteImg
+                srcSet={`${
+                  projects[
+                    i <= projects.length - 1 ? i : projects.length - 1
+                  ].imgs[600]
+                } 600w,${
+                  projects[
+                    i <= projects.length - 1 ? i : projects.length - 1
+                  ].imgs[900]
+                } 900w,
+                ${
+                  projects[
+                    i <= projects.length - 1 ? i : projects.length - 1
+                  ].imgs[1200]
+                } 1200w,`}
                 src={
-                  projects[i <= projects.length - 1 ? i : projects.length - 1]
-                    .mainImg
+                  projects[
+                    i <= projects.length - 1 ? i : projects.length - 1
+                  ].imgs[1200]
                 }
                 alt={
-                  projects[i <= projects.length - 1 ? i : projects.length - 1]
-                    .name
+                  projects[
+                    i <= projects.length - 1 ? i : projects.length - 1
+                  ].name
                 }
               />
               <InfoTextDiv>
                 <SiteHeader>
                   {
-                    projects[i <= projects.length - 1 ? i : projects.length - 1]
-                      .name
+                    projects[
+                      i <= projects.length - 1 ? i : projects.length - 1
+                    ].name
                   }
                 </SiteHeader>
                 <SiteDescription>
                   {
-                    projects[i <= projects.length - 1 ? i : projects.length - 1]
-                      .description
+                    projects[
+                      i <= projects.length - 1 ? i : projects.length - 1
+                    ].description
                   }
                 </SiteDescription>
                 <TechImgsDiv>
@@ -354,8 +376,9 @@ const ProjectsCarousel = ({
                 </TechImgsDiv>
                 <BottomLink
                   href={`#${
-                    projects[i <= projects.length - 1 ? i : projects.length - 1]
-                      .id
+                    projects[
+                      i <= projects.length - 1 ? i : projects.length - 1
+                    ].id
                   }`}
                 >
                   Learn More...
@@ -364,8 +387,9 @@ const ProjectsCarousel = ({
                   target="_blank"
                   rel="noreferrer noopener"
                   href={
-                    projects[i <= projects.length - 1 ? i : projects.length - 1]
-                      .link
+                    projects[
+                      i <= projects.length - 1 ? i : projects.length - 1
+                    ].link
                   }
                 >
                   <ExternalLinkImg

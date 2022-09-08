@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 
 // Components
 import { ProjectsCarousel } from "../components/Carousels";
-import LongProjDesc from "components/ProjCard";
+import ProjCard from "components/ProjCard";
 
 // Project Arrays
 import { clientProjects, personalProjects } from "../jsonDB/projects";
@@ -35,7 +35,9 @@ const Toggle = styled.div<{ bColor: boolean }>`
   height: 3rem;
   border-radius: 20px;
   background-color: ${(props) =>
-    props.bColor ? props.theme.color.highlight1 : props.theme.color.highlight2};
+    props.bColor
+      ? props.theme.color.highlight1
+      : props.theme.color.highlight2};
   display: flex;
   align-items: center;
   transition: all 0.4s;
@@ -135,29 +137,32 @@ const Portfolio = () => {
             Client Projects
           </SectionTitle>
           {clientProjects.map((p) => (
-            <LongProjDesc
+            <ProjCard
               mainHighlight={true}
               projName={p.name}
               projId={p.id}
               tech={p.tech}
               link={p.link}
-              mainImg={p.mainImg}
+              imgs={p.imgs}
               longDesc={p.long_description}
             />
           ))}
         </section>
         <section aria-labelledby="personal-projects-header">
-          <SectionTitle id="personal-projects-header" mainHighlight={false}>
+          <SectionTitle
+            id="personal-projects-header"
+            mainHighlight={false}
+          >
             Personal Projects
           </SectionTitle>
           {personalProjects.map((p) => (
-            <LongProjDesc
+            <ProjCard
               mainHighlight={false}
               projName={p.name}
               projId={p.id}
               tech={p.tech}
               link={p.link}
-              mainImg={p.mainImg}
+              imgs={p.imgs}
               longDesc={p.long_description}
             />
           ))}

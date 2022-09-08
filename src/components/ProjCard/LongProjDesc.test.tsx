@@ -6,7 +6,15 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "styled/styled";
 
 // image
-import coming_soon from "images/websites/coming_soon.jpg";
+import coming_soonx600 from "images/websites/coming_soonx600.jpg";
+import coming_soonx900 from "images/websites/coming_soonx900.jpg";
+import coming_soonx1200 from "images/websites/coming_soonx1200.jpg";
+
+const testImgs = {
+  600: coming_soonx600,
+  900: coming_soonx900,
+  1200: coming_soonx1200,
+};
 
 describe("LongProjDesc component", () => {
   it("has the correct project name", () => {
@@ -18,7 +26,7 @@ describe("LongProjDesc component", () => {
           projId="tandemly"
           tech={["React"]}
           link="https://www.google.com/"
-          mainImg={coming_soon}
+          imgs={testImgs}
           longDesc="Here is my long description for testing"
         />
       </ThemeProvider>
@@ -36,7 +44,7 @@ describe("LongProjDesc component", () => {
           projId="tandemly"
           tech={["React"]}
           link="https://www.google.com/"
-          mainImg={coming_soon}
+          imgs={testImgs}
           longDesc="Here is my long description for testing"
         />
       </ThemeProvider>
@@ -56,7 +64,7 @@ describe("LongProjDesc component", () => {
           projId="tandemly"
           tech={["React"]}
           link="https://www.google.com/"
-          mainImg={coming_soon}
+          imgs={testImgs}
           longDesc="Here is my long description for testing"
         />
       </ThemeProvider>
@@ -65,23 +73,5 @@ describe("LongProjDesc component", () => {
       /Here is my long description for testing/i
     );
     expect(projComponentDesc).toBeInTheDocument();
-  });
-
-  it("has the correct img src", () => {
-    render(
-      <ThemeProvider theme={theme}>
-        <LongProjDesc
-          mainHighlight={true}
-          projName="Custom Proj Name"
-          projId="tandemly"
-          tech={["React"]}
-          link="https://www.google.com/"
-          mainImg={coming_soon}
-          longDesc="Here is my long description for testing"
-        />
-      </ThemeProvider>
-    );
-    const projImg = document.querySelector("img");
-    expect(projImg).toHaveAttribute("src", coming_soon);
   });
 });

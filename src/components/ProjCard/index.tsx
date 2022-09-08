@@ -56,7 +56,7 @@ type Props = {
   projId: string;
   tech: string[];
   link: string;
-  mainImg: string;
+  imgs: { 600: string; 900: string; 1200: string };
   longDesc: string;
 };
 
@@ -66,7 +66,7 @@ const ProjCard = ({
   projId,
   tech, // used to display logos for tech stack used
   link, // link to website
-  mainImg, // screenshot of website
+  imgs, // screenshot of website
   longDesc, // description of website
 }: Props) => {
   return (
@@ -82,7 +82,13 @@ const ProjCard = ({
           rel="noopener noreferrer"
           aria-label={`${projName}`}
         >
-          <ProjImg src={mainImg} />
+          <ProjImg
+            srcSet={`${imgs[600]} 600w,
+                ${imgs[900]} 900w,
+                ${imgs[1200]} 1200w,`}
+            src={imgs[1200]}
+            alt={`{${projName} Website}`}
+          />
         </a>
       </ImgDiv>
       <TechUsedText>
