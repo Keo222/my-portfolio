@@ -91,7 +91,7 @@ const SocialLink = styled.a`
   &:focus-visible {
     outline: none;
     & img {
-      transform: translateY(-8px);
+      transform: translateY(-4px);
     }
   }
 `;
