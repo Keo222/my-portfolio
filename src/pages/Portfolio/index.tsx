@@ -2,11 +2,11 @@ import { useState, useEffect, useRef, KeyboardEvent } from "react";
 import { Helmet } from "react-helmet";
 
 // Components
-import { ProjectsCarousel } from "../../components/Carousels";
+import { ProjectsCarousel } from "components/Carousels";
 import ProjCard from "components/ProjCard";
 
 // Project Arrays
-import { clientProjects, personalProjects } from "../../jsonDB/projects";
+import { clientProjects, personalProjects } from "jsonDB/projects";
 
 // Styled Components
 import {

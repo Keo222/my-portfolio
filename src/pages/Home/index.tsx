@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 
 // Image
-import picOfMe from "../images/me/beach_kyle500x667.jpg";
+import picOfMe from "images/me/beach_kyle500x667.jpg";
 
 // Styled Components
 import {

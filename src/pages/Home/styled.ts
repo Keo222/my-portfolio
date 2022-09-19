@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 // Cursor Image
-import harold_cursor from "../images/icons/hardold_purp_crayon_sm.png";
+import harold_cursor from "images/icons/hardold_purp_crayon_sm.png";
 
 export const HomeContainer = styled.div`
   min-height: calc(100vh - 173px);
