@@ -87,29 +87,6 @@ const ExternalLinkImg = styled.img`
     opacity: 1;
   }
 `;
-const BottomLink = styled.a`
-  position: absolute;
-  z-index: 15;
-  font-size: 14px;
-  left: 50%;
-  bottom: 3rem;
-  transform: translateX(-50%);
-  padding: 1.5rem 2.2rem;
-  background: ${(props) => props.theme.color.primary2};
-  color: ${(props) => props.theme.color.primary1};
-  border-radius: 100px;
-  border: 2px solid ${(props) => props.theme.color.primary1};
-  text-decoration: none;
-
-  opacity: 0.7;
-  transition: all 0.15s;
-
-  &:focus,
-  &:focus-visible,
-  &:hover {
-    opacity: 1;
-  }
-`;
 
 const InfoDiv = styled(animated.div)`
   display: flex;
@@ -374,15 +351,6 @@ const ProjectsCarousel = ({
                     i <= projects.length - 1 ? i : projects.length - 1
                   ].tech.map((t) => logoSwitch(t))}
                 </TechImgsDiv>
-                <BottomLink
-                  href={`#${
-                    projects[
-                      i <= projects.length - 1 ? i : projects.length - 1
-                    ].id
-                  }`}
-                >
-                  Learn More...
-                </BottomLink>
                 <ExternalLink
                   target="_blank"
                   rel="noreferrer noopener"
