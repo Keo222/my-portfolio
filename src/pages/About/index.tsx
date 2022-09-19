@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import { personalImages } from "jsonDB/images";
 
 // Components
-import { ImageCarousel } from "../components/Carousels";
+import { ImageCarousel } from "../../components/Carousels";
 
 // Logos
 import github from "../images/logos/github-black.svg";
