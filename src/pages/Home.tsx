@@ -179,13 +179,16 @@ const Home = () => {
         />
         <meta property="og:image" content={picOfMe} />
       </Helmet>
-      <LargeOutlineSection id="canvas-container" aria-labelledby="home-header">
+      <LargeOutlineSection
+        id="canvas-container"
+        aria-labelledby="home-header"
+      >
         <MyCanvas id="canvas"></MyCanvas>
         <HomeHeader id="home-header">Kyle Olsen</HomeHeader>
         <HomeBlurb>
-          “My name is Kyle Olsen. I am a curious web developer perpetually
+          My name is Kyle Olsen. I am a curious web developer perpetually
           learning more about the state of the web and how to make websites
-          beautiful and intuitive”
+          beautiful and intuitive.
         </HomeBlurb>
         <LinkButton to="/portfolio" tabIndex={0}>
           View Portfolio
