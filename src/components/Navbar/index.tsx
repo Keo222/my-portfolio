@@ -1,6 +1,6 @@
 import { useState, useEffect, KeyboardEvent } from "react";
 import styled from "styled-components";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 // Icons
 import hamburger from "images/icons/hamburger.svg";
@@ -9,76 +9,16 @@ import hamburger from "images/icons/hamburger.svg";
 import myLogo from "images/logos/myLogo.png";
 
 // Styled Components
-const Nav = styled.nav`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const LogoContainer = styled.div`
-  height: 15rem;
-
-  @media screen and (${(props) => props.theme.responsive.sm}) {
-    height: 10rem;
-  }
-`;
-
-const Logo = styled.img`
-  height: 100%;
-`;
-
-const NavLinksContainer = styled.div`
-  width: 50%;
-  display: flex;
-  justify-content: space-around;
-
-  @media screen and (${(props) => props.theme.responsive.sm}) {
-    display: none;
-  }
-`;
-
-const DropdownToggleContainer = styled.div`
-  height: 6rem;
-  margin-right: 1.5rem;
-  cursor: pointer;
-  display: none;
-
-  @media screen and (${(props) => props.theme.responsive.sm}) {
-    display: block;
-  }
-`;
-
-const DropdownNav = styled.div`
-  position: absolute;
-  width: 100%;
-  top: 10rem;
-  z-index: 100;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
-`;
-
-const DropdownLinksContainer = styled.div`
-  width: 100%;
-  height: 50vh;
-  background-color: ${(props) => props.theme.color.primary1};
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-const StyledNavLink = styled(NavLink)<{ active: string }>`
-  font-size: 1.6rem;
-  color: ${(props) =>
-    props.active === "true" ? props.theme.color.highlight1 : "inherit"};
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.2s;
-
-  &:hover {
-    color: ${(props) => props.theme.color.highlight1};
-  }
-`;
+import {
+  Nav,
+  LogoContainer,
+  Logo,
+  NavLinksContainer,
+  StyledNavLink,
+  DropdownToggleContainer,
+  DropdownNav,
+  DropdownLinksContainer,
+} from "./styledNavbar";
 
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
