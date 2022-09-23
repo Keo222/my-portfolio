@@ -9,6 +9,7 @@ import github from "images/logos/github-black.svg";
 import linkedin from "images/logos/linkedin_logo.svg";
 
 // Styled Components
+import { LinkButton } from "styled/links";
 import {
   AboutPageDiv,
   AboutInfoSection,
@@ -18,7 +19,6 @@ import {
   SocialsDiv,
   SocialLink,
   SocialLogo,
-  ContactButton,
   AboutPicsSection,
 } from "./styled";
 
@@ -71,7 +71,9 @@ const About = () => {
               />
             </SocialLink>
           </SocialsDiv>
-          <ContactButton to="/contact">Contact Me</ContactButton>
+          <LinkButton to="/contact" color="2">
+            Contact Me
+          </LinkButton>
         </AboutInfoSection>
         <AboutPicsSection aria-label="Pictures of Kyle Olsen">
           <ImageCarousel images={personalImages} />

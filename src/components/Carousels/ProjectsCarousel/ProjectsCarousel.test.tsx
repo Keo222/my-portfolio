@@ -2,11 +2,14 @@ import { screen, render } from "@testing-library/react";
 import ProjectsCarousel from ".";
 
 // Projects for slider
-import { clientProjects, personalProjects } from "../../../jsonDB/projects";
+import {
+  clientProjects,
+  personalProjects,
+} from "../../../jsonDB/projects";
 
 // styled-components work arounds
 import { ThemeProvider } from "styled-components";
-import { theme } from "../../../styled/styled";
+import { theme } from "../../../styled/themes";
 
 const personalProjArrLen = personalProjects.length;
 const clientProjArrLen = personalProjects.length;

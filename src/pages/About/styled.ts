@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+
+// Helper Functions
 
 export const AboutPageDiv = styled.div`
   display: flex;
@@ -91,32 +92,6 @@ export const SocialLogo = styled.img`
 
   &:focus {
     outline: none;
-  }
-`;
-
-export const ContactButton = styled(Link)`
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.6rem;
-  font-weight: 500;
-  color: ${(props) => props.theme.color.primary1};
-  text-decoration: none;
-  padding: 1rem 2rem;
-  background-color: ${(props) => props.theme.color.highlight2};
-  border-radius: 5px;
-  border: 3px solid ${(props) => props.theme.color.highlight2};
-  transition: all 0.2s;
-  cursor: pointer;
-
-  &:hover,
-  &:focus,
-  &:focus-visible {
-    color: ${(props) => props.theme.color.highlight2};
-    background-color: ${(props) => props.theme.color.primary1};
-    outline: none;
-  }
-
-  @media screen and (${(props) => props.theme.responsive.lg}) {
-    margin-top: 2rem;
   }
 `;
 

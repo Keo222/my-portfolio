@@ -24,9 +24,7 @@ export const Toggle = styled.div<{ bColor: boolean }>`
   height: 3rem;
   border-radius: 20px;
   background-color: ${(props) =>
-    props.bColor
-      ? props.theme.color.highlight1
-      : props.theme.color.highlight2};
+    props.bColor ? "hsl(103, 74%, 18%)" : "hsl(255, 100%, 77%)"};
   display: flex;
   align-items: center;
   transition: all 0.4s;

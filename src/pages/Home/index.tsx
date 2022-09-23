@@ -11,7 +11,7 @@ import {
   MyCanvas,
   HomeHeader,
   HomeBlurb,
-  LinkButton,
+  PortfolioLinkButton,
 } from "./styled";
 
 const Home = () => {
@@ -93,9 +93,9 @@ const Home = () => {
           learning more about the state of the web and how to make websites
           beautiful and intuitive.
         </HomeBlurb>
-        <LinkButton to="/portfolio" tabIndex={0}>
+        <PortfolioLinkButton to="/portfolio" tabIndex={0} color="1">
           View Portfolio
-        </LinkButton>
+        </PortfolioLinkButton>
       </LargeOutlineSection>
     </HomeContainer>
   );

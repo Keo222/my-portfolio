@@ -39,7 +39,7 @@ const SliderSection = styled.section`
   }
 `;
 
-const NavigateArrow = styled.img`
+const LeftArrow = styled.img`
   height: 5rem;
 
   margin-inline: 5px;
@@ -60,8 +60,7 @@ const NavigateArrow = styled.img`
   }
 `;
 
-const LeftArrow = styled(NavigateArrow)``;
-const RightArrow = styled(NavigateArrow)`
+const RightArrow = styled(LeftArrow)`
   right: 0;
 `;
 

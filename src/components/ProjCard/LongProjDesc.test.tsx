@@ -3,7 +3,7 @@ import LongProjDesc from ".";
 
 // styled-components work arounds
 import { ThemeProvider } from "styled-components";
-import { theme } from "styled/styled";
+import { theme } from "styled/themes";
 
 // image
 import coming_soonx600 from "images/websites/coming_soonx600.jpg";
