@@ -1,7 +1,6 @@
 import { useState, useEffect, KeyboardEvent } from "react";
-import styled from "styled-components";
 
-import { animated, useTransition, useSpringRef } from "react-spring";
+import { useTransition, useSpringRef } from "react-spring";
 
 // Components
 import CarouselTicks from "../CarouselTicks";
@@ -14,55 +13,13 @@ import left_arrow from "images/icons/left_arrow.svg";
 import { ImgArray } from "customTypes";
 
 // Styled Components
-const SliderAndTicks = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-`;
-const ImgAndArrows = styled.div`
-  display: flex;
-  height: 100%;
-  align-items: center;
-
-  @media screen and (${(props) => props.theme.responsive.lg}) {
-    width: clamp(180px, 90%, 700px);
-  }
-`;
-
-const NavigateArrow = styled.img`
-  height: 5rem;
-  margin-inline: 5px;
-  vertical-align: bottom;
-  user-select: none;
-  opacity: 0.2;
-  transition: all 0.15s;
-  &:hover,
-  &:focus,
-  &:focus-visible {
-    cursor: pointer;
-    opacity: 1;
-  }
-`;
-
-const ImgDiv = styled(animated.div)`
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  width: clamp(150px, 40vw, 500px);
-  aspect-ratio: 0.8;
-  border-radius: 10px;
-  @media screen and (${(props) => props.theme.responsive.lg}) {
-    width: clamp(150px, 80vw, 600px);
-  }
-`;
-
-const Image = styled(animated.img)`
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 10px;
-`;
+import {
+  SliderAndTicks,
+  ImgAndArrows,
+  NavigateArrow,
+  ImgDiv,
+  Image,
+} from "./styledImageCarousel";
 
 type Props = {
   images: ImgArray;
