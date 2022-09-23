@@ -1,72 +1,23 @@
 import { useState, useEffect, useRef, KeyboardEvent } from "react";
-import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
 // Components
-import { ProjectsCarousel } from "../components/Carousels";
-import LongProjDesc from "components/ProjCard";
+import { ProjectsCarousel } from "components/Carousels";
+import ProjCard from "components/ProjCard";
 
 // Project Arrays
-import { clientProjects, personalProjects } from "../jsonDB/projects";
+import { clientProjects, personalProjects } from "jsonDB/projects";
 
-const PortfolioPageContainer = styled.div``;
-
-const TopLineDiv = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-const ToggleSection = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1.5rem;
-`;
-const ToggleDescriptor = styled.label`
-  font-size: 1.6rem;
-  font-weight: 500;
-  margin-inline: 1rem;
-  line-height: 3rem;
-`;
-
-const Toggle = styled.div<{ bColor: boolean }>`
-  width: 6rem;
-  height: 3rem;
-  border-radius: 20px;
-  background-color: ${(props) =>
-    props.bColor ? props.theme.color.highlight1 : props.theme.color.highlight2};
-  display: flex;
-  align-items: center;
-  transition: all 0.4s;
-
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
-const ToggleBall = styled.div<{ pos: boolean }>`
-  border-radius: 50%;
-  height: 2.4rem;
-  width: 2.4rem;
-  transform: translateX(${(props) => (props.pos ? "3px" : "3.2rem")});
-  background-color: ${(props) => props.theme.color.primary1};
-  transition: all 0.4s;
-`;
-
-const LongDescSection = styled.section`
-  width: clamp(260px, 80%, 900px);
-  margin-inline: auto;
-`;
-const SectionTitle = styled.h2<{ mainHighlight: boolean }>`
-  font-size: 2.6rem;
-  text-decoration: underline;
-  color: ${(props) =>
-    props.mainHighlight === true
-      ? props.theme.color.highlight1
-      : props.theme.color.highlight2};
-  margin-bottom: 3rem;
-`;
+// Styled Components
+import {
+  TopLineDiv,
+  ToggleSection,
+  ToggleDescriptor,
+  Toggle,
+  ToggleBall,
+  LongDescSection,
+  SectionTitle,
+} from "./styled";
 
 const Portfolio = () => {
   const updating = useRef(false);
@@ -95,7 +46,7 @@ const Portfolio = () => {
   }, [currentProjNum]);
 
   return (
-    <PortfolioPageContainer>
+    <div>
       <Helmet>
         <title>Kyle Olsen: Portfolio</title>
         <meta
@@ -135,35 +86,38 @@ const Portfolio = () => {
             Client Projects
           </SectionTitle>
           {clientProjects.map((p) => (
-            <LongProjDesc
+            <ProjCard
               mainHighlight={true}
               projName={p.name}
               projId={p.id}
               tech={p.tech}
               link={p.link}
-              mainImg={p.mainImg}
+              imgs={p.imgs}
               longDesc={p.long_description}
             />
           ))}
         </section>
         <section aria-labelledby="personal-projects-header">
-          <SectionTitle id="personal-projects-header" mainHighlight={false}>
+          <SectionTitle
+            id="personal-projects-header"
+            mainHighlight={false}
+          >
             Personal Projects
           </SectionTitle>
           {personalProjects.map((p) => (
-            <LongProjDesc
+            <ProjCard
               mainHighlight={false}
               projName={p.name}
               projId={p.id}
               tech={p.tech}
               link={p.link}
-              mainImg={p.mainImg}
+              imgs={p.imgs}
               longDesc={p.long_description}
             />
           ))}
         </section>
       </LongDescSection>
-    </PortfolioPageContainer>
+    </div>
   );
 };
 

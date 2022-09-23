@@ -1,13 +1,7 @@
 import { FormEvent, useState } from "react";
-import styled from "styled-components";
 
-const StyledForm = styled.form`
-  width: clamp(300px, 60%, 600px);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-`;
+// Styled Components
+import { StyledForm } from "./styled";
 
 const TestLambda = () => {
   const [name, setName] = useState("");
@@ -45,6 +39,9 @@ const TestLambda = () => {
     try {
       const res = await fetch(fetchURL, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(data),
       });
       const resData = await res.json();
@@ -56,17 +53,20 @@ const TestLambda = () => {
   }
 
   return (
-    <StyledForm onSubmit={(e) => handleFormSubmission(e)}>
-      <label>Name: </label>
-      <input type="text" onChange={(e) => setName(e.target.value)} />
-      <label>Email: </label>
-      <input type="email" onChange={(e) => setEmail(e.target.value)} />
-      <label>Subject: </label>
-      <input type="text" onChange={(e) => setSubject(e.target.value)} />
-      <label>Message: </label>
-      <textarea onChange={(e) => setMessage(e.target.value)} />
-      <button type="submit">Submit</button>
-    </StyledForm>
+    <>
+      <StyledForm onSubmit={(e) => handleFormSubmission(e)}>
+        <label>Name: </label>
+        <input type="text" onChange={(e) => setName(e.target.value)} />
+        <label>Email: </label>
+        <input type="email" onChange={(e) => setEmail(e.target.value)} />
+        <label>Subject: </label>
+        <input type="text" onChange={(e) => setSubject(e.target.value)} />
+        <label>Message: </label>
+        <textarea onChange={(e) => setMessage(e.target.value)} />
+        <button type="submit">Submit</button>
+      </StyledForm>
+      <button onClick={(e) => lambdaTest(e)}>TEST LAMBDA</button>
+    </>
   );
 };
 

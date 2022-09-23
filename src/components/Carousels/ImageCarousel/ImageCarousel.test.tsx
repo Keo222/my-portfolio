@@ -5,7 +5,7 @@ import ImageCarousel from ".";
 import { personalImages } from "jsonDB";
 // Styled-Components Workaround
 import { ThemeProvider } from "styled-components";
-import { theme } from "styled/styled";
+import { theme } from "styled/themes";
 
 describe("ImageCarousel Component", () => {
   it("renders", () => {

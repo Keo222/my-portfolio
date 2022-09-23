@@ -4,7 +4,7 @@ import Navbar from ".";
 import { BrowserRouter as Router } from "react-router-dom";
 // Styled Components
 import { ThemeProvider } from "styled-components";
-import { theme } from "styled/styled";
+import { theme } from "styled/themes";
 describe("Navbar Component", () => {
   it("renders", () => {
     render(

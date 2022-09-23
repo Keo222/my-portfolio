@@ -1,113 +1,20 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
 // Components
 import FormAlert from "components/FormAlert";
 
 // Styled Components
-const ContactHeading = styled.h1`
-  text-align: center;
-
-  font-family: "Montserrat", sans-serif;
-  font-size: 3.6rem;
-  font-weight: 400;
-  letter-spacing: 3px;
-
-  margin-top: 3rem;
-  margin-bottom: 5rem;
-  color: ${(props) => props.theme.color.highlight1};
-  text-transform: uppercase;
-`;
-
-const ContactForm = styled.form`
-  font-size: 1.6rem;
-  width: clamp(180px, 70%, 800px);
-  margin-inline: auto;
-  margin-bottom: 5rem;
-`;
-
-const InputGrouping = styled.div`
-  margin-block: 2.5rem;
-`;
-
-const StyledLabel = styled.label`
-  display: inline-block;
-  margin-left: 0.5rem;
-  margin-bottom: 3px;
-`;
-
-const StyledTextInput = styled.input`
-  width: 100%;
-  border: 2px solid ${(props) => props.theme.color.primaryMid};
-  border-radius: 5px;
-
-  &:focus,
-  &:focus-visible {
-    outline: none;
-    border: 2px solid ${(props) => props.theme.color.highlight1};
-  }
-`;
-
-const StyledTextArea = styled.textarea`
-  width: 100%;
-  height: clamp(100px, 25vh, 400px);
-  border: 2px solid ${(props) => props.theme.color.primaryMid};
-  border-radius: 5px;
-
-  &:focus,
-  &:focus-visible {
-    outline: none;
-    border: 2px solid ${(props) => props.theme.color.highlight1};
-  }
-`;
-
-const CenteringDiv = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const StyledSubmitButton = styled.button<{ loading: boolean }>`
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.6rem;
-  font-weight: 500;
-  color: ${(props) => props.theme.color.primary1};
-  text-decoration: none;
-  padding: 1rem 2rem;
-  background-color: ${(props) =>
-    props.loading
-      ? props.theme.color.primaryMid
-      : props.theme.color.highlight2};
-  border-radius: 5px;
-  border: 3px solid
-    ${(props) =>
-      props.loading
-        ? props.theme.color.primaryMid
-        : props.theme.color.highlight2};
-  transition: all 0.2s;
-  cursor: ${({ loading }) => (loading ? "wait" : "pointer")};
-
-  &:hover {
-    color: ${(props) =>
-      props.loading
-        ? props.theme.color.primary1
-        : props.theme.color.highlight2};
-    background-color: ${(props) =>
-      props.loading
-        ? props.theme.color.primaryMid
-        : props.theme.color.primary1};
-    outline: none;
-  }
-
-  &:focus,
-  &:focus-visible {
-    transform: scale(1.05);
-  }
-
-  @media screen and (${(props) => props.theme.responsive.lg}) {
-    margin-top: 2rem;
-  }
-`;
+import {
+  ContactHeading,
+  ContactForm,
+  InputGrouping,
+  StyledLabel,
+  StyledTextInput,
+  StyledTextArea,
+  CenteringDiv,
+  StyledSubmitButton,
+} from "./styled";
 
 const Contact = () => {
   // Form States
@@ -284,7 +191,10 @@ const Contact = () => {
             onChange={(e) => setSubject(e.target.value)}
           />
           {subjectInvalid && (
-            <FormAlert alertMsg={"Subject is required"} alertType="error" />
+            <FormAlert
+              alertMsg={"Subject is required"}
+              alertType="error"
+            />
           )}
         </InputGrouping>
         <InputGrouping>
@@ -296,7 +206,10 @@ const Contact = () => {
             onChange={(e) => setMsg(e.target.value)}
           />
           {msgInvalid && (
-            <FormAlert alertMsg={"Message is required"} alertType="error" />
+            <FormAlert
+              alertMsg={"Message is required"}
+              alertType="error"
+            />
           )}
         </InputGrouping>
         <CenteringDiv>

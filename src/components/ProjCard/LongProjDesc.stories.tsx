@@ -21,7 +21,7 @@ PrimaryCard.args = {
   projId: clientProjects[0].id,
   tech: clientProjects[0].tech,
   link: clientProjects[0].link,
-  mainImg: clientProjects[0].mainImg,
+  imgs: clientProjects[0].imgs,
   longDesc: clientProjects[0].long_description,
 };
 
@@ -33,6 +33,6 @@ SecondaryCard.args = {
   projId: clientProjects[0].id,
   tech: clientProjects[0].tech,
   link: clientProjects[0].link,
-  mainImg: clientProjects[0].mainImg,
+  imgs: clientProjects[0].imgs,
   longDesc: clientProjects[0].long_description,
 };

@@ -39,7 +39,7 @@ const SliderSection = styled.section`
   }
 `;
 
-const NavigateArrow = styled.img`
+const LeftArrow = styled.img`
   height: 5rem;
 
   margin-inline: 5px;
@@ -60,8 +60,7 @@ const NavigateArrow = styled.img`
   }
 `;
 
-const LeftArrow = styled(NavigateArrow)``;
-const RightArrow = styled(NavigateArrow)`
+const RightArrow = styled(LeftArrow)`
   right: 0;
 `;
 
@@ -84,29 +83,6 @@ const ExternalLinkImg = styled.img`
 
   &:hover {
     cursor: pointer;
-    opacity: 1;
-  }
-`;
-const BottomLink = styled.a`
-  position: absolute;
-  z-index: 15;
-  font-size: 14px;
-  left: 50%;
-  bottom: 3rem;
-  transform: translateX(-50%);
-  padding: 1.5rem 2.2rem;
-  background: ${(props) => props.theme.color.primary2};
-  color: ${(props) => props.theme.color.primary1};
-  border-radius: 100px;
-  border: 2px solid ${(props) => props.theme.color.primary1};
-  text-decoration: none;
-
-  opacity: 0.7;
-  transition: all 0.15s;
-
-  &:focus,
-  &:focus-visible,
-  &:hover {
     opacity: 1;
   }
 `;
@@ -289,10 +265,14 @@ const ProjectsCarousel = ({
   }, [currentProj, transRef]);
   // Navigate Projects
   const nextProject = () => {
-    setCurrentProj(currentProj === projects.length - 1 ? 0 : currentProj + 1);
+    setCurrentProj(
+      currentProj === projects.length - 1 ? 0 : currentProj + 1
+    );
   };
   const prevProject = () => {
-    setCurrentProj(currentProj === 0 ? projects.length - 1 : currentProj - 1);
+    setCurrentProj(
+      currentProj === 0 ? projects.length - 1 : currentProj - 1
+    );
   };
 
   const keyboardHandleNav = (
@@ -325,26 +305,44 @@ const ProjectsCarousel = ({
             />
             <InfoDiv data-testid="slide-testId" style={styles} key={i}>
               <SiteImg
+                srcSet={`${
+                  projects[
+                    i <= projects.length - 1 ? i : projects.length - 1
+                  ].imgs[600]
+                } 600w,${
+                  projects[
+                    i <= projects.length - 1 ? i : projects.length - 1
+                  ].imgs[900]
+                } 900w,
+                ${
+                  projects[
+                    i <= projects.length - 1 ? i : projects.length - 1
+                  ].imgs[1200]
+                } 1200w,`}
                 src={
-                  projects[i <= projects.length - 1 ? i : projects.length - 1]
-                    .mainImg
+                  projects[
+                    i <= projects.length - 1 ? i : projects.length - 1
+                  ].imgs[1200]
                 }
                 alt={
-                  projects[i <= projects.length - 1 ? i : projects.length - 1]
-                    .name
+                  projects[
+                    i <= projects.length - 1 ? i : projects.length - 1
+                  ].name
                 }
               />
               <InfoTextDiv>
                 <SiteHeader>
                   {
-                    projects[i <= projects.length - 1 ? i : projects.length - 1]
-                      .name
+                    projects[
+                      i <= projects.length - 1 ? i : projects.length - 1
+                    ].name
                   }
                 </SiteHeader>
                 <SiteDescription>
                   {
-                    projects[i <= projects.length - 1 ? i : projects.length - 1]
-                      .description
+                    projects[
+                      i <= projects.length - 1 ? i : projects.length - 1
+                    ].description
                   }
                 </SiteDescription>
                 <TechImgsDiv>
@@ -352,20 +350,13 @@ const ProjectsCarousel = ({
                     i <= projects.length - 1 ? i : projects.length - 1
                   ].tech.map((t) => logoSwitch(t))}
                 </TechImgsDiv>
-                <BottomLink
-                  href={`#${
-                    projects[i <= projects.length - 1 ? i : projects.length - 1]
-                      .id
-                  }`}
-                >
-                  Learn More...
-                </BottomLink>
                 <ExternalLink
                   target="_blank"
                   rel="noreferrer noopener"
                   href={
-                    projects[i <= projects.length - 1 ? i : projects.length - 1]
-                      .link
+                    projects[
+                      i <= projects.length - 1 ? i : projects.length - 1
+                    ].link
                   }
                 >
                   <ExternalLinkImg

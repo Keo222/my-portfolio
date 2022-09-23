@@ -9,5 +9,5 @@ export type ProjArray = {
   description: string;
   tech: string[];
   link: string;
-  mainImg: string;
+  imgs: { 600: string; 900: string; 1200: string };
 }[];
