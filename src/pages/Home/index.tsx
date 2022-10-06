@@ -82,10 +82,7 @@ const Home = () => {
         />
         <meta property="og:image" content={picOfMe} />
       </Helmet>
-      <LargeOutlineSection
-        id="canvas-container"
-        aria-labelledby="home-header"
-      >
+      <LargeOutlineSection id="canvas-container" aria-labelledby="home-header">
         <MyCanvas id="canvas"></MyCanvas>
         <HomeHeader id="home-header">Kyle Olsen</HomeHeader>
         <HomeBlurb>
